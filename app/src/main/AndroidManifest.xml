@@ -10,8 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AwardStoreActivity"></activity>
-        <activity android:name=".Main2Activity" />
+        <activity android:name=".MultiFunc"></activity>
+        <activity android:name=".Multiplication" />
+        <activity android:name=".AwardStoreActivity" />
         <activity
             android:name=".AddFunc"
             android:screenOrientation="portrait" />

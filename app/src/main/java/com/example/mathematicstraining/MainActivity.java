@@ -76,13 +76,17 @@ public class MainActivity extends AppCompatActivity {
         ivMul.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "MULTIPLICATION !!!!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "MULTIPLICATION !!!!", Toast.LENGTH_SHORT).show();
+                Intent it = new Intent(MainActivity.this,Multiplication.class);
+                startActivity(it);
             }
         });
         tvMul.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "MULTIPLICATION !!!!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "MULTIPLICATION !!!!", Toast.LENGTH_SHORT).show();
+                Intent it = new Intent(MainActivity.this,Multiplication.class);
+                startActivity(it);
             }
         });
         ivDiv.setOnClickListener(new View.OnClickListener() {
