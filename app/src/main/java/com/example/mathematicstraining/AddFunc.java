@@ -1444,4 +1444,9 @@ public class AddFunc extends Activity {
 
 
     }
+
+    public void gotoStore(View view) {
+        Intent it = new Intent(AddFunc.this,AwardStoreActivity.class);
+        startActivity(it);
+    }
 }

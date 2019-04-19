@@ -1414,4 +1414,9 @@ public class MultiFunc2 extends AppCompatActivity {
 
 
     }
+
+    public void gotoStore(View view) {
+        Intent it = new Intent(MultiFunc2.this,AwardStoreActivity.class);
+        startActivity(it);
+    }
 }

@@ -1456,4 +1456,9 @@ public class SubtrFunc extends Activity {
 
 
     }
+
+    public void gotoStore(View view) {
+        Intent it = new Intent(SubtrFunc.this,AwardStoreActivity.class);
+        startActivity(it);
+    }
 }

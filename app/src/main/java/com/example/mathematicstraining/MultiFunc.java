@@ -1430,4 +1430,9 @@ public class MultiFunc extends AppCompatActivity {
 
 
     }
+
+    public void gotoStore(View view) {
+        Intent it = new Intent(MultiFunc.this,AwardStoreActivity.class);
+        startActivity(it);
+    }
 }

@@ -140,4 +140,9 @@ public class MainActivity extends AppCompatActivity {
         tvOpDate.setText("上一次測試日期為：　"+sharedata0.getString("date", "0"));
 
     }
+
+    public void gotoStore(View view) {
+        Intent it = new Intent(MainActivity.this,AwardStoreActivity.class);
+        startActivity(it);
+    }
 }
