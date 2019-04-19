@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MultiFunc">
+    tools:context=".MultiFunc2">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -143,104 +143,6 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:orientation="horizontal"
-        >
-
-        <TextView
-            android:id="@+id/tvSubject3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1"
-            android:background="@color/colorYellow"
-            android:gravity="center_horizontal"
-            android:text="3"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            android:textStyle="bold|italic" />
-
-        <TextView
-            android:id="@+id/tvQuestion3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="5"
-            android:clickable="true"
-            android:focusableInTouchMode="false"
-            android:text="5555"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/etAnswer3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-
-            android:layout_weight="5"
-            android:clickable="true"
-            android:ems="10"
-
-            android:focusableInTouchMode="false"
-            android:gravity="left"
-            android:inputType="number"
-            android:maxLength="6"
-
-            android:onClick="EnterAnswer"
-            android:textColor="@color/colorPrimary"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvSubject4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1"
-            android:background="@color/colorYellow"
-            android:gravity="center_horizontal"
-            android:text="4"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            android:textStyle="bold|italic"
-            />
-
-        <TextView
-            android:id="@+id/tvQuestion4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="5"
-            android:text="256"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/etAnswer4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-
-            android:layout_weight="5"
-            android:clickable="true"
-            android:ems="10"
-
-            android:focusableInTouchMode="false"
-            android:gravity="left"
-            android:inputType="number"
-            android:maxLength="6"
-
-            android:onClick="EnterAnswer"
-            android:textColor="@color/colorPrimary"
-            android:textSize="24sp"
-            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -701,464 +603,322 @@
             android:onClick="getAnswer" />
 
     </LinearLayout>
-
-
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
-
+        android:layout_marginTop="10dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/imageView40"
             android:layout_width="50dp"
-            android:layout_height="50dp"
-
+            android:layout_height="45dp"
             android:layout_marginLeft="30dp"
-            android:src="@drawable/house_zero" />
+
+            android:src="@drawable/white" />
 
         <EditText
             android:id="@+id/imageView41"
             android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/house_zero"
+            android:layout_height="45dp"
+
+            android:background="@drawable/locker"
             android:clickable="true"
             android:focusableInTouchMode="false"
             android:inputType="number"
             android:maxLength="1"
 
-            android:onClick="getCarry1"
-            />
+            android:onClick="getAnswer1" />
+
 
         <EditText
             android:id="@+id/imageView42"
+
             android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/house_zero"
+            android:layout_height="45dp"
+
+            android:background="@drawable/locker"
             android:clickable="true"
             android:focusableInTouchMode="false"
             android:inputType="number"
             android:maxLength="1"
 
-            android:onClick="getCarry1"
-            />
+            android:onClick="getAnswer1" />
 
         <EditText
             android:id="@+id/imageView43"
+
             android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/house_zero"
+            android:layout_height="45dp"
+
+            android:background="@drawable/locker"
             android:clickable="true"
             android:focusableInTouchMode="false"
             android:inputType="number"
             android:maxLength="1"
 
-            android:onClick="getCarry1"
-            />
+            android:onClick="getAnswer1" />
 
-        <ImageView
+        <EditText
             android:id="@+id/imageView44"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
 
-            android:src="@drawable/white" />
+            android:layout_width="50dp"
+            android:layout_height="45dp"
+
+            android:background="@drawable/locker"
+            android:clickable="true"
+            android:focusableInTouchMode="false"
+            android:inputType="number"
+            android:maxLength="1"
+
+            android:onClick="getAnswer1" />
 
 
         <ImageView
             android:id="@+id/imageView45"
             android:layout_width="50dp"
-            android:layout_height="50dp"
-
+            android:layout_height="45dp"
             android:layout_marginLeft="60dp"
-            android:src="@drawable/house_zero" />
+
+            android:src="@drawable/white"
+            />
 
         <EditText
             android:id="@+id/imageView46"
             android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/house_zero"
+            android:layout_height="45dp"
+
+            android:background="@drawable/locker"
             android:clickable="true"
             android:focusableInTouchMode="false"
             android:inputType="number"
             android:maxLength="1"
 
-            android:onClick="getCarry1"
-            />
+            android:onClick="getAnswer1" />
 
         <EditText
             android:id="@+id/imageView47"
             android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/house_zero"
+            android:layout_height="45dp"
+
+            android:background="@drawable/locker"
             android:clickable="true"
             android:focusableInTouchMode="false"
             android:inputType="number"
             android:maxLength="1"
 
-            android:onClick="getCarry1"
-            />
+            android:onClick="getAnswer1" />
 
         <EditText
             android:id="@+id/imageView48"
             android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/house_zero"
+            android:layout_height="45dp"
+
+            android:background="@drawable/locker"
             android:clickable="true"
             android:focusableInTouchMode="false"
             android:inputType="number"
             android:maxLength="1"
 
-            android:onClick="getCarry1"
-            />
+            android:onClick="getAnswer1" />
 
-        <ImageView
+        <EditText
             android:id="@+id/imageView49"
             android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_height="45dp"
 
-            android:src="@drawable/white" />
+            android:background="@drawable/locker"
+            android:clickable="true"
+            android:focusableInTouchMode="false"
+            android:inputType="number"
+            android:maxLength="1"
+
+            android:onClick="getAnswer1" />
 
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
 
+        <ImageView
+
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@android:drawable/bottom_bar" />
+
+        <ImageView
+
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@android:drawable/bottom_bar" />
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/imageView50"
             android:layout_width="50dp"
-            android:layout_height="50dp"
-
+            android:layout_height="45dp"
             android:layout_marginLeft="30dp"
-            android:src="@drawable/house_zero" />
-
-        <ImageView
-            android:id="@+id/imageView51"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-
-            android:src="@drawable/house_zero" />
-
-        <ImageView
-            android:id="@+id/imageView52"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-
-            android:src="@drawable/house_zero" />
-
-        <ImageView
-            android:id="@+id/imageView53"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-
-            android:src="@drawable/house_zero" />
-
-        <ImageView
-            android:id="@+id/imageView54"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
 
             android:src="@drawable/white" />
+
+        <EditText
+            android:id="@+id/imageView51"
+            android:layout_width="50dp"
+            android:layout_height="45dp"
+
+            android:background="@drawable/locker"
+            android:clickable="true"
+            android:focusableInTouchMode="false"
+            android:inputType="number"
+            android:maxLength="1"
+
+            android:onClick="getAnswer2" />
+
+
+        <EditText
+            android:id="@+id/imageView52"
+
+            android:layout_width="50dp"
+            android:layout_height="45dp"
+
+            android:background="@drawable/locker"
+            android:clickable="true"
+            android:focusableInTouchMode="false"
+            android:inputType="number"
+            android:maxLength="1"
+
+            android:onClick="getAnswer2" />
+
+        <EditText
+            android:id="@+id/imageView53"
+
+            android:layout_width="50dp"
+            android:layout_height="45dp"
+
+            android:background="@drawable/locker"
+            android:clickable="true"
+            android:focusableInTouchMode="false"
+            android:inputType="number"
+            android:maxLength="1"
+
+            android:onClick="getAnswer2" />
+
+        <EditText
+            android:id="@+id/imageView54"
+
+            android:layout_width="50dp"
+            android:layout_height="45dp"
+
+            android:background="@drawable/locker"
+            android:clickable="true"
+            android:focusableInTouchMode="false"
+            android:inputType="number"
+            android:maxLength="1"
+
+            android:onClick="getAnswer2" />
 
 
         <ImageView
             android:id="@+id/imageView55"
             android:layout_width="50dp"
-            android:layout_height="50dp"
-
+            android:layout_height="45dp"
             android:layout_marginLeft="60dp"
-            android:src="@drawable/house_zero" />
 
-        <ImageView
+            android:src="@drawable/white"
+            />
+
+        <EditText
             android:id="@+id/imageView56"
             android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_height="45dp"
 
-            android:src="@drawable/house_zero" />
+            android:background="@drawable/locker"
+            android:clickable="true"
+            android:focusableInTouchMode="false"
+            android:inputType="number"
+            android:maxLength="1"
 
-        <ImageView
+            android:onClick="getAnswer2" />
+
+        <EditText
             android:id="@+id/imageView57"
             android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_height="45dp"
 
-            android:src="@drawable/house_zero" />
+            android:background="@drawable/locker"
+            android:clickable="true"
+            android:focusableInTouchMode="false"
+            android:inputType="number"
+            android:maxLength="1"
 
-        <ImageView
+            android:onClick="getAnswer2" />
+
+        <EditText
             android:id="@+id/imageView58"
             android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_height="45dp"
 
-            android:src="@drawable/house_zero" />
+            android:background="@drawable/locker"
+            android:clickable="true"
+            android:focusableInTouchMode="false"
+            android:inputType="number"
+            android:maxLength="1"
 
-        <ImageView
+            android:onClick="getAnswer2" />
+
+        <EditText
             android:id="@+id/imageView59"
             android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_height="45dp"
 
-            android:src="@drawable/white" />
+            android:background="@drawable/locker"
+            android:clickable="true"
+            android:focusableInTouchMode="false"
+            android:inputType="number"
+            android:maxLength="1"
+
+            android:onClick="getAnswer2" />
 
     </LinearLayout>
 
+    <ImageView
 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/trouble" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/imageView60"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-
-            android:layout_marginLeft="30dp"
-            android:src="@drawable/house_zero" />
-
-        <ImageView
-            android:id="@+id/imageView61"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-
-            android:src="@drawable/house_zero" />
-
-        <ImageView
-            android:id="@+id/imageView62"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-
-            android:src="@drawable/house_zero" />
-
-        <ImageView
-            android:id="@+id/imageView63"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-
-            android:src="@drawable/house_zero" />
-
-        <ImageView
-            android:id="@+id/imageView64"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-
-            android:src="@drawable/white" />
-
-
-        <ImageView
-            android:id="@+id/imageView65"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-
-            android:layout_marginLeft="60dp"
-            android:src="@drawable/house_zero" />
-
-        <ImageView
-            android:id="@+id/imageView66"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-
-            android:src="@drawable/house_zero" />
-
-        <ImageView
-            android:id="@+id/imageView67"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-
-            android:src="@drawable/house_zero" />
-
-        <ImageView
-            android:id="@+id/imageView68"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-
-            android:src="@drawable/house_zero" />
-
-        <ImageView
-            android:id="@+id/imageView69"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-
-            android:src="@drawable/white" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <ImageView
-
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="15dp"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY"
-            android:src="@android:drawable/bottom_bar" />
-
-        <ImageView
-
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="15dp"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY"
-            android:src="@android:drawable/bottom_bar" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/imageView70"
-            android:layout_width="50dp"
-            android:layout_height="45dp"
-
-            android:layout_marginLeft="30dp"
-            android:src="@drawable/white" />
-
-        <EditText
-            android:id="@+id/imageView71"
-            android:layout_width="50dp"
-            android:layout_height="45dp"
-
-            android:background="@drawable/locker"
-            android:clickable="true"
-            android:focusableInTouchMode="false"
-            android:inputType="number"
-            android:maxLength="1"
-
-            android:onClick="getAnswer1"
-            />
-
-
-        <EditText
-            android:id="@+id/imageView72"
-            android:layout_width="50dp"
-            android:layout_height="45dp"
-
-            android:background="@drawable/locker"
-            android:clickable="true"
-            android:focusableInTouchMode="false"
-            android:inputType="number"
-            android:maxLength="1"
-
-            android:onClick="getAnswer1"
-            />
-
-        <EditText
-            android:id="@+id/imageView73"
-            android:layout_width="50dp"
-            android:layout_height="45dp"
-
-            android:background="@drawable/locker"
-            android:clickable="true"
-            android:focusableInTouchMode="false"
-            android:inputType="number"
-            android:maxLength="1"
-
-            android:onClick="getAnswer1"
-            />
-
-        <EditText
-            android:id="@+id/imageView74"
-            android:layout_width="50dp"
-            android:layout_height="45dp"
-
-            android:background="@drawable/locker"
-            android:clickable="true"
-            android:focusableInTouchMode="false"
-            android:inputType="number"
-            android:maxLength="1"
-
-            android:onClick="getAnswer1"
-            />
-
-
-        <ImageView
-            android:id="@+id/imageView75"
-            android:layout_width="50dp"
-            android:layout_height="45dp"
-
-            android:layout_marginLeft="60dp"
-            android:src="@drawable/white" />
-
-        <EditText
-            android:id="@+id/imageView76"
-            android:layout_width="50dp"
-            android:layout_height="45dp"
-
-            android:background="@drawable/locker"
-            android:clickable="true"
-            android:focusableInTouchMode="false"
-            android:inputType="number"
-            android:maxLength="1"
-
-            android:onClick="getAnswer1"
-            />
-
-        <EditText
-            android:id="@+id/imageView77"
-            android:layout_width="50dp"
-            android:layout_height="45dp"
-
-            android:background="@drawable/locker"
-            android:clickable="true"
-            android:focusableInTouchMode="false"
-            android:inputType="number"
-            android:maxLength="1"
-
-            android:onClick="getAnswer1"
-            />
-
-        <EditText
-            android:id="@+id/imageView78"
-            android:layout_width="50dp"
-            android:layout_height="45dp"
-
-            android:background="@drawable/locker"
-            android:clickable="true"
-            android:focusableInTouchMode="false"
-            android:inputType="number"
-            android:maxLength="1"
-
-            android:onClick="getAnswer1"
-            />
-
-        <EditText
-            android:id="@+id/imageView79"
-            android:layout_width="50dp"
-            android:layout_height="45dp"
-
-            android:background="@drawable/locker"
-            android:clickable="true"
-            android:focusableInTouchMode="false"
-            android:inputType="number"
-            android:maxLength="1"
-
-            android:onClick="getAnswer1"
-            />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
         <Button
@@ -1260,5 +1020,4 @@
             android:textSize="24sp" />
 
     </LinearLayout>
-
 </LinearLayout>

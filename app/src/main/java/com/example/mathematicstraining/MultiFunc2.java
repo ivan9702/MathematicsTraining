@@ -24,7 +24,7 @@ import android.widget.Toast;
 import java.lang.reflect.Field;
 import java.util.Calendar;
 
-public class MultiFunc extends AppCompatActivity {
+public class MultiFunc2 extends AppCompatActivity {
 
     int units=0, tens=0, hundreds=0;
     int units_Add=0, tens_Add=0, hundreds_Add=0;
@@ -39,23 +39,20 @@ public class MultiFunc extends AppCompatActivity {
     //Boolean check=true;
     int errorCount=0;
 
-    TextView tvTitle, tvQuestion1, tvQuestion2,tvQuestion3,tvQuestion4,tvTotalAward,getTvTotalHalfAward;
+    TextView tvTitle, tvQuestion1, tvQuestion2,tvTotalAward,getTvTotalHalfAward;
     public  ImageView[] IMGS0 = new ImageView[10];
     public  ImageView[] IMGS1 = new ImageView[10];
     public  ImageView[] IMGS2 = new ImageView[10];
     public  ImageView[] IMGS3 = new ImageView[10];
+    public  ImageView[] IMGS4 = new ImageView[10];
+    public  ImageView[] IMGS5 = new ImageView[10];
 
     public  EditText[] ETS0 = new EditText[10];
     public  EditText[] ETS3 = new EditText[10];
-
-    public  ImageView[] IMGS4 = new ImageView[10];
-    public  ImageView[] IMGS5 = new ImageView[10];
-    public  ImageView[] IMGS6 = new ImageView[10];
-    public  ImageView[] IMGS7 = new ImageView[10];
-
     public  EditText[] ETS4 = new EditText[10];
-    public  EditText[] ETS7 = new EditText[10];
-    public EditText etAnswer1, etAnswer2, etAnswer3, etAnswer4;
+    public  EditText[] ETS5 = new EditText[10];
+
+    public EditText etAnswer1, etAnswer2;
 
     public Button btnCheck, btnBack, btnScore;
 
@@ -71,7 +68,7 @@ public class MultiFunc extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_multi_func);
+        setContentView(R.layout.activity_multi_func2);
 
         mCal = Calendar.getInstance();
         s = DateFormat.format("yyyy/MM/dd ", mCal.getTime());    // kk:24小時制, hh:12小時制
@@ -116,15 +113,15 @@ public class MultiFunc extends AppCompatActivity {
 
         tvQuestion1 = findViewById(R.id.tvQuestion1);
         tvQuestion2 = findViewById(R.id.tvQuestion2);
-        tvQuestion3 = findViewById(R.id.tvQuestion3);
-        tvQuestion4 = findViewById(R.id.tvQuestion4);
+//        tvQuestion3 = findViewById(R.id.tvQuestion3);
+//        tvQuestion4 = findViewById(R.id.tvQuestion4);
 
         tvTitle = findViewById(R.id.tvTitle);
 
         etAnswer1 = findViewById(R.id.etAnswer1);
         etAnswer2 = findViewById(R.id.etAnswer2);
-        etAnswer3 = findViewById(R.id.etAnswer3);
-        etAnswer4 = findViewById(R.id.etAnswer4);
+//        etAnswer3 = findViewById(R.id.etAnswer3);
+//        etAnswer4 = findViewById(R.id.etAnswer4);
 
         tvTotalAward = (TextView)findViewById(R.id.tvTotalAward);
         getTvTotalHalfAward = (TextView)findViewById(R.id.tvTotalHalfAward);
@@ -159,30 +156,30 @@ public class MultiFunc extends AppCompatActivity {
                 return false;
             }
         });
-        etAnswer3.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if(keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN){
-
-                    // Perform action on key press
-                    do_imm_hidden(etAnswer3);
-                    return true;
-                }
-                return false;
-            }
-        });
-        etAnswer4.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if(keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN){
-
-                    // Perform action on key press
-                    do_imm_hidden(etAnswer4);
-                    return true;
-                }
-                return false;
-            }
-        });
+//        etAnswer3.setOnKeyListener(new View.OnKeyListener() {
+//            @Override
+//            public boolean onKey(View v, int keyCode, KeyEvent event) {
+//                if(keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN){
+//
+//                    // Perform action on key press
+//                    do_imm_hidden(etAnswer3);
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
+//        etAnswer4.setOnKeyListener(new View.OnKeyListener() {
+//            @Override
+//            public boolean onKey(View v, int keyCode, KeyEvent event) {
+//                if(keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN){
+//
+//                    // Perform action on key press
+//                    do_imm_hidden(etAnswer4);
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
 
         IMGS0[0] = (ImageView)findViewById(R.id.imageView00);
 //        IMGS0[1] = (ImageView)findViewById(R.id.imageView01);
@@ -240,62 +237,31 @@ public class MultiFunc extends AppCompatActivity {
         ETS3[8] = (EditText)findViewById(R.id.imageView38);
         ETS3[9] = (EditText)findViewById(R.id.imageView39);
 
-
-
+        ///////  Locker @Line4    //////////////////
         IMGS4[0] = (ImageView)findViewById(R.id.imageView40);
-//        IMGS4[1] = (ImageView)findViewById(R.id.imageView41);
-//        IMGS4[2] = (ImageView)findViewById(R.id.imageView42);
-//        IMGS4[3] = (ImageView)findViewById(R.id.imageView43);
-        IMGS4[4] = (ImageView)findViewById(R.id.imageView44);
-        IMGS4[5] = (ImageView)findViewById(R.id.imageView45);
-//        IMGS4[6] = (ImageView)findViewById(R.id.imageView46);
-//        IMGS4[7] = (ImageView)findViewById(R.id.imageView47);
-//        IMGS4[8] = (ImageView)findViewById(R.id.imageView48);
-        IMGS4[9] = (ImageView)findViewById(R.id.imageView49);
-
-        ///////////////  HOUSE @Line4    //////////////////
         ETS4[1] = (EditText)findViewById(R.id.imageView41);
         ETS4[2] = (EditText)findViewById(R.id.imageView42);
         ETS4[3] = (EditText)findViewById(R.id.imageView43);
+        ETS4[4] = (EditText)findViewById(R.id.imageView44);
+
+        IMGS4[5] = (ImageView)findViewById(R.id.imageView45);
         ETS4[6] = (EditText)findViewById(R.id.imageView46);
         ETS4[7] = (EditText)findViewById(R.id.imageView47);
         ETS4[8] = (EditText)findViewById(R.id.imageView48);
+        ETS4[9] = (EditText)findViewById(R.id.imageView49);
 
+        ///////  Locker @Line5    //////////////////
         IMGS5[0] = (ImageView)findViewById(R.id.imageView50);
-        IMGS5[1] = (ImageView)findViewById(R.id.imageView51);
-        IMGS5[2] = (ImageView)findViewById(R.id.imageView52);
-        IMGS5[3] = (ImageView)findViewById(R.id.imageView53);
-        IMGS5[4] = (ImageView)findViewById(R.id.imageView54);
+        ETS5[1] = (EditText)findViewById(R.id.imageView51);
+        ETS5[2] = (EditText)findViewById(R.id.imageView52);
+        ETS5[3] = (EditText)findViewById(R.id.imageView53);
+        ETS5[4] = (EditText)findViewById(R.id.imageView54);
+
         IMGS5[5] = (ImageView)findViewById(R.id.imageView55);
-        IMGS5[6] = (ImageView)findViewById(R.id.imageView56);
-        IMGS5[7] = (ImageView)findViewById(R.id.imageView57);
-        IMGS5[8] = (ImageView)findViewById(R.id.imageView58);
-        IMGS5[9] = (ImageView)findViewById(R.id.imageView59);
-
-        IMGS6[0] = (ImageView)findViewById(R.id.imageView60);
-        IMGS6[1] = (ImageView)findViewById(R.id.imageView61);
-        IMGS6[2] = (ImageView)findViewById(R.id.imageView62);
-        IMGS6[3] = (ImageView)findViewById(R.id.imageView63);
-        IMGS6[4] = (ImageView)findViewById(R.id.imageView64);
-        IMGS6[5] = (ImageView)findViewById(R.id.imageView65);
-        IMGS6[6] = (ImageView)findViewById(R.id.imageView66);
-        IMGS6[7] = (ImageView)findViewById(R.id.imageView67);
-        IMGS6[8] = (ImageView)findViewById(R.id.imageView68);
-        IMGS6[9] = (ImageView)findViewById(R.id.imageView69);
-
-
-        // Locker @line7
-        IMGS7[0] = (ImageView)findViewById(R.id.imageView70);
-        ETS7[1] = (EditText)findViewById(R.id.imageView71);
-        ETS7[2] = (EditText)findViewById(R.id.imageView72);
-        ETS7[3] = (EditText)findViewById(R.id.imageView73);
-        ETS7[4] = (EditText)findViewById(R.id.imageView74);
-
-        IMGS7[5] = (ImageView)findViewById(R.id.imageView75);
-        ETS7[6] = (EditText)findViewById(R.id.imageView76);
-        ETS7[7] = (EditText)findViewById(R.id.imageView77);
-        ETS7[8] = (EditText)findViewById(R.id.imageView78);
-        ETS7[9] = (EditText)findViewById(R.id.imageView79);
+        ETS5[6] = (EditText)findViewById(R.id.imageView56);
+        ETS5[7] = (EditText)findViewById(R.id.imageView57);
+        ETS5[8] = (EditText)findViewById(R.id.imageView58);
+        ETS5[9] = (EditText)findViewById(R.id.imageView59);
 
 
         btnCheck = findViewById(R.id.btnCheck);
@@ -326,7 +292,7 @@ public class MultiFunc extends AppCompatActivity {
             case 3:
                 ivAward1.setImageResource(R.drawable.goalstars);
                 ivAward2.setImageResource(R.drawable.goalstars);
-
+                ivAward2.setImageResource(R.drawable.goalstars);
                 break;
             default:
                 break;
@@ -432,132 +398,9 @@ public class MultiFunc extends AppCompatActivity {
 
         for(counts =0;counts<=9; counts++) {
             if ((counts != 0) && (counts != 5))
-                ETS7[counts].addTextChangedListener(new TextWatcher() {
+                ETS4[counts].addTextChangedListener(new TextWatcher() {
 //                    int l = 0;////////记录字符串被删除字符之前，字符串的长度
 //                    int location = 0;//记录光标的位置
-
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                        Log.d("TEST", counts + "   >>>which one be press....");
-                        //ETS3[digit].setBackground(getResources().getDrawable(R.drawable.white));
-                        if (ETS7[counts].getText().toString().isEmpty()) {
-                            Log.d("TEST", counts + "   EDIT EMPTY");
-                        } else {
-                            Log.d("TEST", ETS7[counts].getText().toString() + "   BEFORE");
-                        }
-
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-//                    ETS3[counts].setText(null); if(!ETS3[counts].getText().toString().isEmpty()) {
-//                                            digit = Integer.getInteger(ETS3[counts].getText().toString());
-//                                            Log.d("TEST", digit + "   >get answer....");
-//                    }
-                        if (ETS7[counts].getText().toString().isEmpty()) {
-                            Log.d("TEST", counts + "   EDIT EMPTY");
-                        } else {
-                            Log.d("TEST", ETS7[counts].getText().toString() + "   ON");
-                        }
-
-                        Log.d("TEST", "yyyyyyyyyyy");
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-                        // ETS3[1].setBackground(getResources().getDrawable(R.drawable.white));
-                        Log.d("TEST", "zzzzzzzzzzzz");
-
-                        // ETS3[counts].setInputType(InputType.TYPE_NULL); // 關閉軟鍵盤
-                        // ETS3[counts].setInputType(InputType.TYPE_NULL); // 關閉軟鍵盤
-
-
-                        InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.hideSoftInputFromWindow(ETS7[counts].getWindowToken(), 0);
-
-
-                        if (!ETS7[counts].getText().toString().isEmpty())
-                            digit = Integer.valueOf(ETS7[counts].getText().toString().trim());
-                        Log.d("TEST", digit + " zzzzzzzzzzzz");
-                        //ETS3[2].setBackground(getResources().getDrawable(R.drawable.white));
-                        ETS7[counts].setBackground(getResources().getDrawable(GetResourceIDfromInt(digit)));
-                        if (!ETS7[counts].getText().toString().isEmpty())
-                            ETS7[counts].setText(null);
-
-                        ETS7[counts].setFocusable(false);
-
-                        ETS7[counts].setFocusableInTouchMode(false);
-                    }
-                });
-        }
-        for(counts =0;counts<=9; counts++) {
-            if((counts!=0) && (counts !=4) && (counts !=5) && (counts !=9))
-                ETS0[counts].addTextChangedListener(new TextWatcher() {
-
-
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                        Log.d("TEST", counts + "   >>>which one be press....");
-                        //ETS3[digit].setBackground(getResources().getDrawable(R.drawable.white));
-                        if (ETS0[counts].getText().toString().isEmpty()) {
-                            Log.d("TEST", counts + "   EDIT EMPTY");
-                        } else {
-                            Log.d("TEST", ETS0[counts].getText().toString() + "   BEFORE");
-                        }
-
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-//                    ETS3[counts].setText(null); if(!ETS3[counts].getText().toString().isEmpty()) {
-//                                            digit = Integer.getInteger(ETS3[counts].getText().toString());
-//                                            Log.d("TEST", digit + "   >get answer....");
-//                    }
-                        if (ETS0[counts].getText().toString().isEmpty()) {
-                            Log.d("TEST", counts + "   EDIT EMPTY");
-                        } else {
-                            Log.d("TEST", ETS0[counts].getText().toString() + "   ON");
-                        }
-
-                        Log.d("TEST", "yyyyyyyyyyy");
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-                        // ETS3[1].setBackground(getResources().getDrawable(R.drawable.white));
-                        Log.d("TEST", "zzzzzzzzzzzz");
-
-                        // ETS3[counts].setInputType(InputType.TYPE_NULL); // 關閉軟鍵盤
-                        // ETS3[counts].setInputType(InputType.TYPE_NULL); // 關閉軟鍵盤
-
-
-                        InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.hideSoftInputFromWindow(ETS7[counts].getWindowToken(), 0);
-
-
-                        if (!ETS0[counts].getText().toString().isEmpty())
-                            digit = Integer.valueOf(ETS0[counts].getText().toString().trim());
-                        Log.d("TEST", digit + " zzzzzzzzzzzz");
-                        //ETS3[2].setBackground(getResources().getDrawable(R.drawable.white));
-                        ETS0[counts].setBackground(getResources().getDrawable(GetCarryResourceIDFromInt(digit)));
-                        if (!ETS0[counts].getText().toString().isEmpty())
-                            ETS0[counts].setText(null);
-
-                        ETS0[counts].setFocusable(false);
-
-                        ETS0[counts].setFocusableInTouchMode(false);
-                    }
-                });
-        }
-
-        for(counts =0;counts<=9; counts++) {
-            if((counts!=0) && (counts !=4) && (counts !=5) && (counts !=9))
-                ETS4[counts].addTextChangedListener(new TextWatcher() {
-
 
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -605,15 +448,140 @@ public class MultiFunc extends AppCompatActivity {
                             digit = Integer.valueOf(ETS4[counts].getText().toString().trim());
                         Log.d("TEST", digit + " zzzzzzzzzzzz");
                         //ETS3[2].setBackground(getResources().getDrawable(R.drawable.white));
-                        ETS4[counts].setBackground(getResources().getDrawable(GetCarryResourceIDFromInt(digit)));
+                        ETS4[counts].setBackground(getResources().getDrawable(GetResourceIDfromInt(digit)));
                         if (!ETS4[counts].getText().toString().isEmpty())
                             ETS4[counts].setText(null);
 
-                        ETS4[counts].clearFocus();
                         ETS4[counts].setFocusable(false);
 
-
                         ETS4[counts].setFocusableInTouchMode(false);
+                    }
+                });
+        }
+
+        for(counts =0;counts<=9; counts++) {
+            if ((counts != 0) && (counts != 5))
+                ETS5[counts].addTextChangedListener(new TextWatcher() {
+//                    int l = 0;////////记录字符串被删除字符之前，字符串的长度
+//                    int location = 0;//记录光标的位置
+
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                        Log.d("TEST", counts + "   >>>which one be press....");
+                        //ETS3[digit].setBackground(getResources().getDrawable(R.drawable.white));
+                        if (ETS5[counts].getText().toString().isEmpty()) {
+                            Log.d("TEST", counts + "   EDIT EMPTY");
+                        } else {
+                            Log.d("TEST", ETS5[counts].getText().toString() + "   BEFORE");
+                        }
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+//                    ETS3[counts].setText(null); if(!ETS3[counts].getText().toString().isEmpty()) {
+//                                            digit = Integer.getInteger(ETS3[counts].getText().toString());
+//                                            Log.d("TEST", digit + "   >get answer....");
+//                    }
+                        if (ETS5[counts].getText().toString().isEmpty()) {
+                            Log.d("TEST", counts + "   EDIT EMPTY");
+                        } else {
+                            Log.d("TEST", ETS5[counts].getText().toString() + "   ON");
+                        }
+
+                        Log.d("TEST", "yyyyyyyyyyy");
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        // ETS3[1].setBackground(getResources().getDrawable(R.drawable.white));
+                        Log.d("TEST", "zzzzzzzzzzzz");
+
+                        // ETS3[counts].setInputType(InputType.TYPE_NULL); // 關閉軟鍵盤
+                        // ETS3[counts].setInputType(InputType.TYPE_NULL); // 關閉軟鍵盤
+
+
+                        InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(ETS5[counts].getWindowToken(), 0);
+
+
+                        if (!ETS5[counts].getText().toString().isEmpty())
+                            digit = Integer.valueOf(ETS5[counts].getText().toString().trim());
+                        Log.d("TEST", digit + " zzzzzzzzzzzz");
+                        //ETS3[2].setBackground(getResources().getDrawable(R.drawable.white));
+                        ETS5[counts].setBackground(getResources().getDrawable(GetResourceIDfromInt(digit)));
+                        if (!ETS5[counts].getText().toString().isEmpty())
+                            ETS5[counts].setText(null);
+
+                        ETS5[counts].setFocusable(false);
+
+                        ETS5[counts].setFocusableInTouchMode(false);
+                    }
+                });
+        }
+
+        for(counts =0;counts<=9; counts++) {
+            if((counts!=0) && (counts !=4) && (counts !=5) && (counts !=9))
+                ETS0[counts].addTextChangedListener(new TextWatcher() {
+
+
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                        Log.d("TEST", counts + "   >>>which one be press....");
+                        //ETS3[digit].setBackground(getResources().getDrawable(R.drawable.white));
+                        if (ETS0[counts].getText().toString().isEmpty()) {
+                            Log.d("TEST", counts + "   EDIT EMPTY");
+                        } else {
+                            Log.d("TEST", ETS0[counts].getText().toString() + "   BEFORE");
+                        }
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+//                    ETS3[counts].setText(null); if(!ETS3[counts].getText().toString().isEmpty()) {
+//                                            digit = Integer.getInteger(ETS3[counts].getText().toString());
+//                                            Log.d("TEST", digit + "   >get answer....");
+//                    }
+                        if (ETS0[counts].getText().toString().isEmpty()) {
+                            Log.d("TEST", counts + "   EDIT EMPTY");
+                        } else {
+                            Log.d("TEST", ETS0[counts].getText().toString() + "   ON");
+                        }
+
+                        Log.d("TEST", "yyyyyyyyyyy");
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        // ETS3[1].setBackground(getResources().getDrawable(R.drawable.white));
+                        Log.d("TEST", "zzzzzzzzzzzz");
+
+                        // ETS3[counts].setInputType(InputType.TYPE_NULL); // 關閉軟鍵盤
+                        // ETS3[counts].setInputType(InputType.TYPE_NULL); // 關閉軟鍵盤
+
+
+                        InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(ETS0[counts].getWindowToken(), 0);
+
+
+                        if (!ETS0[counts].getText().toString().isEmpty())
+                            digit = Integer.valueOf(ETS0[counts].getText().toString().trim());
+                        Log.d("TEST", digit + " zzzzzzzzzzzz");
+                        //ETS3[2].setBackground(getResources().getDrawable(R.drawable.white));
+                        ETS0[counts].setBackground(getResources().getDrawable(GetCarryResourceIDFromInt(digit)));
+                        if (!ETS0[counts].getText().toString().isEmpty())
+                            ETS0[counts].setText(null);
+
+                        ETS0[counts].clearFocus();
+                        ETS0[counts].setFocusable(false);
+
+
+                        ETS0[counts].setFocusableInTouchMode(false);
                     }
                 });
         }
@@ -623,10 +591,10 @@ public class MultiFunc extends AppCompatActivity {
     void setLayoutDigits(int Num1, int Num2, int Cal, int level)
     {
         if(level == 1) {
-            units = Num1;
-            units_Add = Num2;
+            units = 0;
+            units_Add = 0;
 
-        }else if(level == 2)
+        }else if((level == 2) || (level==3))
         {
             units = Num1%10;
             tens = Num1/10;
@@ -635,15 +603,20 @@ public class MultiFunc extends AppCompatActivity {
             tens_Add = Num2/10;
 
         }else {
-            hundreds = Num1/100;
-            int temp = Num1%100;
-            units = temp%10;
-            tens = temp/10;
+//            hundreds = Num1/100;
+//            int temp = Num1%100;
+//            units = temp%10;
+//            tens = temp/10;
+//
+//            hundreds_Add = Num2/100;
+//            temp = Num2%100;
+//            units_Add = temp%10;
+//            tens_Add = temp/10;
+            units = 0;
+            tens = 0;
 
-            hundreds_Add = Num2/100;
-            temp = Num2%100;
-            units_Add = temp%10;
-            tens_Add = temp/10;
+            units_Add =0;
+            tens_Add = 0;
         }
 
         units = GetResourceIDfromInt(units);
@@ -661,12 +634,6 @@ public class MultiFunc extends AppCompatActivity {
             }else if(Cal==2){
                 IMGS1[9].setImageResource(units);
                 IMGS2[9].setImageResource(units_Add);
-            }else if(Cal==3){
-                IMGS5[4].setImageResource(units);
-                IMGS6[4].setImageResource(units_Add);
-            }else{
-                IMGS5[9].setImageResource(units);
-                IMGS6[9].setImageResource(units_Add);
             }
 
         }
@@ -677,29 +644,17 @@ public class MultiFunc extends AppCompatActivity {
             }else if(Cal==2){
                 IMGS1[8].setImageResource(tens);
                 IMGS2[8].setImageResource(tens_Add);
-            }else if(Cal==3){
-                IMGS5[3].setImageResource(tens);
-                IMGS6[3].setImageResource(tens_Add);
-            }else{
-                IMGS5[8].setImageResource(tens);
-                IMGS6[8].setImageResource(tens_Add);
             }
         }
-        if(level>=3 && level<=3) {
-            if(Cal==1){
-                IMGS1[2].setImageResource(hundreds);
-                IMGS2[2].setImageResource(hundreds_Add);
-            }else if(Cal==2){
-                IMGS1[7].setImageResource(hundreds);
-                IMGS2[7].setImageResource(hundreds_Add);
-            }else if(Cal==3){
-                IMGS5[2].setImageResource(hundreds);
-                IMGS6[2].setImageResource(hundreds_Add);
-            }else{
-                IMGS5[7].setImageResource(hundreds);
-                IMGS6[7].setImageResource(hundreds_Add);
-            }
-        }
+//        if(level>=3 && level<=3) {
+//            if(Cal==1){
+//                IMGS1[2].setImageResource(hundreds);
+//                IMGS2[2].setImageResource(hundreds_Add);
+//            }else if(Cal==2){
+//                IMGS1[7].setImageResource(hundreds);
+//                IMGS2[7].setImageResource(hundreds_Add);
+//            }
+//        }
     }
 
     void clearDigits()
@@ -707,49 +662,49 @@ public class MultiFunc extends AppCompatActivity {
         for(int i=0; i<=9; i++){
             if((i>=1 && i<=3) ||(i>=6 && i<=8) ) {
                 ETS0[i].setBackgroundResource(R.drawable.house_zero);
-                ETS4[i].setBackgroundResource(R.drawable.house_zero);
+                //ETS4[i].setBackgroundResource(R.drawable.house_zero);
             }
             else
             {
                 IMGS0[i].setImageResource(0);
-                IMGS4[i].setImageResource(0);
+                //IMGS4[i].setImageResource(0);
             }
             IMGS1[i].setImageResource(0);
             IMGS2[i].setImageResource(0);
             //IMGS3[i].setImageResource(0);
             // IMGS4[i].setImageResource(0);
-            IMGS5[i].setImageResource(0);
-            IMGS6[i].setImageResource(0);
+//            IMGS5[i].setImageResource(0);
+//            IMGS6[i].setImageResource(0);
             //IMGS7[i].setImageResource(0);
             if((i>=1 && i<=4) ||(i>=6 && i<=9))
             {
 //                ETS3[i].setBackground(android.R.drawable.ic_lock_lock);
 //                ETS7[i].setBackground(android.R.drawable.ic_lock_lock);
                 ETS3[i].setBackground(getResources().getDrawable(R.drawable.locker));
-                ETS7[i].setBackground(getResources().getDrawable(R.drawable.locker));
+                ETS4[i].setBackground(getResources().getDrawable(R.drawable.locker));
+                ETS5[i].setBackground(getResources().getDrawable(R.drawable.locker));
+
             }
 
         }
         IMGS2[0].setImageResource(R.drawable.multiplication);
         IMGS2[5].setImageResource(R.drawable.multiplication);
 
-        IMGS6[0].setImageResource(R.drawable.multiplication);
-        IMGS6[5].setImageResource(R.drawable.multiplication);
 
         etAnswer1.setText(null);
         etAnswer2.setText(null);
-        etAnswer3.setText(null);
-        etAnswer4.setText(null);
+//        etAnswer3.setText(null);
+//        etAnswer4.setText(null);
 
         etAnswer1.setBackground(null);
         etAnswer2.setBackground(null);
-        etAnswer3.setBackground(null);
-        etAnswer4.setBackground(null);
+//        etAnswer3.setBackground(null);
+//        etAnswer4.setBackground(null);
 
         etAnswer1.setEnabled(true);
         etAnswer2.setEnabled(true);
-        etAnswer3.setEnabled(true);
-        etAnswer4.setEnabled(true);
+//        etAnswer3.setEnabled(true);
+//        etAnswer4.setEnabled(true);
 
     }
 
@@ -897,7 +852,47 @@ public class MultiFunc extends AppCompatActivity {
         {
             if((i!=0) && (i !=5))
             {
-                if(Id == ETS7[i].getId())
+                if(Id == ETS4[i].getId())
+                {
+                    whichOne = i;
+                    Log.d("TEST", whichOne+" gggggg");
+                }
+            }
+        }
+        //for (int i=0; i<=9;i++) {
+        Log.d("TEST", whichOne+" ETS4["+whichOne+"]");
+        ETS4[whichOne].setFocusable(true);
+
+        ETS4[whichOne].setFocusableInTouchMode(true);
+
+        ETS4[whichOne].requestFocus();
+
+        ETS4[whichOne].requestFocusFromTouch();
+        InputMethodManager inputManager =
+
+                (InputMethodManager) ETS4[whichOne].getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        inputManager.showSoftInput(ETS4[whichOne], 0);
+
+        edit_Id = Id;
+        counts = whichOne;
+        if (Id == ETS4[whichOne].getId() && !ETS4[1].getText().toString().isEmpty()) {
+            //Toast.makeText(AddFunc.this,"TEST",Toast.LENGTH_SHORT).show();
+            Log.d("TEST", "eeeeeeee" + ETS4[1].getText().toString().trim());
+            //  ETS3[1].setBackground(getResources().getDrawable(GetResourceIDfromInt(Integer.getInteger(ETS3[1].getText().toString()))));
+        }
+        //}
+    }
+    public void getAnswer2(View view) {
+        int Id = view.getId();
+        int whichOne =0;
+        Log.d("TEST", "gggggg");
+
+        for(int i=0; i<=9;i++)
+        {
+            if((i!=0) && (i !=5))
+            {
+                if(Id == ETS5[i].getId())
                 {
                     whichOne = i;
                     Log.d("TEST", whichOne+" gggggg");
@@ -906,24 +901,24 @@ public class MultiFunc extends AppCompatActivity {
         }
         //for (int i=0; i<=9;i++) {
         Log.d("TEST", whichOne+" 7777777");
-        ETS7[whichOne].setFocusable(true);
+        ETS5[whichOne].setFocusable(true);
 
-        ETS7[whichOne].setFocusableInTouchMode(true);
+        ETS5[whichOne].setFocusableInTouchMode(true);
 
-        ETS7[whichOne].requestFocus();
+        ETS5[whichOne].requestFocus();
 
-        ETS7[whichOne].requestFocusFromTouch();
+        ETS5[whichOne].requestFocusFromTouch();
         InputMethodManager inputManager =
 
-                (InputMethodManager) ETS7[whichOne].getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                (InputMethodManager) ETS5[whichOne].getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
 
-        inputManager.showSoftInput(ETS7[whichOne], 0);
+        inputManager.showSoftInput(ETS5[whichOne], 0);
 
         edit_Id = Id;
         counts = whichOne;
-        if (Id == ETS7[whichOne].getId() && !ETS7[1].getText().toString().isEmpty()) {
+        if (Id == ETS5[whichOne].getId() && !ETS5[1].getText().toString().isEmpty()) {
             //Toast.makeText(AddFunc.this,"TEST",Toast.LENGTH_SHORT).show();
-            Log.d("TEST", "eeeeeeee" + ETS7[1].getText().toString().trim());
+            Log.d("TEST", "eeeeeeee" + ETS5[1].getText().toString().trim());
             //  ETS3[1].setBackground(getResources().getDrawable(GetResourceIDfromInt(Integer.getInteger(ETS3[1].getText().toString()))));
         }
         //}
@@ -951,19 +946,19 @@ public class MultiFunc extends AppCompatActivity {
             etAnswer2.setBackground(getResources().getDrawable(R.drawable.p150));
             GotoAgain=false;
         }
-        if(etAnswer3.getText().toString().isEmpty())
-        {
-            etAnswer3.setBackground(getResources().getDrawable(R.drawable.p150));
-            GotoAgain=false;
-        }
-        if(etAnswer4.getText().toString().isEmpty())
-        {
-            etAnswer4.setBackground(getResources().getDrawable(R.drawable.p150));
-            GotoAgain=false;
-        }
+//        if(etAnswer3.getText().toString().isEmpty())
+//        {
+//            etAnswer3.setBackground(getResources().getDrawable(R.drawable.p150));
+//            GotoAgain=false;
+//        }
+//        if(etAnswer4.getText().toString().isEmpty())
+//        {
+//            etAnswer4.setBackground(getResources().getDrawable(R.drawable.p150));
+//            GotoAgain=false;
+//        }
 
         if(GotoAgain == false) {
-            Toast.makeText(MultiFunc.this, "Please Check Your Answer In RED Fields Carefully", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MultiFunc2.this, "Please Check Your Answer In RED Fields Carefully", Toast.LENGTH_SHORT).show();
 
 
         }else
@@ -992,21 +987,7 @@ public class MultiFunc extends AppCompatActivity {
             GotoAgain=false;
         }
 
-        if(Integer.valueOf(etAnswer3.getText().toString()) == intAnswer[2]){
-            etAnswer3.setBackground(getResources().getDrawable(R.drawable.good));
-        }else {
-            etAnswer3.setBackground(getResources().getDrawable(R.drawable.nogood));
-            errorCount++;
-            GotoAgain=false;
-        }
 
-        if(Integer.valueOf(etAnswer4.getText().toString()) == intAnswer[3]){
-            etAnswer4.setBackground(getResources().getDrawable(R.drawable.good));
-        }else {
-            etAnswer4.setBackground(getResources().getDrawable(R.drawable.nogood));
-            errorCount++;
-            GotoAgain=false;
-        }
 
         if(GotoAgain==false)
         {
@@ -1074,7 +1055,7 @@ public class MultiFunc extends AppCompatActivity {
                             , new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    Toast.makeText(MultiFunc.this,"獎勵加到總成績了喔"
+                                    Toast.makeText(MultiFunc2.this,"獎勵加到總成績了喔"
                                             ,Toast.LENGTH_SHORT).show();
                                     dialog.dismiss();
                                 }
@@ -1101,7 +1082,7 @@ public class MultiFunc extends AppCompatActivity {
                     editor.commit();
                     Log.d("TEST", "do check GOTO again...1 multiBasic:"+multiBasic);
                     if(multiBasic == 2) {
-                        btnCheck.setText("完成了");
+                        btnCheck.setText("ERROR ");
                         btnCheck.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -1111,7 +1092,7 @@ public class MultiFunc extends AppCompatActivity {
 
                     }
                     else
-                        btnCheck.setText("我還要再算");
+                        btnCheck.setText("ERROR");
                     break;
                 case 2:
 
@@ -1137,7 +1118,7 @@ public class MultiFunc extends AppCompatActivity {
                     break;
                 case 3:
 
-                    stars+=2;
+                    stars+=3;
                     multiHigh++;
                     editor.putInt("stars", stars);
                     editor.putInt("multiHigh",multiHigh);
@@ -1169,8 +1150,8 @@ public class MultiFunc extends AppCompatActivity {
 
             etAnswer1.setEnabled(false);
             etAnswer2.setEnabled(false);
-            etAnswer3.setEnabled(false);
-            etAnswer4.setEnabled(false);
+//            etAnswer3.setEnabled(false);
+//            etAnswer4.setEnabled(false);
             //**　ＮＯＴ　ＹＥＴ．．
         }
 
@@ -1266,10 +1247,6 @@ public class MultiFunc extends AppCompatActivity {
             do_imm_show(etAnswer1);
         }else if(etAnswer2.getId() == Id) {
             do_imm_show(etAnswer2);
-        }else if(etAnswer3.getId() == Id) {
-            do_imm_show(etAnswer3);
-        }else if(etAnswer4.getId() == Id) {
-            do_imm_show(etAnswer4);
         }
     }
 
@@ -1307,22 +1284,29 @@ public class MultiFunc extends AppCompatActivity {
 
     void Again2Test()
     {
-        for(int i=0;i<4;i++) {
+        for(int i=0;i<2;i++) {
             switch (choose) {
                 case 1:
-                    intArrayA[i] = (int) (Math.random() * 10);
-                    intArrayB[i] = (int) (Math.random() * 10);
+//                    intArrayA[i] = (int) (Math.random() * 10);
+//                    intArrayB[i] = (int) (Math.random() * 10);
 
                     break;
                 case 2:
-                    intArrayA[i] = (int) (Math.random() * 100);
-                    intArrayB[i] = (int) (Math.random() * 100);
-
+                    int temp = (int) (Math.random() * 10);
+                    if(temp%2 == 0) {
+                        intArrayA[i] = (int) (Math.random() * 100);
+                        intArrayB[i] = (int) (Math.random() * 10);
+                    }else
+                    {
+                        intArrayA[i] = (int) (Math.random() * 10);
+                        intArrayB[i] = (int) (Math.random() * 100);
+                    }
                     break;
                 case 3:
-                    intArrayA[i] = (int) (Math.random() * 1000);
-                    intArrayB[i] = (int) (Math.random() * 1000);
-
+                    do {
+                        intArrayA[i] = (int) (Math.random() * 100);
+                        intArrayB[i] = (int) (Math.random() * 100);
+                    }while(intArrayA[i]<=9 ||intArrayB[i]<=9 );
                     break;
                 default:
                     break;
@@ -1370,14 +1354,14 @@ public class MultiFunc extends AppCompatActivity {
         Questions = String.valueOf(intArrayA[1])+" ｘ "+String.valueOf(intArrayB[1])+ " = ";
         tvQuestion2.setText(Questions);
         Questions = String.valueOf(intArrayA[2])+" ｘ "+String.valueOf(intArrayB[2])+ " = ";
-        tvQuestion3.setText(Questions);
-        Questions = String.valueOf(intArrayA[3])+" ｘ "+String.valueOf(intArrayB[3])+ " = ";
-        tvQuestion4.setText(Questions);
+//        tvQuestion3.setText(Questions);
+//        Questions = String.valueOf(intArrayA[3])+" ｘ "+String.valueOf(intArrayB[3])+ " = ";
+//        tvQuestion4.setText(Questions);
 
         clearDigits();
 
 
-        for(int i =1;i<=4; i++)
+        for(int i =1;i<=2; i++)
         {
             intAnswer[i-1] = intArrayA[i-1]*intArrayB[i-1];
             setLayoutDigits(intArrayA[i-1], intArrayB[i-1], i, choose);

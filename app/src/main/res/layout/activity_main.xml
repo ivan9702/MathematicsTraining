@@ -13,21 +13,23 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingLeft="20dp">
 
         <ImageView
-            android:id="@+id/ivMath"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+
+            android:layout_width="0dp"
+            android:layout_height="250dp"
             android:layout_marginTop="5dp"
-            app:srcCompat="@drawable/mathematicstraining" />
+            android:layout_weight="10"
+            android:src="@drawable/mathematicstraining" />
 
         <LinearLayout
-            android:layout_width="150dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginLeft="250dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="20dp"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <ImageView
@@ -89,7 +91,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="30dp"
                 android:orientation="horizontal">
 
                 <ImageView

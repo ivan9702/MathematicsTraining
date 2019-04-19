@@ -109,7 +109,7 @@ public class Multiplication extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Choose = 2;
-                Intent it = new Intent(Multiplication.this, MultiFunc.class);
+                Intent it = new Intent(Multiplication.this, MultiFunc2.class);
                 it.putExtra("Choose", Choose);
 
                 startActivity(it);
@@ -119,7 +119,7 @@ public class Multiplication extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Choose = 3;
-                Intent it = new Intent(Multiplication.this, MultiFunc.class);
+                Intent it = new Intent(Multiplication.this, MultiFunc2.class);
                 it.putExtra("Choose", Choose);
 
                 startActivity(it);
@@ -158,7 +158,7 @@ public class Multiplication extends AppCompatActivity {
 
 
 
-        Log.d("Addition onResume", "date:"+sharedata1.getString("date", "0"));
+        Log.d("Multiplication onResume", "date:"+sharedata1.getString("date", "0"));
 
 
         mCal = Calendar.getInstance();
@@ -173,11 +173,11 @@ public class Multiplication extends AppCompatActivity {
             multiMedium = 0;
             multiHigh = 0;
 
-            editor.putInt("addBasic",multiBasic );
-            editor.putInt("addMedium",multiMedium );
-            editor.putInt("addHigh",multiHigh );
+            editor.putInt("multiBasic",multiBasic );
+            editor.putInt("multiMedium",multiMedium );
+            editor.putInt("multiHigh",multiHigh );
             editor.commit();
-            Log.d("Addition onResume", "CLEAR!! date:"+sharedata1.getString("date", "0"));
+            Log.d("Multiplication onResume", "CLEAR!! date:"+sharedata1.getString("date", "0"));
         }
 
         if(multiBasic == 2)
