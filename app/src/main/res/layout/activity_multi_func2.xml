@@ -907,14 +907,6 @@
 
     </LinearLayout>
 
-    <ImageView
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/trouble" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -956,7 +948,7 @@
             android:layout_marginRight="30dp"
             android:layout_weight="1"
             android:background="@drawable/score"
-            android:text="Score   "
+            android:text="STORE   "
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:textStyle="bold" />

@@ -1197,7 +1197,7 @@
             android:layout_marginRight="30dp"
             android:layout_weight="1"
             android:background="@drawable/score"
-            android:text="Score   "
+            android:text="STORE   "
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:textStyle="bold" />

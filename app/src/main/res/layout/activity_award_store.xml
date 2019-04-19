@@ -5,8 +5,72 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
 
-    android:layout_gravity="center_horizontal|center_vertical"
-    android:background="@drawable/main"
+    android:orientation="vertical"
     tools:context=".AwardStoreActivity">
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/pricestore" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="bottom|center_horizontal"
+        android:orientation="horizontal">
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="20dp"
+            android:text="所得到的獎勵有"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/ivAwards"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="30dp"
+            android:src="@drawable/star" />
+
+        <TextView
+            android:id="@+id/tvTotalAward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/colorAccent"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/ivAwards1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginBottom="30dp"
+            android:src="@drawable/halfstar" />
+
+        <TextView
+            android:id="@+id/tvTotalHalfAward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/colorAccent"
+            android:textSize="24sp" />
+
+    </LinearLayout>
 
 </LinearLayout>
