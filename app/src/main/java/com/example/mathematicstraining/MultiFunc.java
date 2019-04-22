@@ -68,6 +68,7 @@ public class MultiFunc extends AppCompatActivity {
     SharedPreferences sharedata;
     SharedPreferences.Editor editor;
     Calendar mCal;
+    int errImgNum;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +91,7 @@ public class MultiFunc extends AppCompatActivity {
 
         date = sharedata.getString("date", "0");
 
+        errImgNum = sharedata.getInt("errImgNum", 0);
         if(date.compareTo(date_temp.toString()) !=0)
         {
             multiHigh =0;
@@ -111,7 +113,7 @@ public class MultiFunc extends AppCompatActivity {
         Log.d("MultiFunc onCreate", "starHalf:"+sharedata.getBoolean("starHalf",false));
         Log.d("MultiFunc onCreate", "starHalf:"+sharedata.getInt("errorCount",0));
         Log.d("MultiFunc onCreate", "date:"+ sharedata.getString("date", "0"));
-
+        Log.d("MultiFunc onCreate", "errImgNum:"+ sharedata.getInt("errImgNum",0));
 
 
         tvQuestion1 = findViewById(R.id.tvQuestion1);
@@ -1402,9 +1404,10 @@ public class MultiFunc extends AppCompatActivity {
 
         multiBasic = sharedata.getInt("multiBasic", 0);
         multiMedium = sharedata.getInt("multiMedium", 0);
-        multiHigh = sharedata.getInt("multiHigh", 0);
+        multiHigh = sharedata.getInt("multiHigh", 0);//errImgNum
 
         date = sharedata.getString("date", "0");
+        errImgNum = sharedata.getInt("errImgNum", 0);
 
         if(date.compareTo(date_temp.toString()) !=0)
         {
@@ -1427,7 +1430,7 @@ public class MultiFunc extends AppCompatActivity {
         Log.d("MultiFunc onResume", "starHalf:"+sharedata.getBoolean("starHalf",false));
         Log.d("MultiFunc onResume", "starHalf:"+sharedata.getInt("errorCount",0));
         Log.d("MultiFunc onResume", "date:"+ sharedata.getString("date", "0"));
-
+        Log.d("MultiFunc onCreate", "errImgNum:"+ sharedata.getInt("errImgNum",0));
 
     }
 

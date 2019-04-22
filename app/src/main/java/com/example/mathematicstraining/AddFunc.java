@@ -14,6 +14,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -34,6 +35,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.Calendar;
 
@@ -82,6 +87,7 @@ public class AddFunc extends Activity {
     SharedPreferences sharedata;
     SharedPreferences.Editor editor;
     Calendar mCal;
+    int errImgNum;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,6 +109,9 @@ public class AddFunc extends Activity {
         addHigh = sharedata.getInt("addHigh", 0);
 
         date = sharedata.getString("date", "0");
+
+        errImgNum = sharedata.getInt("errImgNum",0);
+
 
         if(date.compareTo(date_temp.toString()) !=0)
         {
@@ -126,7 +135,7 @@ public class AddFunc extends Activity {
         Log.d("AddFunc onCreate", "starHalf:"+sharedata.getInt("errorCount",0));
         Log.d("AddFunc onCreate", "date:"+ sharedata.getString("date", "0"));
 
-
+        Log.d("AddFunc onCreate", "errImgNum:"+sharedata.getInt("errImgNum",0));
 
         tvQuestion1 = findViewById(R.id.tvQuestion1);
         tvQuestion2 = findViewById(R.id.tvQuestion2);
@@ -1024,6 +1033,8 @@ public class AddFunc extends Activity {
 
         if(GotoAgain==false)
         {
+            Bitmap bitmap = takeScreenshot();
+            saveBitmap(bitmap);
             if(errorCount<3) {
                 new AlertDialog.Builder(this)
                         .setTitle("ERROR !!!")
@@ -1420,6 +1431,8 @@ public class AddFunc extends Activity {
 
         date = sharedata.getString("date", "0");
 
+        errImgNum = sharedata.getInt("errImgNum",0);
+
         if(date.compareTo(date_temp.toString()) !=0)
         {
             addBasic =0;
@@ -1440,7 +1453,8 @@ public class AddFunc extends Activity {
         Log.d("AddFunc onResume", "stars:"+sharedata.getInt("stars",0));
         Log.d("AddFunc onResume", "starHalf:"+sharedata.getBoolean("starHalf",false));
         Log.d("AddFunc onResume", "starHalf:"+sharedata.getInt("errorCount",0));
-        Log.d("AddFunc onResume", "date:"+ sharedata.getString("date", "0"));
+        Log.d("AddFunc onResume", "date:"+ sharedata.getString("date", "0")); //
+        Log.d("AddFunc onResume", "errImgNum:"+ sharedata.getInt("errImgNum",0)); //
 
 
     }
@@ -1448,5 +1462,28 @@ public class AddFunc extends Activity {
     public void gotoStore(View view) {
         Intent it = new Intent(AddFunc.this,AwardStoreActivity.class);
         startActivity(it);
+    }
+
+    public Bitmap takeScreenshot() {
+        View rootView = findViewById(android.R.id.content).getRootView();
+        rootView.setDrawingCacheEnabled(true);
+        return rootView.getDrawingCache();
+    }
+
+    public void saveBitmap(Bitmap bitmap) {
+
+
+        File imagePath = new File(Environment.getExternalStorageDirectory() + "/screenshot.png");
+        FileOutputStream fos;
+        try {
+            fos = new FileOutputStream(imagePath);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+            fos.flush();
+            fos.close();
+        } catch (FileNotFoundException e) {
+            Log.e("AddFunc", e.getMessage(), e);
+        } catch (IOException e) {
+            Log.e("AddFunc", e.getMessage(), e);
+        }
     }
 }
