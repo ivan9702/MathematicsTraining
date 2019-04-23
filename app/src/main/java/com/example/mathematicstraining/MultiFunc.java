@@ -1157,7 +1157,7 @@ public class MultiFunc extends AppCompatActivity {
                             })
                     .create()
                     .show();
-            editor.putString("date",date_temp.toString());
+
             switch (choose) {
                 case 1:
 
@@ -1247,6 +1247,7 @@ public class MultiFunc extends AppCompatActivity {
             getTvTotalHalfAward.setText((" x 1"));
         else
             getTvTotalHalfAward.setText((" x 0"));
+        editor.putString("date",date_temp.toString());
         editor.commit();
     }
 
@@ -1514,4 +1515,6 @@ public class MultiFunc extends AppCompatActivity {
         Intent it = new Intent(MultiFunc.this,AwardStoreActivity.class);
         startActivity(it);
     }
+
+
 }

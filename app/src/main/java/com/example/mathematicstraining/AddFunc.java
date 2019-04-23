@@ -1176,7 +1176,7 @@ public class AddFunc extends Activity {
                             })
                     .create()
                     .show();
-            editor.putString("date",date_temp.toString());
+
             switch (choose) {
                 case 1:
 
@@ -1266,6 +1266,8 @@ public class AddFunc extends Activity {
             getTvTotalHalfAward.setText((" x 1"));
         else
             getTvTotalHalfAward.setText((" x 0"));
+
+        editor.putString("date",date_temp.toString());
         editor.commit();
     }
 

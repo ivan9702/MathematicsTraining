@@ -1116,7 +1116,7 @@ public class MultiFunc2 extends AppCompatActivity {
                             })
                     .create()
                     .show();
-            editor.putString("date",date_temp.toString());
+
             switch (choose) {
                 case 1:
 
@@ -1195,20 +1195,19 @@ public class MultiFunc2 extends AppCompatActivity {
                     break;
             }
 
-            tvTotalAward.setText(" x "+ stars);
-            if(starHalf)
-                getTvTotalHalfAward.setText((" x 1"));
-            else
-                getTvTotalHalfAward.setText((" x 0"));
-
-
             etAnswer1.setEnabled(false);
             etAnswer2.setEnabled(false);
 //            etAnswer3.setEnabled(false);
 //            etAnswer4.setEnabled(false);
             //**　ＮＯＴ　ＹＥＴ．．
         }
+        tvTotalAward.setText(" x "+ stars);
+        if(starHalf)
+            getTvTotalHalfAward.setText((" x 1"));
+        else
+            getTvTotalHalfAward.setText((" x 0"));
 
+        editor.putString("date",date_temp.toString());
         editor.commit();
     }
 

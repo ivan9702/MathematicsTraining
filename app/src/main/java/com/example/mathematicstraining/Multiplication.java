@@ -1,5 +1,6 @@
 package com.example.mathematicstraining;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,13 +10,15 @@ import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.Calendar;
 
-public class Multiplication extends AppCompatActivity {
+public class Multiplication extends Activity {
 
     public Dialog dialog;
     private Button btnUnits, btnTens, btnHundreds;
+    TextView tvTotalAward, tvTotalHalfAward,tvErrors;
     private int Choose = 1;
     SharedPreferences sharedata1;
     SharedPreferences.Editor editor;
@@ -34,6 +37,9 @@ public class Multiplication extends AppCompatActivity {
         btnTens = findViewById(R.id.btnTens);
         btnHundreds = findViewById(R.id.btnHundreds);
         //tvOpDate = findViewById(R.id.tvOpDate);
+        tvTotalAward= findViewById(R.id.tvTotalAward);
+        tvTotalHalfAward= findViewById(R.id.tvTotalHalfAward);
+        tvErrors= findViewById(R.id.tvErrors);
 
         sharedata1 = getSharedPreferences("award", MODE_PRIVATE);
         editor = sharedata1.edit();//获取Editor
@@ -92,6 +98,14 @@ public class Multiplication extends AppCompatActivity {
             btnHundreds.setEnabled(true);
 
         //tvOpDate.setText("上一次測試日期為：　"+date);
+
+        tvTotalAward.setText("x "+ stars);
+        if(starHalf)
+            tvTotalHalfAward.setText("x 1");
+        else
+            tvTotalHalfAward.setText("x 0");
+
+        tvErrors.setText("x "+errorCount+"/3");
 
         btnUnits.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -196,5 +210,14 @@ public class Multiplication extends AppCompatActivity {
 
         // tvOpDate.setText("上一次測試日期為：　"+date);
 
+    }
+
+    public void backToAddition(View view) {
+        super.onBackPressed();
+    }
+
+    public void gotoStore(View view) {
+        Intent it = new Intent(Multiplication.this,AwardStoreActivity.class);
+        startActivity(it);
     }
 }

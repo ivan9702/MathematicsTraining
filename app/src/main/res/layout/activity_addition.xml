@@ -107,11 +107,9 @@
 
             android:layout_marginLeft="70dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="15dp"
             android:text="我的獎勵有"
-            android:textColor="@color/colorAccent"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/ivAwards"
@@ -124,10 +122,8 @@
             android:id="@+id/tvTotalAward"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:textColor="@color/colorAccent"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:layout_marginBottom="15dp"
+            android:textSize="24sp" />
 
         <ImageView
             android:id="@+id/ivAwards1"
@@ -141,10 +137,8 @@
             android:id="@+id/tvTotalHalfAward"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:textColor="@color/colorAccent"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:layout_marginBottom="15dp"
+            android:textSize="24sp" />
 
         <ImageView
             android:id="@+id/imageView4"
@@ -159,10 +153,8 @@
             android:id="@+id/tvErrors"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:textColor="@color/colorAccent"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:layout_marginBottom="15dp"
+            android:textSize="24sp" />
 
     </LinearLayout>
 

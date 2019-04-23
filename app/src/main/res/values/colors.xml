@@ -6,7 +6,10 @@
     <color name="colorPrimaryLight">#C8E6C9</color>
     <color name="colorYellow">#FFA000</color>
     <color name="colorBlue">#303F9F</color>
+
+    <color name="colorBlueLight">#0288D1</color>
     <color name="colorPurple">#7B1FA2</color>
+    <color name="colorPurpleLight">#9C27B0</color>
     <color name="colorGreen">#388E3C</color>
     <color name="colorGray">#BDBDBD</color>
 </resources>

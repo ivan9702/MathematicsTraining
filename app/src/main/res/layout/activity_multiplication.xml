@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorPurple"
+    android:background="@color/colorPurpleLight"
     tools:context=".Multiplication">
 
 
@@ -56,5 +56,109 @@
         android:text="高級乘法   (十位數 x 十位數) "
         android:textSize="24sp"
         android:textStyle="bold|italic" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="15dp"
+
+            android:background="@drawable/back"
+            android:onClick="backToAddition"
+            android:text="Back"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+        <Button
+            android:id="@+id/btnScore"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+
+            android:background="@drawable/score"
+            android:onClick="gotoStore"
+            android:text="STORE   "
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="0dp"
+        android:gravity="bottom"
+        android:orientation="horizontal">
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="15dp"
+            android:text="我的獎勵有"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/ivAwards"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="30dp"
+            android:src="@drawable/star" />
+
+        <TextView
+            android:id="@+id/tvTotalAward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/ivAwards1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginBottom="30dp"
+            android:src="@drawable/halfstar" />
+
+        <TextView
+            android:id="@+id/tvTotalHalfAward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginBottom="30dp"
+
+            android:src="@drawable/star1" />
+
+        <TextView
+            android:id="@+id/tvErrors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+
 
 </LinearLayout>
