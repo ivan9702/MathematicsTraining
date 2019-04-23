@@ -83,17 +83,17 @@
             android:id="@+id/etAnswer1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
 
             android:layout_weight="5"
+            android:background="@color/colorGray"
             android:clickable="true"
-            android:ems="10"
 
+            android:ems="10"
             android:focusableInTouchMode="false"
             android:gravity="left"
             android:inputType="number"
-            android:maxLength="6"
 
+            android:maxLength="6"
             android:onClick="EnterAnswer"
             android:textColor="@color/colorPrimary"
             android:textSize="24sp"
@@ -127,17 +127,18 @@
             android:id="@+id/etAnswer2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
 
+            android:layout_marginRight="5dp"
             android:layout_weight="5"
+            android:background="@color/colorGray"
+
             android:clickable="true"
             android:ems="10"
-
             android:focusableInTouchMode="false"
             android:gravity="left"
+
             android:inputType="number"
             android:maxLength="6"
-
             android:onClick="EnterAnswer"
             android:textColor="@color/colorPrimary"
             android:textSize="24sp"

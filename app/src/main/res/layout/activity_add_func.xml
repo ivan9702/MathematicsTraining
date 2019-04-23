@@ -84,17 +84,17 @@
             android:id="@+id/etAnswer1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
 
             android:layout_weight="5"
+            android:background="@color/colorGray"
             android:clickable="true"
-            android:ems="10"
 
+            android:ems="10"
             android:focusableInTouchMode="false"
             android:gravity="left"
             android:inputType="number"
-            android:maxLength="6"
 
+            android:maxLength="6"
             android:onClick="EnterAnswer"
             android:textColor="@color/colorPrimary"
             android:textSize="24sp"
@@ -128,17 +128,18 @@
             android:id="@+id/etAnswer2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
 
+            android:layout_marginRight="5dp"
             android:layout_weight="5"
+            android:background="@color/colorGray"
+
             android:clickable="true"
             android:ems="10"
-
             android:focusableInTouchMode="false"
             android:gravity="left"
+
             android:inputType="number"
             android:maxLength="6"
-
             android:onClick="EnterAnswer"
             android:textColor="@color/colorPrimary"
             android:textSize="24sp"
@@ -147,10 +148,12 @@
 
     </LinearLayout>
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="15dp"
         android:orientation="horizontal"
        >
 
@@ -173,8 +176,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_weight="5"
-            android:clickable="true"
-            android:focusableInTouchMode="false"
             android:text="5555"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -183,17 +184,17 @@
             android:id="@+id/etAnswer3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
 
             android:layout_weight="5"
+            android:background="@color/colorGray"
             android:clickable="true"
-            android:ems="10"
 
+            android:ems="10"
             android:focusableInTouchMode="false"
             android:gravity="left"
             android:inputType="number"
-            android:maxLength="6"
 
+            android:maxLength="6"
             android:onClick="EnterAnswer"
             android:textColor="@color/colorPrimary"
             android:textSize="24sp"
@@ -227,17 +228,17 @@
             android:id="@+id/etAnswer4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-
+            android:layout_marginRight="5dp"
             android:layout_weight="5"
-            android:clickable="true"
-            android:ems="10"
 
+            android:background="@color/colorGray"
+
+            android:ems="10"
             android:focusableInTouchMode="false"
             android:gravity="left"
             android:inputType="number"
-            android:maxLength="6"
 
+            android:maxLength="6"
             android:onClick="EnterAnswer"
             android:textColor="@color/colorPrimary"
             android:textSize="24sp"
@@ -249,7 +250,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:gravity="center_horizontal"
         android:text="//======================  算    式  ======================//"
         android:textColor="@color/colorPrimary"

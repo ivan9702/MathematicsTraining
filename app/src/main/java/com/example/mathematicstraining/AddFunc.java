@@ -14,7 +14,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -392,11 +391,11 @@ public class AddFunc extends Activity {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                    Log.d("TEST", counts +"   >which one be press....");
+                    Log.d("TEST", counts +"   >which one be press....in Line 3");
                     //ETS3[digit].setBackground(getResources().getDrawable(R.drawable.white));
                     if(ETS3[counts].getText().toString().isEmpty())
                     {
-                        Log.d("TEST", counts +"   EDIT EMPTY");
+                        Log.d("TEST", counts +"   not show ...so EDIT IS EMPTY");
                     }else
                     {
                         Log.d("TEST", ETS3[counts].getText().toString() +"   BEFORE");
@@ -416,38 +415,58 @@ public class AddFunc extends Activity {
                         Log.d("TEST", counts +"   EDIT EMPTY");
                     }else
                     {
-                        Log.d("TEST", ETS3[counts].getText().toString() +"   ON");
+                        Log.d("TEST", ETS3[counts].getText().toString() +"   >>>ONTextChanged");
                     }
 
-                    Log.d("TEST", "yyyyyyyyyyy");
+
                 }
 
                 @Override
                 public void afterTextChanged(Editable s) {
                     // ETS3[1].setBackground(getResources().getDrawable(R.drawable.white));
-                    Log.d("TEST", "zzzzzzzzzzzz");
+                   // Log.d("TEST", "zzzzzzzzzzzz");
 
                    // ETS3[counts].setInputType(InputType.TYPE_NULL); // 關閉軟鍵盤
                    // ETS3[counts].setInputType(InputType.TYPE_NULL); // 關閉軟鍵盤
 
 
+
+
+
+
+                   if(!ETS3[counts].getText().toString().isEmpty())
+                        digit = Integer.valueOf(ETS3[counts].getText().toString().trim());
+                    Log.d("TEST", digit+" >> change to integer");
+                   //ETS3[2].setBackground(getResources().getDrawable(R.drawable.white));
+
+
+                    ETS3[counts].setBackground(getResources().getDrawable(GetResourceIDfromInt(digit)));
 
                     InputMethodManager imm = (InputMethodManager)  getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow( ETS3[counts].getWindowToken(), 0);
 
 
-                   if(!ETS3[counts].getText().toString().isEmpty())
-                        digit = Integer.valueOf(ETS3[counts].getText().toString().trim());
-                    Log.d("TEST", digit+" zzzzzzzzzzzz");
-                   //ETS3[2].setBackground(getResources().getDrawable(R.drawable.white));
-                    ETS3[counts].setBackground(getResources().getDrawable(GetResourceIDfromInt(digit)));
-                    if(!ETS3[counts].getText().toString().isEmpty())
-                        ETS3[counts].setText(null);
 
                     ETS3[counts].setFocusable(false);
 
                     ETS3[counts].setFocusableInTouchMode(false);
 
+                    do_imm_hidden(etAnswer1);
+                    do_imm_hidden(etAnswer2);
+                    do_imm_hidden(etAnswer3);
+                    do_imm_hidden(etAnswer4);
+
+                    for(int i =0;i<=9; i++) {
+                        if ((i != 0) && (i != 4) && (i != 5) && (i != 9)) {
+                            ETS0[i].setFocusable(false);
+                            ETS0[i].setFocusableInTouchMode(false);
+                            ETS4[i].setFocusable(false);
+                            ETS4[i].setFocusableInTouchMode(false);
+                        }
+
+                   }
+                    if(!ETS3[counts].getText().toString().isEmpty())
+                        ETS3[counts].setText(null);
                 }
             });
 
@@ -506,12 +525,27 @@ public class AddFunc extends Activity {
                         Log.d("TEST", digit + " zzzzzzzzzzzz");
                         //ETS3[2].setBackground(getResources().getDrawable(R.drawable.white));
                         ETS7[counts].setBackground(getResources().getDrawable(GetResourceIDfromInt(digit)));
-                        if (!ETS7[counts].getText().toString().isEmpty())
-                            ETS7[counts].setText(null);
 
                         ETS7[counts].setFocusable(false);
 
                         ETS7[counts].setFocusableInTouchMode(false);
+
+                        do_imm_hidden(etAnswer1);
+                        do_imm_hidden(etAnswer2);
+                        do_imm_hidden(etAnswer3);
+                        do_imm_hidden(etAnswer4);
+
+                        for(int i =0;i<=9; i++) {
+                            if ((i != 0) && (i != 4) && (i != 5) && (i != 9)) {
+                                ETS0[i].setFocusable(false);
+                                ETS0[i].setFocusableInTouchMode(false);
+                                ETS4[i].setFocusable(false);
+                                ETS4[i].setFocusableInTouchMode(false);
+                            }
+
+                        }
+                        if (!ETS7[counts].getText().toString().isEmpty())
+                            ETS7[counts].setText(null);
                     }
                 });
         }
@@ -567,12 +601,29 @@ public class AddFunc extends Activity {
                         Log.d("TEST", digit + " zzzzzzzzzzzz");
                         //ETS3[2].setBackground(getResources().getDrawable(R.drawable.white));
                         ETS0[counts].setBackground(getResources().getDrawable(GetCarryResourceIDFromInt(digit)));
-                        if (!ETS0[counts].getText().toString().isEmpty())
-                            ETS0[counts].setText(null);
 
                         ETS0[counts].setFocusable(false);
 
                         ETS0[counts].setFocusableInTouchMode(false);
+
+                        do_imm_hidden(etAnswer1);
+                        do_imm_hidden(etAnswer2);
+                        do_imm_hidden(etAnswer3);
+                        do_imm_hidden(etAnswer4);
+
+                        for(int i =0;i<=9; i++) {
+                            if ((i != 0) && (i != 4) && (i != 5) && (i != 9)) {
+                                ETS0[i].setFocusable(false);
+                                ETS0[i].setFocusableInTouchMode(false);
+                                ETS4[i].setFocusable(false);
+                                ETS4[i].setFocusableInTouchMode(false);
+                            }
+
+                        }
+                        if (!ETS0[counts].getText().toString().isEmpty())
+                            ETS0[counts].setText(null);
+
+
                     }
                 });
         }
@@ -629,14 +680,29 @@ public class AddFunc extends Activity {
                         Log.d("TEST", digit + " zzzzzzzzzzzz");
                         //ETS3[2].setBackground(getResources().getDrawable(R.drawable.white));
                         ETS4[counts].setBackground(getResources().getDrawable(GetCarryResourceIDFromInt(digit)));
-                        if (!ETS4[counts].getText().toString().isEmpty())
-                            ETS4[counts].setText(null);
+
 
                         ETS4[counts].clearFocus();
                         ETS4[counts].setFocusable(false);
 
 
                         ETS4[counts].setFocusableInTouchMode(false);
+                        do_imm_hidden(etAnswer1);
+                        do_imm_hidden(etAnswer2);
+                        do_imm_hidden(etAnswer3);
+                        do_imm_hidden(etAnswer4);
+                        for(int i =0;i<=9; i++) {
+                            if ((i != 0) && (i != 4) && (i != 5) && (i != 9)) {
+                                ETS0[i].setFocusable(false);
+                                ETS0[i].setFocusableInTouchMode(false);
+                                ETS4[i].setFocusable(false);
+                                ETS4[i].setFocusableInTouchMode(false);
+                            }
+
+                        }
+                        if (!ETS4[counts].getText().toString().isEmpty())
+                            ETS4[counts].setText(null);
+
                     }
                 });
         }
@@ -764,10 +830,10 @@ public class AddFunc extends Activity {
         etAnswer3.setText(null);
         etAnswer4.setText(null);
 
-        etAnswer1.setBackground(null);
-        etAnswer2.setBackground(null);
-        etAnswer3.setBackground(null);
-        etAnswer4.setBackground(null);
+        etAnswer1.setBackground(getResources().getDrawable(R.color.colorGray));
+        etAnswer2.setBackground(getResources().getDrawable(R.color.colorGray));
+        etAnswer3.setBackground(getResources().getDrawable(R.color.colorGray));
+        etAnswer4.setBackground(getResources().getDrawable(R.color.colorGray));
 
         etAnswer1.setEnabled(true);
         etAnswer2.setEnabled(true);
@@ -874,7 +940,7 @@ public class AddFunc extends Activity {
     public void getAnswer(View view) {
         int Id = view.getId();
         int whichOne =0;
-        Log.d("TEST", "gggggg");
+        Log.d("TEST", "getAnswer: Line 3 on click");
 
         for(int i=0; i<=9;i++)
         {
@@ -883,12 +949,12 @@ public class AddFunc extends Activity {
                 if(Id == ETS3[i].getId())
                 {
                     whichOne = i;
-                    Log.d("TEST", whichOne+" gggggg");
+                    Log.d("TEST", "getAnswer "+whichOne+" gggggg");
                 }
             }
         }
         //for (int i=0; i<=9;i++) {
-        Log.d("TEST", whichOne+" gggggg");
+        //Log.d("TEST", whichOne+" gggggg");
             ETS3[whichOne].setFocusable(true);
 
             ETS3[whichOne].setFocusableInTouchMode(true);
@@ -904,11 +970,15 @@ public class AddFunc extends Activity {
 
             edit_Id = Id;
             counts = whichOne;
-            if (Id == ETS3[whichOne].getId() && !ETS3[1].getText().toString().isEmpty()) {
+        Log.d("TEST", "set counts = "+counts+"  ggggggg"  );
+
+            if (Id == ETS3[whichOne].getId() && !ETS3[whichOne].getText().toString().isEmpty()) {
                 //Toast.makeText(AddFunc.this,"TEST",Toast.LENGTH_SHORT).show();
-                Log.d("TEST", "eeeeeeee" + ETS3[1].getText().toString().trim());
+                Log.d("TEST", "eeeeeeee" + ETS3[whichOne].getText().toString().trim());
                 //  ETS3[1].setBackground(getResources().getDrawable(GetResourceIDfromInt(Integer.getInteger(ETS3[1].getText().toString()))));
             }
+        ETS3[whichOne].setBackground(null);
+
         //}
     }
     public void getAnswer1(View view) {
@@ -950,6 +1020,7 @@ public class AddFunc extends Activity {
             //  ETS3[1].setBackground(getResources().getDrawable(GetResourceIDfromInt(Integer.getInteger(ETS3[1].getText().toString()))));
         }
         //}
+        ETS7[whichOne].setBackground(null);
     }
 
     public void CheckAnswer(View view) {
@@ -1033,8 +1104,7 @@ public class AddFunc extends Activity {
 
         if(GotoAgain==false)
         {
-            Bitmap bitmap = takeScreenshot();
-            saveBitmap(bitmap);
+            MainActivity.screenShot(AddFunc.this);
             if(errorCount<3) {
                 new AlertDialog.Builder(this)
                         .setTitle("ERROR !!!")
@@ -1081,7 +1151,7 @@ public class AddFunc extends Activity {
                 } catch (NoSuchFieldException e) {e.printStackTrace(); }
 
                 int lose = errorCount/3;
-                errorCount %= lose;
+                errorCount %= 3;
                 stars-=lose;
 
                 editor.putInt("stars", stars);
@@ -1185,27 +1255,24 @@ public class AddFunc extends Activity {
                     break;
             }
 
-            tvTotalAward.setText(" x "+ stars);
-            if(starHalf)
-                getTvTotalHalfAward.setText((" x 1"));
-            else
-                getTvTotalHalfAward.setText((" x 0"));
-
-
             etAnswer1.setEnabled(false);
             etAnswer2.setEnabled(false);
             etAnswer3.setEnabled(false);
             etAnswer4.setEnabled(false);
             //**　ＮＯＴ　ＹＥＴ．．
         }
-
+        tvTotalAward.setText(" x "+ stars);
+        if(starHalf)
+            getTvTotalHalfAward.setText((" x 1"));
+        else
+            getTvTotalHalfAward.setText((" x 0"));
         editor.commit();
     }
 
     public void getCarry(View view) {
         int Id = view.getId();
         int whichOne =0;
-        Log.d("TEST", "gggggg");
+        Log.d("TEST", "getCarry: Line 0 on click");
 
         for(int i=0; i<=9;i++)
         {
@@ -1214,7 +1281,7 @@ public class AddFunc extends Activity {
                 if(Id == ETS0[i].getId())
                 {
                     whichOne = i;
-                    Log.d("TEST", whichOne+" gggggg");
+                    Log.d("TEST", "getCarry Line 0"+whichOne+" gggggg");
                 }
             }
         }
@@ -1235,12 +1302,13 @@ public class AddFunc extends Activity {
 
         edit_Id = Id;
         counts = whichOne;
-        if (Id == ETS0[whichOne].getId() && !ETS0[1].getText().toString().isEmpty()) {
+        if (Id == ETS0[whichOne].getId() && !ETS0[whichOne].getText().toString().isEmpty()) {
             //Toast.makeText(AddFunc.this,"TEST",Toast.LENGTH_SHORT).show();
-            Log.d("TEST", "eeeeeeee" + ETS0[1].getText().toString().trim());
+            Log.d("TEST", "eeeeeeee" + ETS0[whichOne].getText().toString().trim());
             //  ETS3[1].setBackground(getResources().getDrawable(GetResourceIDfromInt(Integer.getInteger(ETS3[1].getText().toString()))));
         }
         //}
+        ETS0[whichOne].setBackground(null);
     }
 
     public void getCarry1(View view) {
@@ -1274,12 +1342,13 @@ public class AddFunc extends Activity {
 
         edit_Id = Id;
         counts = whichOne;
-        if (Id == ETS4[whichOne].getId() && !ETS4[1].getText().toString().isEmpty()) {
+        if (Id == ETS4[whichOne].getId() && !ETS4[whichOne].getText().toString().isEmpty()) {
             //Toast.makeText(AddFunc.this,"TEST",Toast.LENGTH_SHORT).show();
-            Log.d("TEST", "eeeeeeee" + ETS4[1].getText().toString().trim());
+            Log.d("TEST", "eeeeeeee" + ETS4[whichOne].getText().toString().trim());
             //  ETS3[1].setBackground(getResources().getDrawable(GetResourceIDfromInt(Integer.getInteger(ETS3[1].getText().toString()))));
         }
         //}
+        ETS4[whichOne].setBackground(null);
     }
 
     public void EnterAnswer(View view) {
@@ -1340,14 +1409,16 @@ public class AddFunc extends Activity {
 
                     break;
                 case 2:
-                    intArrayA[i] = (int) (Math.random() * 100);
-                    intArrayB[i] = (int) (Math.random() * 100);
-
+                    do {
+                        intArrayA[i] = (int) (Math.random() * 100);
+                        intArrayB[i] = (int) (Math.random() * 100);
+                    }while ( intArrayA[i]<=9 || intArrayB[i]<=9 );
                     break;
                 case 3:
-                    intArrayA[i] = (int) (Math.random() * 1000);
-                    intArrayB[i] = (int) (Math.random() * 1000);
-
+                    do {
+                        intArrayA[i] = (int) (Math.random() * 1000);
+                        intArrayB[i] = (int) (Math.random() * 1000);
+                    }while( intArrayA[i]<=99 ||  intArrayB[i]<=99);
                     break;
                 default:
                     break;
@@ -1462,28 +1533,5 @@ public class AddFunc extends Activity {
     public void gotoStore(View view) {
         Intent it = new Intent(AddFunc.this,AwardStoreActivity.class);
         startActivity(it);
-    }
-
-    public Bitmap takeScreenshot() {
-        View rootView = findViewById(android.R.id.content).getRootView();
-        rootView.setDrawingCacheEnabled(true);
-        return rootView.getDrawingCache();
-    }
-
-    public void saveBitmap(Bitmap bitmap) {
-
-
-        File imagePath = new File(Environment.getExternalStorageDirectory() + "/screenshot.png");
-        FileOutputStream fos;
-        try {
-            fos = new FileOutputStream(imagePath);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-            fos.flush();
-            fos.close();
-        } catch (FileNotFoundException e) {
-            Log.e("AddFunc", e.getMessage(), e);
-        } catch (IOException e) {
-            Log.e("AddFunc", e.getMessage(), e);
-        }
     }
 }

@@ -335,11 +335,11 @@ public class MultiFunc2 extends AppCompatActivity {
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                        Log.d("TEST", counts +"   >which one be press....");
+                        Log.d("TEST", counts +"   >which one be press....in Line 3");
                         //ETS3[digit].setBackground(getResources().getDrawable(R.drawable.white));
                         if(ETS3[counts].getText().toString().isEmpty())
                         {
-                            Log.d("TEST", counts +"   EDIT EMPTY");
+                            Log.d("TEST", counts +"   not show ...so EDIT IS EMPTY");
                         }else
                         {
                             Log.d("TEST", ETS3[counts].getText().toString() +"   BEFORE");
@@ -359,38 +359,54 @@ public class MultiFunc2 extends AppCompatActivity {
                             Log.d("TEST", counts +"   EDIT EMPTY");
                         }else
                         {
-                            Log.d("TEST", ETS3[counts].getText().toString() +"   ON");
+                            Log.d("TEST", ETS3[counts].getText().toString() +"   >>>ONTextChanged");
                         }
 
-                        Log.d("TEST", "yyyyyyyyyyy");
+
                     }
 
                     @Override
                     public void afterTextChanged(Editable s) {
                         // ETS3[1].setBackground(getResources().getDrawable(R.drawable.white));
-                        Log.d("TEST", "zzzzzzzzzzzz");
+                        // Log.d("TEST", "zzzzzzzzzzzz");
 
                         // ETS3[counts].setInputType(InputType.TYPE_NULL); // 關閉軟鍵盤
                         // ETS3[counts].setInputType(InputType.TYPE_NULL); // 關閉軟鍵盤
 
 
+
+
+
+
+                        if(!ETS3[counts].getText().toString().isEmpty())
+                            digit = Integer.valueOf(ETS3[counts].getText().toString().trim());
+                        Log.d("TEST", digit+" >> change to integer");
+                        //ETS3[2].setBackground(getResources().getDrawable(R.drawable.white));
+
+
+                        ETS3[counts].setBackground(getResources().getDrawable(GetResourceIDfromInt(digit)));
 
                         InputMethodManager imm = (InputMethodManager)  getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                         imm.hideSoftInputFromWindow( ETS3[counts].getWindowToken(), 0);
 
 
-                        if(!ETS3[counts].getText().toString().isEmpty())
-                            digit = Integer.valueOf(ETS3[counts].getText().toString().trim());
-                        Log.d("TEST", digit+" zzzzzzzzzzzz");
-                        //ETS3[2].setBackground(getResources().getDrawable(R.drawable.white));
-                        ETS3[counts].setBackground(getResources().getDrawable(GetResourceIDfromInt(digit)));
-                        if(!ETS3[counts].getText().toString().isEmpty())
-                            ETS3[counts].setText(null);
 
                         ETS3[counts].setFocusable(false);
 
                         ETS3[counts].setFocusableInTouchMode(false);
 
+                        do_imm_hidden(etAnswer1);
+                        do_imm_hidden(etAnswer2);
+
+                        for(int i =0;i<=9; i++) {
+                            if ((i != 0) && (i != 4) && (i != 5) && (i != 9)) {
+                                ETS0[i].setFocusable(false);
+                                ETS0[i].setFocusableInTouchMode(false);
+                            }
+
+                        }
+                        if(!ETS3[counts].getText().toString().isEmpty())
+                            ETS3[counts].setText(null);
                     }
                 });
 
@@ -449,12 +465,25 @@ public class MultiFunc2 extends AppCompatActivity {
                         Log.d("TEST", digit + " zzzzzzzzzzzz");
                         //ETS3[2].setBackground(getResources().getDrawable(R.drawable.white));
                         ETS4[counts].setBackground(getResources().getDrawable(GetResourceIDfromInt(digit)));
-                        if (!ETS4[counts].getText().toString().isEmpty())
-                            ETS4[counts].setText(null);
+
 
                         ETS4[counts].setFocusable(false);
 
                         ETS4[counts].setFocusableInTouchMode(false);
+
+                        do_imm_hidden(etAnswer1);
+                        do_imm_hidden(etAnswer2);
+
+                        for(int i =0;i<=9; i++) {
+                            if ((i != 0) && (i != 4) && (i != 5) && (i != 9)) {
+                                ETS0[i].setFocusable(false);
+                                ETS0[i].setFocusableInTouchMode(false);
+                            }
+
+                        }
+                        if (!ETS4[counts].getText().toString().isEmpty())
+                            ETS4[counts].setText(null);
+
                     }
                 });
         }
@@ -512,12 +541,23 @@ public class MultiFunc2 extends AppCompatActivity {
                         Log.d("TEST", digit + " zzzzzzzzzzzz");
                         //ETS3[2].setBackground(getResources().getDrawable(R.drawable.white));
                         ETS5[counts].setBackground(getResources().getDrawable(GetResourceIDfromInt(digit)));
-                        if (!ETS5[counts].getText().toString().isEmpty())
-                            ETS5[counts].setText(null);
+
 
                         ETS5[counts].setFocusable(false);
 
                         ETS5[counts].setFocusableInTouchMode(false);
+                        do_imm_hidden(etAnswer1);
+                        do_imm_hidden(etAnswer2);
+
+                        for(int i =0;i<=9; i++) {
+                            if ((i != 0) && (i != 4) && (i != 5) && (i != 9)) {
+                                ETS0[i].setFocusable(false);
+                                ETS0[i].setFocusableInTouchMode(false);
+                            }
+
+                        }
+                        if (!ETS5[counts].getText().toString().isEmpty())
+                            ETS5[counts].setText(null);
                     }
                 });
         }
@@ -582,6 +622,19 @@ public class MultiFunc2 extends AppCompatActivity {
 
 
                         ETS0[counts].setFocusableInTouchMode(false);
+
+                        do_imm_hidden(etAnswer1);
+                        do_imm_hidden(etAnswer2);
+
+                        for(int i =0;i<=9; i++) {
+                            if ((i != 0) && (i != 4) && (i != 5) && (i != 9)) {
+                                ETS0[i].setFocusable(false);
+                                ETS0[i].setFocusableInTouchMode(false);
+                            }
+
+                        }
+                        if (!ETS0[counts].getText().toString().isEmpty())
+                            ETS0[counts].setText(null);
                     }
                 });
         }
@@ -696,8 +749,8 @@ public class MultiFunc2 extends AppCompatActivity {
 //        etAnswer3.setText(null);
 //        etAnswer4.setText(null);
 
-        etAnswer1.setBackground(null);
-        etAnswer2.setBackground(null);
+        etAnswer1.setBackground(getResources().getDrawable(R.color.colorGray));
+        etAnswer2.setBackground(getResources().getDrawable(R.color.colorGray));
 //        etAnswer3.setBackground(null);
 //        etAnswer4.setBackground(null);
 
@@ -991,6 +1044,7 @@ public class MultiFunc2 extends AppCompatActivity {
 
         if(GotoAgain==false)
         {
+            MainActivity.screenShot(MultiFunc2.this);
             if(errorCount<3) {
                 new AlertDialog.Builder(this)
                         .setTitle("ERROR !!!")
@@ -1292,15 +1346,20 @@ public class MultiFunc2 extends AppCompatActivity {
 
                     break;
                 case 2:
-                    int temp = (int) (Math.random() * 10);
-                    if(temp%2 == 0) {
-                        intArrayA[i] = (int) (Math.random() * 100);
-                        intArrayB[i] = (int) (Math.random() * 10);
-                    }else
-                    {
-                        intArrayA[i] = (int) (Math.random() * 10);
-                        intArrayB[i] = (int) (Math.random() * 100);
-                    }
+
+                        int temp = (int) (Math.random() * 10);
+                        if (temp % 2 == 0) {
+                            do {
+                                intArrayA[i] = (int) (Math.random() * 100);
+                                intArrayB[i] = (int) (Math.random() * 10);
+                            }while(intArrayA[i]<=9);
+                        } else {
+                            do {
+                                intArrayA[i] = (int) (Math.random() * 10);
+                                intArrayB[i] = (int) (Math.random() * 100);
+                            }while (intArrayB[i]<=9);
+                        }
+
                     break;
                 case 3:
                     do {

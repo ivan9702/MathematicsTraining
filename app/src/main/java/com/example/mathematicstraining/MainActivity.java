@@ -1,10 +1,20 @@
 package com.example.mathematicstraining;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Rect;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,15 +23,32 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+
+
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageView ivAdd,ivSub,ivMul,ivDiv;
+    private static final int REQUEST_ID_READ_PERMISSION = 100;
+    private static final int REQUEST_ID_WRITE_PERMISSION = 200;
+
+    //Bitmap bitmap;
+    //String path;
+
+    private ImageView ivAdd,ivSub,ivMul,ivDiv,ivScreenimage;
     private TextView  tvAdd, tvSub, tvMul, tvDiv, tvStars,tvHalfStar,tvErrors;
     TextView tvOpDate;
-
+    private String sharePath="no";
+    Bitmap mbitmap;
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedata0 = getSharedPreferences("award", MODE_PRIVATE);
         //SharedPreferences.Editor sharedata = getSharedPreferences("award", 0).edit();
 
+        ivScreenimage = findViewById(R.id.ivScreenImage);
         ivAdd = findViewById(R.id.ivAdd);
         ivSub = findViewById(R.id.ivSub);
         ivMul = findViewById(R.id.ivMul);
@@ -44,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
 
         tvOpDate = findViewById(R.id.tvOpDate);
 
+        Log.d("Main onCreate", "stars:"+sharedata0.getInt("stars",0));
+        askPermissionAndWriteFile();
+        //askPermissionAndReadFile();
         ivAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,20 +129,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "DIVISION !!!!", Toast.LENGTH_SHORT).show();
+                //screenShot();
             }
         });
         tvDiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "DIVISION !!!!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "DIVISION tvDiv", Toast.LENGTH_SHORT).show();
+
             }
         });
 
         tvOpDate.setText("上一次測試日期為：　"+sharedata0.getString("date", "0"));
-
-
-        saveToPictureFolder();
-
 
     }
 
@@ -159,62 +188,105 @@ public class MainActivity extends AppCompatActivity {
         startActivity(it);
     }
 
-    public Bitmap takeScreenshot() {
-//       View rootView = findViewById(android.R.id.activity_main).getRootView();
-//       rootView.setDrawingCacheEnabled(true);
-//        return rootView.getDrawingCache();
-        return null;
+    private void askPermissionAndWriteFile() {
+        boolean canWrite = this.askPermission(REQUEST_ID_WRITE_PERMISSION,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        //
+        if (canWrite) {
+           // Toast.makeText(getApplicationContext(), "PERMISSION_GRANTED0000", Toast.LENGTH_SHORT).show();
+           // FileUtil.getInstance().storeBitmap(bitmap, path);
+        }
     }
 
-    private boolean saveBitmap(Bitmap bmp, File pic) {
-        if (bmp == null || pic == null){
-            Log.d(">>>", "saveBitmap <<<<<<<" );
-            return false;
-        }
-        Log.d(">>>", "saveBitmap >>>>>>>>" );
+    private void askPermissionAndReadFile() {
+        boolean canRead = this.askPermission(REQUEST_ID_READ_PERMISSION,
+                Manifest.permission.READ_EXTERNAL_STORAGE);
         //
-        FileOutputStream out = null;
-        try {
-            out = new FileOutputStream(pic);
-            bmp.compress(Bitmap.CompressFormat.JPEG, 80, out);
-            out.flush();
+        if (canRead) {
+            //this.readFile();
+        }
+    }
 
-            //scanGallery(this, pic);
-            Log.d(">>>", "bmp path: " + pic.getAbsolutePath());
-            return true;
-        } catch (Exception e) {
-            Log.e(">>>", "save bitmap failed!");
-            e.printStackTrace();
-        } finally {
-            try {
-                if (out != null) {
-                    out.close();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
+    // With Android Level >= 23, you have to ask the user
+    // for permission with device (For example read/write data on the device).
+    private boolean askPermission(int requestId, String permissionName) {
+        if (android.os.Build.VERSION.SDK_INT >= 23) {
+
+            // Check if we have permission
+            int permission = ActivityCompat.checkSelfPermission(this, permissionName);
+
+
+            if (permission != PackageManager.PERMISSION_GRANTED) {
+                // If don't have permission so prompt the user.
+                this.requestPermissions(
+                        new String[]{permissionName},
+                        requestId
+                );
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
-    /**
-     * 儲存到圖片庫
-     */
-    private boolean saveToPictureFolder() {
-        //取得 Pictures 目錄
-        File picDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-        Log.d(">>>", "Pictures Folder path: " + picDir.getAbsolutePath());
-        //假如有該目錄
-        if (picDir.exists()) {
-            Log.d(">>>", "picDir.exists() " );
-            //儲存圖片
-            File pic = new File(picDir, "pic.jpg");
-//            imgPicture.setDrawingCacheEnabled(true);
-//            imgPicture.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_AUTO);
-//            Bitmap bmp = imgPicture.getDrawingCache();
-            Bitmap bmp =takeScreenshot();
-            return saveBitmap(bmp, pic);
+
+    // When you have the request results
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        //
+        // Note: If request is cancelled, the result arrays are empty.
+        if (grantResults.length > 0) {
+            switch (requestCode) {
+                case REQUEST_ID_READ_PERMISSION: {
+                    if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                        //readFile();
+                    }
+                }
+                case REQUEST_ID_WRITE_PERMISSION: {
+                    if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                       // Toast.makeText(getApplicationContext(), "PERMISSION_GRANTED11111", Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+            }
+        } else {
+            Toast.makeText(getApplicationContext(), "Permission Cancelled!", Toast.LENGTH_SHORT).show();
         }
-        return false;
     }
+
+    public static  void screenShot(Activity activity)
+    {
+
+        String path;
+        Bitmap bitmap;
+
+        SimpleDateFormat s = new SimpleDateFormat("MMddhhmmss");
+        String format = s.format(new Date());
+
+        File file = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        path = file.getPath();
+        Log.d(">>>", "Pictures getPath path: " + path);
+
+        File dir = new File(path+ "/MyFolder");
+
+        if(dir.exists() && dir.isDirectory()) {
+            Log.d(">>>", "MyFolder path0: " + dir.getPath());
+            path =  dir.getPath();
+        }
+        else{
+            dir.mkdirs();
+            Log.d(">>>", "MyFolder path1: " + dir.getPath());
+            path =  dir.getPath();
+        }
+
+        bitmap =ScreenshotUtil.getInstance().takeScreenshotForScreen(activity); // Take ScreenshotUtil
+        path += "/"+format+"test.png";
+        //Toast.makeText(MainActivity.this, path, Toast.LENGTH_SHORT).show();
+        Log.d(">>>", "Pictures Folder path: " + path);
+
+        FileUtil.getInstance().storeBitmap(bitmap, path);
+    }
+
 }
