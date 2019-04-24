@@ -205,6 +205,13 @@ public class Subtraction extends Activity {
         else
             btnHundreds.setEnabled(true);
 
+        tvTotalAward.setText("x "+ stars);
+        if(starHalf)
+            tvTotalHalfAward.setText("x 1");
+        else
+            tvTotalHalfAward.setText("x 0");
+
+        tvErrors.setText("x "+errorCount+"/3");
 
     }
 

@@ -209,7 +209,13 @@ public class Multiplication extends Activity {
             btnHundreds.setEnabled(true);
 
         // tvOpDate.setText("上一次測試日期為：　"+date);
+        tvTotalAward.setText("x "+ stars);
+        if(starHalf)
+            tvTotalHalfAward.setText("x 1");
+        else
+            tvTotalHalfAward.setText("x 0");
 
+        tvErrors.setText("x "+errorCount+"/3");
     }
 
     public void backToAddition(View view) {

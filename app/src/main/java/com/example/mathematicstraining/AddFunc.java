@@ -1189,6 +1189,7 @@ public class AddFunc extends Activity {
                     {
                         stars++;
                         starHalf = false;
+                        editor.putBoolean("starHalf",false );
                     }
                     addBasic++;
                     editor.putInt("stars", stars);

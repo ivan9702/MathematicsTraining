@@ -1170,6 +1170,7 @@ public class MultiFunc extends AppCompatActivity {
                     {
                         stars++;
                         starHalf = false;
+                        editor.putBoolean("starHalf",false );
                     }
                     multiBasic++;
                     editor.putInt("stars", stars);

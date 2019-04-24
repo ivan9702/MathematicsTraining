@@ -1181,6 +1181,7 @@ public class SubtrFunc extends Activity {
                     {
                         stars++;
                         starHalf = false;
+                        editor.putBoolean("starHalf",false );
                     }
                     subtractionBasic++;
                     editor.putInt("stars", stars);
