@@ -351,19 +351,22 @@ public class SettingActivity extends AppCompatActivity {
         Str = btnMultiHigh.getText().toString()+Integer.valueOf(sharedata.getInt("multiHigh",0));
         btnMultiHigh.setText(Str);
 
-
-        Str = etCars.getText().toString()+Integer.valueOf(Cars);
-        etCars.setText(Str);
-        Str = etShield.getText().toString()+Integer.valueOf(Shield);
-        etShield.setText(Str);
-        Str = etTV.getText().toString()+Integer.valueOf(TV);
-        etTV.setText(Str);
-        Str = etToy.getText().toString()+Integer.valueOf(Toy);
-        etToy.setText(Str);
-        Str = etPark.getText().toString()+Integer.valueOf(Park);
-        etPark.setText(Str);
-
-
+//
+//        Str = etCars.getText().toString()+Integer.valueOf(Cars);
+//        etCars.setText(Str);
+//        Str = etShield.getText().toString()+Integer.valueOf(Shield);
+//        etShield.setText(Str);
+//        Str = etTV.getText().toString()+Integer.valueOf(TV);
+//        etTV.setText(Str);
+//        Str = etToy.getText().toString()+Integer.valueOf(Toy);
+//        etToy.setText(Str);
+//        Str = etPark.getText().toString()+Integer.valueOf(Park);
+//        etPark.setText(Str);
+        etCars.setText(Integer.toString(Cars));
+        etShield.setText(Integer.toString(Shield));
+        etTV.setText(Integer.toString(TV));
+        etToy.setText(Integer.toString(Toy));
+        etPark.setText(Integer.toString(Park));
     }
 
     public void ButtonClick(View view) {
