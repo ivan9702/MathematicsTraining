@@ -387,9 +387,10 @@ public class MainActivity extends AppCompatActivity {
         Log.d("Main onResume", "multiBasic:"+sharedata.getInt("multiBasic",0));
         Log.d("Main onResume", "multiMedium:"+sharedata.getInt("multiMedium",0));
         Log.d("Main onResume", "multiHigh:"+sharedata.getInt("multiHigh",0));
-        mediaPlayer1.start();
+
         if((sharedata.getInt("addBasic",0)==2) &&  (sharedata.getInt("addMedium",0)==2) &&  (sharedata.getInt("addHigh",0)==2) &&  (sharedata.getInt("subtractionBasic",0)==2) &&  (sharedata.getInt("subtractionMedium",0)==2) &&  (sharedata.getInt("subtractionHigh",0)==2) &&  (sharedata.getInt("multiBasic",0)==2) &&  (sharedata.getInt("multiMedium",0)==2) &&  (sharedata.getInt("multiHigh",0)==2))
         {
+            mediaPlayer1.start();
             return true;
         }
         return  false;
