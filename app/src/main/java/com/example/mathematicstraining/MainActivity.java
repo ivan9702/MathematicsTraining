@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         mediaPlayer1=new MediaPlayer();
 
         File file1 = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_RINGTONES);
-        String path1 = file.getPath()+"/buy.wav";
+        String path1 = file.getPath()+"/homerun.wav";
         Log.d("Main onCreate", "wav1 Path:"+path1);
         try {
             mediaPlayer1.setDataSource(path1);

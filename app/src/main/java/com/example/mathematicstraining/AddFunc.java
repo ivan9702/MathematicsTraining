@@ -1075,7 +1075,7 @@ public class AddFunc extends Activity {
     void do_check()
     {
 
-
+        AlertDialog alertdialog;
         if(Integer.valueOf(etAnswer1.getText().toString()) == intAnswer[0]){
             etAnswer1.setBackground(getResources().getDrawable(R.drawable.good));
         }else {
@@ -1167,7 +1167,9 @@ public class AddFunc extends Activity {
         }
         else
         {
-            new AlertDialog.Builder(this)
+
+            /*
+          new AlertDialog.Builder(this)
                     .setTitle("AWARD GET !!")
                     .setIcon(R.drawable.goalstars)
                     .setMessage("你好厲害ㄟ　恭喜你得到這次的目標獎勵")
@@ -1182,6 +1184,22 @@ public class AddFunc extends Activity {
                             })
                     .create()
                     .show();
+                */
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("AWARD GET !!");
+            builder.setIcon(R.drawable.goalstars);
+            builder.setMessage("你好厲害ㄟ　恭喜你得到這次的目標獎勵");
+            builder.setPositiveButton("確認"
+                        , new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(AddFunc.this,"獎勵加到總成績了喔"
+                                        ,Toast.LENGTH_SHORT).show();
+                                dialog.dismiss();
+                            }
+                        });
+            builder.create();
+            alertdialog  = builder.show();
 
             switch (choose) {
                 case 1:
@@ -1205,6 +1223,7 @@ public class AddFunc extends Activity {
                     if(addBasic == 2) {
                         if(MainActivity.HomeRunCheck(sharedata))
                         {
+                            alertdialog.dismiss();
                             stars+=HOMERUN_AWARE;
                             Log.d("TEST", "HomeRun Check OK");
                             AlertDialog dialog = new AlertDialog.Builder(this)
@@ -1244,6 +1263,7 @@ public class AddFunc extends Activity {
                     if(addBasic == 2) {
                         if(MainActivity.HomeRunCheck(sharedata))
                         {
+                            alertdialog.dismiss();
                             stars+=HOMERUN_AWARE;
                             Log.d("TEST", "HomeRun Check OK");
                             AlertDialog dialog = new AlertDialog.Builder(this)
@@ -1283,6 +1303,7 @@ public class AddFunc extends Activity {
                     {
                         if(MainActivity.HomeRunCheck(sharedata))
                         {
+                            alertdialog.dismiss();
                             stars+=HOMERUN_AWARE;
                             Log.d("TEST", "HomeRun Check OK");
                             AlertDialog dialog = new AlertDialog.Builder(this)
