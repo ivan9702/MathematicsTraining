@@ -31,7 +31,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="20dp"
-            android:text="所得到的獎勵有"
+            android:text="目前的獎勵共有"
             android:textColor="@color/colorAccent"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -51,7 +51,7 @@
 
 
             android:layout_marginBottom="20dp"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorGreen"
             android:textSize="24sp" />
 
         <ImageView
@@ -69,7 +69,7 @@
 
 
             android:layout_marginBottom="20dp"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorGreen"
             android:textSize="24sp" />
 
     </LinearLayout>
@@ -176,23 +176,32 @@
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="3"
+            android:onClick="BuyTicket"
             android:text="加買一張"
             android:textColor="@color/colorAccent"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:onClick="BuyTicket"/>
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:bufferType="normal"
+            android:text="BACK"
+            android:onClick="gottoBack"/>
 
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="3"
+            android:onClick="CancelTicket"
             android:text="減掉一張"
             android:textColor="@color/colorAccent"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:onClick="CancelTicket"/>
+            android:textStyle="bold" />
     </LinearLayout>
 
     <TextView

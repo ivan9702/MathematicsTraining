@@ -1,5 +1,6 @@
 package com.example.mathematicstraining;
 
+import android.app.AlertDialog;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +22,8 @@ public class AwardStoreActivity extends AppCompatActivity {
 
     ImageView ivCar, ivShield, ivTV, ivToy, ivPark;
     TextView tvCarTicket, tvShieldTicket, tvTVTicket, tvToyTicket, tvParkTicket;
+
+    int Cars,Shield,TV,Toy,Park;
     private static final int PRICE_CAR = 50;
     private static final int PRICE_SHIELD = 200;
     private static final int PRICE_TV = 50;
@@ -49,6 +52,7 @@ public class AwardStoreActivity extends AppCompatActivity {
         tvParkTicket = findViewById(R.id.tvParkTicket);
 
         sharedata0 = getSharedPreferences("award", MODE_PRIVATE);
+        editor = sharedata0.edit();//获取Editor
 
         tvStars =findViewById(R.id.tvStars);
         tvHalfStar=findViewById(R.id.tvHalfStar);
@@ -57,11 +61,11 @@ public class AwardStoreActivity extends AppCompatActivity {
         stars = sharedata0.getInt("stars",0);
         starHalf = sharedata0.getBoolean("starHalf",false);
 
-        tvStars.setText(" x "+stars);
-        if(starHalf)
-            tvHalfStar.setText(" x 1");
-        else
-            tvHalfStar.setText(" x 0");
+//        tvStars.setText(" x "+stars);
+//        if(starHalf)
+//            tvHalfStar.setText("x 1");
+//        else
+//            tvHalfStar.setText("x 0");
 
 
         Log.d("AwardStore onCreate", "stars:"+sharedata0.getInt("stars",0));
@@ -75,22 +79,36 @@ public class AwardStoreActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
          sharedata0 = getSharedPreferences("award", MODE_PRIVATE);
+        editor = sharedata0.edit();//获取Editor
 
         Log.d("AwardStore onResume", "stars:"+sharedata0.getInt("stars",0));
         Log.d("AwardStore onResume", "starHalf:"+sharedata0.getBoolean("starHalf",false));
         Log.d("AwardStore onResume", "errorCount:"+sharedata0.getInt("errorCount",0));
 
+        stars = sharedata0.getInt("stars",0);
+        starHalf = sharedata0.getBoolean("starHalf",false);
+
+        Cars= sharedata0.getInt("CarNum",0);
+        Shield = sharedata0.getInt("ShieldNum",0);
+        TV = sharedata0.getInt("TVNum",0);
+        Toy = sharedata0.getInt("ToyNum", 0);
+        Park = sharedata0.getInt("ParkNum",0);
 
         Log.d("AwardStore onResume", "date:"+sharedata0.getString("date", "0"));
 
         if(sharedata0.getBoolean("starHalf",false) == false)
-            tvHalfStar.setText(" x 0");
+            tvHalfStar.setText("x 0");
         else
-            tvHalfStar.setText(" x 1");
+            tvHalfStar.setText("x 1");
 
         tvStars.setText(" x "+sharedata0.getInt("stars",0));
 
-
+        String str = tvCarTicket.getText().toString().substring(0,3);
+        tvCarTicket.setText(str+Integer.toString(Cars));
+        tvShieldTicket.setText(str+Integer.toString(Shield));
+        tvTVTicket.setText(str+Integer.toString(TV));
+        tvToyTicket.setText(str+Integer.toString(Toy));
+        tvParkTicket.setText(str+Integer.toString(Park));
 
         tvOpDate.setText("上一次測試日期為：　"+sharedata0.getString("date", "0"));
 
@@ -139,20 +157,311 @@ public class AwardStoreActivity extends AppCompatActivity {
     }
 
     public void BuyTicket(View view) {
-        int len, num;
+
         String str;
         switch(selection)
         {
             case 1:
-                len = tvCarTicket.getText().length();
-                str = tvCarTicket.getText().toString().substring(0,4);
-                
+                if(stars >=PRICE_CAR) {
+                    Cars++;
+                    stars-=PRICE_CAR;
+                    Log.d("AwardStore", "stars:"+stars+"  Car:"+Cars);
+                    str = tvCarTicket.getText().toString().substring(0, 3);
+                    tvCarTicket.setText(str + Integer.toString(Cars));
+                    tvCarTicket.setTextColor(getResources().getColor(R.color.colorAccent));
 
+                    str = tvStars.getText().toString().substring(0,2);
+                    tvStars.setText(str+Integer.toString(stars));
+                    tvStars.setTextColor(getResources().getColor(R.color.colorAccent));
+
+                    //Log.d("AwardStore", "str:"+str+"  num:"+strNum);
+                    editor.putInt("CarNum", Cars);
+                    editor.putInt("stars",stars);
+                }
+                else
+                {
+                    AlertDialog dialog = new AlertDialog.Builder(this)
+                            .setIcon(R.drawable.star)
+                            .setTitle("WARNING !!")
+                            .setMessage("還沒足夠的的星星獎勵喔～　趕快加油吧")
+                            .setPositiveButton("確定", null)
+                            .create();
+                    dialog.show();
+                }
+                break;
+
+            case 2:
+                if(stars >=PRICE_SHIELD) {
+                    Shield++;
+                    stars-=PRICE_SHIELD;
+                    str = tvShieldTicket.getText().toString().substring(0, 3);
+                    tvShieldTicket.setText(str + Integer.toString(Shield));
+                    tvShieldTicket.setTextColor(getResources().getColor(R.color.colorAccent));
+
+                    str = tvStars.getText().toString().substring(0,2);
+                    tvStars.setText(str+Integer.toString(stars));
+                    tvStars.setTextColor(getResources().getColor(R.color.colorAccent));
+
+                    editor.putInt("stars", stars);
+                    //Log.d("AwardStore", "str:"+str+"  num:"+strNum);
+                    editor.putInt("ShieldNum", Shield);
+
+                }
+                else
+                {
+                    AlertDialog dialog = new AlertDialog.Builder(this)
+                            .setIcon(R.drawable.star)
+                            .setTitle("WARNING !!")
+                            .setMessage("還沒足夠的的星星獎勵喔～　趕快加油吧")
+                            .setPositiveButton("確定", null)
+                            .create();
+                    dialog.show();
+                }
+                break;
+            case 3:
+                if(stars >=PRICE_TV) {
+                    TV++;
+                    stars-=PRICE_TV;
+                    str = tvTVTicket.getText().toString().substring(0, 3);
+                    tvTVTicket.setText(str + Integer.toString(TV));
+                    tvTVTicket.setTextColor(getResources().getColor(R.color.colorAccent));
+
+                    str = tvStars.getText().toString().substring(0,2);
+                    tvStars.setText(str+Integer.toString(stars));
+                    tvStars.setTextColor(getResources().getColor(R.color.colorAccent));
+
+                    editor.putInt("stars", stars);
+                    //Log.d("AwardStore", "str:"+str+"  num:"+strNum);
+                    editor.putInt("TVNum", TV);
+                }
+                else
+                {
+                    AlertDialog dialog = new AlertDialog.Builder(this)
+                            .setIcon(R.drawable.star)
+                            .setTitle("WARNING !!")
+                            .setMessage("還沒足夠的的星星獎勵喔～　趕快加油吧")
+                            .setPositiveButton("確定", null)
+                            .create();
+                    dialog.show();
+                }
+                break;
+            case 4:
+                if(stars >=PRICE_TOY) {
+                    Toy++;
+                    stars-= PRICE_TOY;
+                    str = tvToyTicket.getText().toString().substring(0, 3);
+                    tvToyTicket.setText(str + Integer.toString(Toy));
+                    tvToyTicket.setTextColor(getResources().getColor(R.color.colorAccent));
+
+                    str = tvStars.getText().toString().substring(0,2);
+                    tvStars.setText(str+Integer.toString(stars));
+                    tvStars.setTextColor(getResources().getColor(R.color.colorAccent));
+
+                    editor.putInt("stars", stars);
+                    //Log.d("AwardStore", "str:"+str+"  num:"+strNum);
+                    editor.putInt("ToyNum", Toy);
+                }
+                else
+                {
+                    AlertDialog dialog = new AlertDialog.Builder(this)
+                            .setIcon(R.drawable.star)
+                            .setTitle("WARNING !!")
+                            .setMessage("還沒足夠的的星星獎勵喔～　趕快加油吧")
+                            .setPositiveButton("確定", null)
+                            .create();
+                    dialog.show();
+                }
+                break;
+            case 5:
+                if(stars >=PRICE_PARK) {
+                    Park++;
+                    stars-=PRICE_PARK;
+                    str = tvParkTicket.getText().toString().substring(0, 3);
+                    tvParkTicket.setText(str + Integer.toString(Park));
+                    tvParkTicket.setTextColor(getResources().getColor(R.color.colorAccent));
+
+                    str = tvStars.getText().toString().substring(0,2);
+                    tvStars.setText(str+Integer.toString(stars));
+                    tvStars.setTextColor(getResources().getColor(R.color.colorAccent));
+
+                    editor.putInt("stars", stars);
+                    //Log.d("AwardStore", "str:"+str+"  num:"+strNum);
+                    editor.putInt("ParkNum", Cars);
+                }
+                else
+                {
+                    AlertDialog dialog = new AlertDialog.Builder(this)
+                            .setIcon(R.drawable.star)
+                            .setTitle("WARNING !!")
+                            .setMessage("還沒足夠的的星星獎勵喔～　趕快加油吧")
+                            .setPositiveButton("確定", null)
+                            .create();
+                    dialog.show();
+                }
+                break;
+            default:
+                AlertDialog dialog = new AlertDialog.Builder(this)
+                        .setIcon(R.drawable.star)
+                        .setTitle("WARNING !!")
+                        .setMessage("還沒選好購買的禮券喔～")
+                        .setPositiveButton("確定", null)
+                        .create();
+                dialog.show();
                 break;
         }
-
+        editor.commit();
     }
 
     public void CancelTicket(View view) {
+        String str;
+        switch(selection)
+        {
+            case 1:
+                    if(Cars>0) {
+                        Cars--;
+                        stars += PRICE_CAR;
+                        Log.d("AwardStore", "stars:" + stars + "  Car:" + Cars);
+                        str = tvCarTicket.getText().toString().substring(0, 3);
+                        tvCarTicket.setText(str + Integer.toString(Cars));
+                        tvCarTicket.setTextColor(getResources().getColor(R.color.colorAccent));
+
+                        str = tvStars.getText().toString().substring(0, 2);
+                        tvStars.setText(str + Integer.toString(stars));
+                        tvStars.setTextColor(getResources().getColor(R.color.colorAccent));
+
+                        //Log.d("AwardStore", "str:"+str+"  num:"+strNum);
+                        editor.putInt("CarNum", Cars);
+                        editor.putInt("stars", stars);
+                    }else
+                    {
+                        AlertDialog dialog = new AlertDialog.Builder(this)
+                                .setIcon(R.drawable.star)
+                                .setTitle("WARNING !!")
+                                .setMessage("禮券已經用完了喔～")
+                                .setPositiveButton("確定", null)
+                                .create();
+                        dialog.show();
+                    }
+                break;
+
+            case 2:
+                    if(Shield>0) {
+                        Shield--;
+                        stars += PRICE_SHIELD;
+                        str = tvShieldTicket.getText().toString().substring(0, 3);
+                        tvShieldTicket.setText(str + Integer.toString(Shield));
+                        tvShieldTicket.setTextColor(getResources().getColor(R.color.colorAccent));
+
+                        str = tvStars.getText().toString().substring(0, 2);
+                        tvStars.setText(str + Integer.toString(stars));
+                        tvStars.setTextColor(getResources().getColor(R.color.colorAccent));
+
+                        editor.putInt("stars", stars);
+                        //Log.d("AwardStore", "str:"+str+"  num:"+strNum);
+                        editor.putInt("ShieldNum", Shield);
+                    }else
+                    {
+                        AlertDialog dialog = new AlertDialog.Builder(this)
+                                .setIcon(R.drawable.star)
+                                .setTitle("WARNING !!")
+                                .setMessage("禮券已經用完了喔～")
+                                .setPositiveButton("確定", null)
+                                .create();
+                        dialog.show();
+                    }
+                    break;
+            case 3:
+                    if(TV>0) {
+                        TV--;
+                        stars += PRICE_TV;
+                        str = tvTVTicket.getText().toString().substring(0, 3);
+                        tvTVTicket.setText(str + Integer.toString(TV));
+                        tvTVTicket.setTextColor(getResources().getColor(R.color.colorAccent));
+
+                        str = tvStars.getText().toString().substring(0, 2);
+                        tvStars.setText(str + Integer.toString(stars));
+                        tvStars.setTextColor(getResources().getColor(R.color.colorAccent));
+
+                        editor.putInt("stars", stars);
+                        //Log.d("AwardStore", "str:"+str+"  num:"+strNum);
+                        editor.putInt("TVNum", TV);
+                    }else{
+                        AlertDialog dialog = new AlertDialog.Builder(this)
+                                .setIcon(R.drawable.star)
+                                .setTitle("WARNING !!")
+                                .setMessage("禮券已經用完了喔～")
+                                .setPositiveButton("確定", null)
+                                .create();
+                        dialog.show();
+                    }
+                    break;
+            case 4:
+                    if(Toy>0) {
+                        Toy--;
+                        stars += PRICE_TOY;
+                        str = tvToyTicket.getText().toString().substring(0, 3);
+                        tvToyTicket.setText(str + Integer.toString(Toy));
+                        tvToyTicket.setTextColor(getResources().getColor(R.color.colorAccent));
+
+                        str = tvStars.getText().toString().substring(0, 2);
+                        tvStars.setText(str + Integer.toString(stars));
+                        tvStars.setTextColor(getResources().getColor(R.color.colorAccent));
+
+                        editor.putInt("stars", stars);
+                        //Log.d("AwardStore", "str:"+str+"  num:"+strNum);
+                        editor.putInt("ToyNum", Toy);
+                    }else
+                    {
+                        AlertDialog dialog = new AlertDialog.Builder(this)
+                                .setIcon(R.drawable.star)
+                                .setTitle("WARNING !!")
+                                .setMessage("禮券已經用完了喔～")
+                                .setPositiveButton("確定", null)
+                                .create();
+                        dialog.show();
+                    }
+                break;
+            case 5:
+                if(Park>0) {
+                    Park--;
+                    stars += PRICE_PARK;
+                    str = tvParkTicket.getText().toString().substring(0, 3);
+                    tvParkTicket.setText(str + Integer.toString(Park));
+                    tvParkTicket.setTextColor(getResources().getColor(R.color.colorAccent));
+
+                    str = tvStars.getText().toString().substring(0, 2);
+                    tvStars.setText(str + Integer.toString(stars));
+                    tvStars.setTextColor(getResources().getColor(R.color.colorAccent));
+
+                    editor.putInt("stars", stars);
+                    //Log.d("AwardStore", "str:"+str+"  num:"+strNum);
+                    editor.putInt("ParkNum", Cars);
+                }else{
+                    AlertDialog dialog = new AlertDialog.Builder(this)
+                            .setIcon(R.drawable.star)
+                            .setTitle("WARNING !!")
+                            .setMessage("禮券已經用完了喔～")
+                            .setPositiveButton("確定", null)
+                            .create();
+                    dialog.show();
+                    }
+                break;
+            default:
+                AlertDialog dialog = new AlertDialog.Builder(this)
+                        .setIcon(R.drawable.star)
+                        .setTitle("WARNING !!")
+                        .setMessage("還沒選好退回的禮券喔～")
+                        .setPositiveButton("確定", null)
+                        .create();
+                dialog.show();
+                break;
+        }
+        editor.commit();
+
+    }
+
+    public void gottoBack(View view) {
+
+            super.onBackPressed();
     }
 }

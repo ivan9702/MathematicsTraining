@@ -287,12 +287,12 @@ public class MultiFunc2 extends AppCompatActivity {
                 break;
             case 2:
                 ivAward1.setImageResource(R.drawable.goalstars);
-
+                ivAward2.setImageResource(R.drawable.goalstars);
                 break;
             case 3:
                 ivAward1.setImageResource(R.drawable.goalstars);
                 ivAward2.setImageResource(R.drawable.goalstars);
-                ivAward2.setImageResource(R.drawable.goalstars);
+                ivAward3.setImageResource(R.drawable.goalstars);
                 break;
             default:
                 break;
@@ -1077,7 +1077,7 @@ public class MultiFunc2 extends AppCompatActivity {
                         .setIcon(R.drawable.star1)
                         .setTitle("WARNING !!")
                         .setMessage("答錯題目已有 "+errorCount+ " 題, 將扣掉 "+ errorCount/3 + " 顆星星")
-                        .setPositiveButton("确定", null)
+                        .setPositiveButton("確定", null)
                         .create();
                 dialog.show();
 
@@ -1155,7 +1155,7 @@ public class MultiFunc2 extends AppCompatActivity {
                     break;
                 case 2:
 
-                    stars++;
+                    stars+=2;
                     multiMedium++;
                     editor.putInt("stars", stars);
                     editor.putInt("multiMedium",multiMedium );

@@ -1113,7 +1113,7 @@ public class MultiFunc extends AppCompatActivity {
                         .setIcon(R.drawable.star1)
                         .setTitle("WARNING !!")
                         .setMessage("答錯題目已有 "+errorCount+ " 題, 將扣掉 "+ errorCount/3 + " 顆星星")
-                        .setPositiveButton("确定", null)
+                        .setPositiveButton("確定", null)
                         .create();
                 dialog.show();
 
