@@ -24,6 +24,8 @@ import android.widget.Toast;
 import java.lang.reflect.Field;
 import java.util.Calendar;
 
+import static com.example.mathematicstraining.MainActivity.HOMERUN_AWARE;
+
 public class MultiFunc2 extends AppCompatActivity {
 
     int units=0, tens=0, hundreds=0;
@@ -987,10 +989,13 @@ public class MultiFunc2 extends AppCompatActivity {
         GotoAgain=true;
         if(btnCheck.getText().toString() == "我還要再算")
         {
-            Again2Test();
-
-            btnCheck.setText("我算好了");
+//            Again2Test();
+//
+//            btnCheck.setText("我算好了");
 //Log.d("TEST", "我還要再算..........");
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
             return;
         }
 
@@ -1141,6 +1146,23 @@ public class MultiFunc2 extends AppCompatActivity {
                     editor.commit();
                     Log.d("TEST", "do check GOTO again...1 multiBasic:"+multiBasic);
                     if(multiBasic == 2) {
+                        if(MainActivity.HomeRunCheck(sharedata))
+                        {
+                            stars+=HOMERUN_AWARE;
+                            Log.d("TEST", "HomeRun Check OK");
+                            AlertDialog dialog = new AlertDialog.Builder(this)
+                                    .setIcon(R.drawable.star1)
+                                    .setTitle("EXCELLENT !!")
+                                    .setMessage(" 已完成今日題目，得到額外獎勵 "+HOMERUN_AWARE+" 顆星星")
+                                    .setPositiveButton("確定", null)
+                                    .create();
+                            dialog.show();
+                            editor.putInt("stars", stars);
+                            editor.commit();
+                        }
+                        else{
+                            Log.d("TEST", "HomeRun Check !oK");
+                        }
                         btnCheck.setText("ERROR ");
                         btnCheck.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -1163,6 +1185,23 @@ public class MultiFunc2 extends AppCompatActivity {
                     Log.d("TEST", "choose...2 multiMedium:"+multiMedium);
                     if(multiMedium == 2)
                     {
+                        if(MainActivity.HomeRunCheck(sharedata))
+                        {
+                            stars+=HOMERUN_AWARE;
+                            Log.d("TEST", "HomeRun Check OK");
+                            AlertDialog dialog = new AlertDialog.Builder(this)
+                                    .setIcon(R.drawable.star1)
+                                    .setTitle("EXCELLENT !!")
+                                    .setMessage(" 已完成今日題目，得到額外獎勵 "+HOMERUN_AWARE+" 顆星星")
+                                    .setPositiveButton("確定", null)
+                                    .create();
+                            dialog.show();
+                            editor.putInt("stars", stars);
+                            editor.commit();
+                        }
+                        else{
+                            Log.d("TEST", "HomeRun Check !oK");
+                        }
                         btnCheck.setText("完成了");
                         btnCheck.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -1185,6 +1224,23 @@ public class MultiFunc2 extends AppCompatActivity {
                     Log.d("TEST", "choose...2 multiHigh:"+multiHigh);
                     if(multiHigh == 2)
                     {
+                        if(MainActivity.HomeRunCheck(sharedata))
+                        {
+                            stars+=HOMERUN_AWARE;
+                            Log.d("TEST", "HomeRun Check OK");
+                            AlertDialog dialog = new AlertDialog.Builder(this)
+                                    .setIcon(R.drawable.star1)
+                                    .setTitle("EXCELLENT !!")
+                                    .setMessage(" 已完成今日題目，得到額外獎勵 "+HOMERUN_AWARE+" 顆星星")
+                                    .setPositiveButton("確定", null)
+                                    .create();
+                            dialog.show();
+                            editor.putInt("stars", stars);
+                            editor.commit();
+                        }
+                        else{
+                            Log.d("TEST", "HomeRun Check !oK");
+                        }
                         btnCheck.setText("完成了");
                         btnCheck.setOnClickListener(new View.OnClickListener() {
                             @Override

@@ -12,6 +12,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_ID_READ_PERMISSION = 100;
     private static final int REQUEST_ID_WRITE_PERMISSION = 200;
-
+    static final int HOMERUN_AWARE = 5;
     //Bitmap bitmap;
     //String path;
 
@@ -55,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
     TextView tvOpDate;
     private String sharePath="no";
     Bitmap mbitmap;
+    private MediaPlayer mediaPlayer;
+    private static MediaPlayer mediaPlayer1;
+
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +85,38 @@ public class MainActivity extends AppCompatActivity {
         Log.d("Main onCreate", "stars:"+sharedata0.getInt("stars",0));
         askPermissionAndWriteFile();
         //askPermissionAndReadFile();
+
+//===========================================sound 1 =============================
+        mediaPlayer=new MediaPlayer();
+
+        File file = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_RINGTONES);
+        String path = file.getPath()+"/recording.wav";
+        Log.d("Main onCreate", "wav Path:"+path);
+        try {
+            mediaPlayer.setDataSource(path);
+            mediaPlayer.prepare();
+            mediaPlayer.setLooping(false);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+//=======================================sound 2 ===============================
+
+        mediaPlayer1=new MediaPlayer();
+
+        File file1 = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_RINGTONES);
+        String path1 = file.getPath()+"/buy.wav";
+        Log.d("Main onCreate", "wav1 Path:"+path1);
+        try {
+            mediaPlayer1.setDataSource(path1);
+            mediaPlayer1.prepare();
+            mediaPlayer1.setLooping(false);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
         ivAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -134,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
         ivDiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mediaPlayer.start();
                 Toast.makeText(MainActivity.this, "DIVISION !!!!", Toast.LENGTH_SHORT).show();
                 //screenShot();
             }
@@ -141,6 +178,8 @@ public class MainActivity extends AppCompatActivity {
         tvDiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mediaPlayer.start();
+
                 Toast.makeText(MainActivity.this, "DIVISION tvDiv", Toast.LENGTH_SHORT).show();
 
             }
@@ -167,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("Main onResume", "subtractionMedium:"+sharedata0.getInt("subtractionMedium",0));
         Log.d("Main onResume", "subtractionHigh:"+sharedata0.getInt("subtractionHigh",0));
 
-        Log.d("Main onResume", "multiBasic:"+sharedata0.getInt("MultiBasic",0));
+        Log.d("Main onResume", "multiBasic:"+sharedata0.getInt("multiBasic",0));
         Log.d("Main onResume", "multiMedium:"+sharedata0.getInt("multiMedium",0));
         Log.d("Main onResume", "multiHigh:"+sharedata0.getInt("multiHigh",0));
 
@@ -334,4 +373,44 @@ public class MainActivity extends AppCompatActivity {
         alert.show();
 
     }
+
+    public static Boolean HomeRunCheck(SharedPreferences sharedata)
+    {
+        Log.d("Main onResume", "addBasic:"+sharedata.getInt("addBasic",0));
+        Log.d("Main onResume", "addMedium:"+sharedata.getInt("addMedium",0));
+        Log.d("Main onResume", "addHigh:"+sharedata.getInt("addHigh",0));
+
+        Log.d("Main onResume", "subtractionBasic:"+sharedata.getInt("subtractionBasic",0));
+        Log.d("Main onResume", "subtractionMedium:"+sharedata.getInt("subtractionMedium",0));
+        Log.d("Main onResume", "subtractionHigh:"+sharedata.getInt("subtractionHigh",0));
+
+        Log.d("Main onResume", "multiBasic:"+sharedata.getInt("multiBasic",0));
+        Log.d("Main onResume", "multiMedium:"+sharedata.getInt("multiMedium",0));
+        Log.d("Main onResume", "multiHigh:"+sharedata.getInt("multiHigh",0));
+        mediaPlayer1.start();
+        if((sharedata.getInt("addBasic",0)==2) &&  (sharedata.getInt("addMedium",0)==2) &&  (sharedata.getInt("addHigh",0)==2) &&  (sharedata.getInt("subtractionBasic",0)==2) &&  (sharedata.getInt("subtractionMedium",0)==2) &&  (sharedata.getInt("subtractionHigh",0)==2) &&  (sharedata.getInt("multiBasic",0)==2) &&  (sharedata.getInt("multiMedium",0)==2) &&  (sharedata.getInt("multiHigh",0)==2))
+        {
+            return true;
+        }
+        return  false;
+    }
+
+    @Override
+    protected void onDestroy() {
+        // TODO Auto-generated method stub
+        if(mediaPlayer!=null&&mediaPlayer.isPlaying()){
+            mediaPlayer.stop();
+            mediaPlayer.reset();
+            mediaPlayer=null;//回收资源
+        }
+
+        if(mediaPlayer1!=null&&mediaPlayer1.isPlaying()){
+            mediaPlayer1.stop();
+            mediaPlayer1.reset();
+            mediaPlayer1=null;//回收资源
+        }
+
+        super.onDestroy();
+    }
+
 }

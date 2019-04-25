@@ -170,7 +170,9 @@ public class Multiplication extends Activity {
         Log.d("Multiplication onResume", "multiMedium:"+sharedata1.getInt("multiMedium",0));
         Log.d("Multiplication onResume", "multiHigh:"+sharedata1.getInt("multiHigh",0));
 
-
+        Log.d("Main onResume", "multiBasic:"+sharedata1.getInt("multiBasic",0));
+        Log.d("Main onResume", "multiMedium:"+sharedata1.getInt("multiMedium",0));
+        Log.d("Main onResume", "multiHigh:"+sharedata1.getInt("multiHigh",0));
 
         Log.d("Multiplication onResume", "date:"+sharedata1.getString("date", "0"));
 

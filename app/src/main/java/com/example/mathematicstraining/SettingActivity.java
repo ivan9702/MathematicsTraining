@@ -2,6 +2,8 @@ package com.example.mathematicstraining;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -11,6 +13,9 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+
+import java.io.File;
+import java.io.IOException;
 
 public class SettingActivity extends AppCompatActivity {
 
@@ -43,6 +48,7 @@ public class SettingActivity extends AppCompatActivity {
     Boolean Entry_stars = true;
     Boolean Entry_halfstar = true;
     Boolean Entry_error = true;
+ //   private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +89,6 @@ public class SettingActivity extends AppCompatActivity {
 
         btnCommit = findViewById(R.id.btnCommit);
         btnCancel = findViewById(R.id.btnCancel);
-
 
 
         etCars.addTextChangedListener(new TextWatcher() {
@@ -273,7 +278,7 @@ public class SettingActivity extends AppCompatActivity {
         Log.d("Setting onResume", "subtractionMedium:"+sharedata.getInt("subtractionMedium",0));
         Log.d("Setting onResume", "subtractionHigh:"+sharedata.getInt("subtractionHigh",0));
 
-        Log.d("Setting onResume", "multiBasic:"+sharedata.getInt("MultiBasic",0));
+        Log.d("Setting onResume", "multiBasic:"+sharedata.getInt("multiBasic",0));
         Log.d("Setting onResume", "multiMedium:"+sharedata.getInt("multiMedium",0));
         Log.d("Setting onResume", "multiHigh:"+sharedata.getInt("multiHigh",0));
 
@@ -301,7 +306,7 @@ public class SettingActivity extends AppCompatActivity {
         SubtrMedium = Integer.valueOf(sharedata.getInt("subtractionMedium",0));
         SubtrHigh = Integer.valueOf(sharedata.getInt("subtractionHigh",0));
 
-        MultiBasic = Integer.valueOf(sharedata.getInt("MultiBasic",0));
+        MultiBasic = Integer.valueOf(sharedata.getInt("multiBasic",0));
         MultiMedium = Integer.valueOf(sharedata.getInt("multiMedium",0));
         MultiHigh = Integer.valueOf(sharedata.getInt("multiHigh",0));
 
@@ -344,7 +349,7 @@ public class SettingActivity extends AppCompatActivity {
         Str = btnSubtrHigh.getText().toString()+Integer.valueOf(sharedata.getInt("subtractionHigh",0));
         btnSubtrHigh.setText(Str);
 
-        Str = btnMultiBasic.getText().toString()+Integer.valueOf(sharedata.getInt("MultiBasic",0));
+        Str = btnMultiBasic.getText().toString()+Integer.valueOf(sharedata.getInt("multiBasic",0));
         btnMultiBasic.setText(Str);
         Str = btnMultiMedium.getText().toString()+Integer.valueOf(sharedata.getInt("multiMedium",0));
         btnMultiMedium.setText(Str);
@@ -493,7 +498,7 @@ public class SettingActivity extends AppCompatActivity {
         editor.putInt("subtractionMedium", SubtrMedium);
         editor.putInt("subtractionHigh", SubtrHigh);
 
-        editor.putInt("MultiBasic", MultiBasic);
+        editor.putInt("multiBasic", MultiBasic);
         editor.putInt("multiMedium", MultiMedium);
         editor.putInt("multiHigh", MultiHigh);
 

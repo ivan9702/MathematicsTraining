@@ -37,6 +37,8 @@ import android.widget.Toast;
 import java.lang.reflect.Field;
 import java.util.Calendar;
 
+import static com.example.mathematicstraining.MainActivity.HOMERUN_AWARE;
+
 
 public class SubtrFunc extends Activity {
 
@@ -1020,10 +1022,13 @@ public class SubtrFunc extends Activity {
         GotoAgain=true;
         if(btnCheck.getText().toString() == "我還要再算")
         {
-               Again2Test();
-
-           btnCheck.setText("我算好了");
+//               Again2Test();
+//
+//           btnCheck.setText("我算好了");
 //Log.d("TEST", "我還要再算..........");
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
             return;
         }
 
@@ -1189,6 +1194,23 @@ public class SubtrFunc extends Activity {
                     editor.commit();
                     Log.d("TEST", "do check GOTO again...1 subtractionBasic:"+subtractionBasic);
                     if(subtractionBasic == 2) {
+                        if(MainActivity.HomeRunCheck(sharedata))
+                        {
+                            stars+=HOMERUN_AWARE;
+                            Log.d("TEST", "HomeRun Check OK");
+                            AlertDialog dialog = new AlertDialog.Builder(this)
+                                    .setIcon(R.drawable.star1)
+                                    .setTitle("EXCELLENT !!")
+                                    .setMessage(" 已完成今日題目，得到額外獎勵 "+HOMERUN_AWARE+" 顆星星")
+                                    .setPositiveButton("確定", null)
+                                    .create();
+                            dialog.show();
+                            editor.putInt("stars", stars);
+                            editor.commit();
+                        }
+                        else{
+                            Log.d("TEST", "HomeRun Check !oK");
+                        }
                         btnCheck.setText("完成了");
                         btnCheck.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -1211,6 +1233,23 @@ public class SubtrFunc extends Activity {
                     Log.d("TEST", "choose...2 subtractionMedium:"+subtractionMedium);
                     if(subtractionMedium == 2)
                     {
+                        if(MainActivity.HomeRunCheck(sharedata))
+                        {
+                            stars+=HOMERUN_AWARE;
+                            Log.d("TEST", "HomeRun Check OK");
+                            AlertDialog dialog = new AlertDialog.Builder(this)
+                                    .setIcon(R.drawable.star1)
+                                    .setTitle("EXCELLENT !!")
+                                    .setMessage(" 已完成今日題目，得到額外獎勵 "+HOMERUN_AWARE+" 顆星星")
+                                    .setPositiveButton("確定", null)
+                                    .create();
+                            dialog.show();
+                            editor.putInt("stars", stars);
+                            editor.commit();
+                        }
+                        else{
+                            Log.d("TEST", "HomeRun Check !oK");
+                        }
                         btnCheck.setText("完成了");
                         btnCheck.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -1233,6 +1272,23 @@ public class SubtrFunc extends Activity {
                     Log.d("TEST", "choose...2 subtractionHigh:"+subtractionHigh);
                     if(subtractionHigh == 2)
                     {
+                        if(MainActivity.HomeRunCheck(sharedata))
+                        {
+                            stars+=HOMERUN_AWARE;
+                            Log.d("TEST", "HomeRun Check OK");
+                            AlertDialog dialog = new AlertDialog.Builder(this)
+                                    .setIcon(R.drawable.star1)
+                                    .setTitle("EXCELLENT !!")
+                                    .setMessage(" 已完成今日題目，得到額外獎勵 "+HOMERUN_AWARE+" 顆星星")
+                                    .setPositiveButton("確定", null)
+                                    .create();
+                            dialog.show();
+                            editor.putInt("stars", stars);
+                            editor.commit();
+                        }
+                        else{
+                            Log.d("TEST", "HomeRun Check !oK");
+                        }
                         btnCheck.setText("完成了");
                         btnCheck.setOnClickListener(new View.OnClickListener() {
                             @Override

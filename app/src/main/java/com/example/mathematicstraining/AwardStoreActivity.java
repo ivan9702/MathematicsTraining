@@ -2,6 +2,8 @@ package com.example.mathematicstraining;
 
 import android.app.AlertDialog;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +12,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import junit.framework.TestCase;
+
+import java.io.File;
+import java.io.IOException;
 
 public class AwardStoreActivity extends AppCompatActivity {
 
@@ -31,6 +36,8 @@ public class AwardStoreActivity extends AppCompatActivity {
     private static final int PRICE_PARK = 100;
 
     int selection=0;
+    private MediaPlayer mediaPlayer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +74,19 @@ public class AwardStoreActivity extends AppCompatActivity {
 //        else
 //            tvHalfStar.setText("x 0");
 
+        mediaPlayer=new MediaPlayer();
+
+        File file = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_RINGTONES);
+        String path = file.getPath()+"/buy.wav";
+        Log.d("Main onCreate", "wav Path:"+path);
+        try {
+            mediaPlayer.setDataSource(path);
+            mediaPlayer.prepare();
+            mediaPlayer.setLooping(false);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         Log.d("AwardStore onCreate", "stars:"+sharedata0.getInt("stars",0));
         Log.d("AwardStore onCreate", "starHalf:"+sharedata0.getBoolean("starHalf",false));
@@ -180,6 +200,7 @@ public class AwardStoreActivity extends AppCompatActivity {
                 }
                 else
                 {
+                    mediaPlayer.start();
                     AlertDialog dialog = new AlertDialog.Builder(this)
                             .setIcon(R.drawable.star)
                             .setTitle("WARNING !!")
@@ -209,6 +230,7 @@ public class AwardStoreActivity extends AppCompatActivity {
                 }
                 else
                 {
+                    mediaPlayer.start();
                     AlertDialog dialog = new AlertDialog.Builder(this)
                             .setIcon(R.drawable.star)
                             .setTitle("WARNING !!")
@@ -236,6 +258,7 @@ public class AwardStoreActivity extends AppCompatActivity {
                 }
                 else
                 {
+                    mediaPlayer.start();
                     AlertDialog dialog = new AlertDialog.Builder(this)
                             .setIcon(R.drawable.star)
                             .setTitle("WARNING !!")
@@ -263,6 +286,7 @@ public class AwardStoreActivity extends AppCompatActivity {
                 }
                 else
                 {
+                    mediaPlayer.start();
                     AlertDialog dialog = new AlertDialog.Builder(this)
                             .setIcon(R.drawable.star)
                             .setTitle("WARNING !!")
@@ -290,6 +314,7 @@ public class AwardStoreActivity extends AppCompatActivity {
                 }
                 else
                 {
+                    mediaPlayer.start();
                     AlertDialog dialog = new AlertDialog.Builder(this)
                             .setIcon(R.drawable.star)
                             .setTitle("WARNING !!")
@@ -463,5 +488,16 @@ public class AwardStoreActivity extends AppCompatActivity {
     public void gottoBack(View view) {
 
             super.onBackPressed();
+    }
+
+    @Override
+    protected void onDestroy() {
+        // TODO Auto-generated method stub
+        if(mediaPlayer!=null&&mediaPlayer.isPlaying()){
+            mediaPlayer.stop();
+            mediaPlayer.reset();
+            mediaPlayer=null;//回收资源
+        }
+        super.onDestroy();
     }
 }
