@@ -859,7 +859,7 @@ public class MultiFunc2 extends AppCompatActivity {
     public void getAnswer(View view) {
         int Id = view.getId();
         int whichOne =0;
-        Log.d("TEST", "gggggg");
+        Log.d("TEST", "getAnswer: Line 3 on click");
 
         for(int i=0; i<=9;i++)
         {
@@ -868,12 +868,12 @@ public class MultiFunc2 extends AppCompatActivity {
                 if(Id == ETS3[i].getId())
                 {
                     whichOne = i;
-                    Log.d("TEST", whichOne+" gggggg");
+                    Log.d("TEST", "getAnswer "+whichOne+" gggggg");
                 }
             }
         }
         //for (int i=0; i<=9;i++) {
-        Log.d("TEST", whichOne+" gggggg");
+        //Log.d("TEST", whichOne+" gggggg");
         ETS3[whichOne].setFocusable(true);
 
         ETS3[whichOne].setFocusableInTouchMode(true);
@@ -889,12 +889,15 @@ public class MultiFunc2 extends AppCompatActivity {
 
         edit_Id = Id;
         counts = whichOne;
+        Log.d("TEST", "set counts = "+counts+"  ggggggg"  );
+
         if (Id == ETS3[whichOne].getId() && !ETS3[1].getText().toString().isEmpty()) {
             //Toast.makeText(AddFunc.this,"TEST",Toast.LENGTH_SHORT).show();
             Log.d("TEST", "eeeeeeee" + ETS3[1].getText().toString().trim());
             //  ETS3[1].setBackground(getResources().getDrawable(GetResourceIDfromInt(Integer.getInteger(ETS3[1].getText().toString()))));
         }
         //}
+        ETS3[whichOne].setBackground(null);
     }
     public void getAnswer1(View view) {
         int Id = view.getId();
@@ -935,6 +938,7 @@ public class MultiFunc2 extends AppCompatActivity {
             //  ETS3[1].setBackground(getResources().getDrawable(GetResourceIDfromInt(Integer.getInteger(ETS3[1].getText().toString()))));
         }
         //}
+        ETS4[whichOne].setBackground(null);
     }
     public void getAnswer2(View view) {
         int Id = view.getId();
@@ -975,6 +979,7 @@ public class MultiFunc2 extends AppCompatActivity {
             //  ETS3[1].setBackground(getResources().getDrawable(GetResourceIDfromInt(Integer.getInteger(ETS3[1].getText().toString()))));
         }
         //}
+        ETS5[whichOne].setBackground(null);
     }
 
     public void CheckAnswer(View view) {
@@ -1214,7 +1219,7 @@ public class MultiFunc2 extends AppCompatActivity {
     public void getCarry(View view) {
         int Id = view.getId();
         int whichOne =0;
-        Log.d("TEST", "gggggg");
+        Log.d("TEST", "getCarry: Line 0 on click");
 
         for(int i=0; i<=9;i++)
         {
@@ -1223,7 +1228,7 @@ public class MultiFunc2 extends AppCompatActivity {
                 if(Id == ETS0[i].getId())
                 {
                     whichOne = i;
-                    Log.d("TEST", whichOne+" gggggg");
+                    Log.d("TEST", "getCarry Line 0"+whichOne+" gggggg");
                 }
             }
         }
@@ -1250,6 +1255,7 @@ public class MultiFunc2 extends AppCompatActivity {
             //  ETS3[1].setBackground(getResources().getDrawable(GetResourceIDfromInt(Integer.getInteger(ETS3[1].getText().toString()))));
         }
         //}
+        ETS0[whichOne].setBackground(null);
     }
 
     public void getCarry1(View view) {
