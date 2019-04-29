@@ -21,7 +21,7 @@ public class Subtraction extends Activity {
     private int Choose = 1;
     SharedPreferences sharedata1;
     SharedPreferences.Editor editor;
-    int stars,errorCount,  subtractionBasic,  subtractionMedium,  subtractionHigh;
+    int stars,errorCount,  multiBasic, multiMedium, multiHigh, subtractionBasic, subtractionMedium, subtractionHigh, addBasic, addMedium, addHigh;
     Boolean starHalf;
     Calendar mCal;
 
@@ -71,15 +71,31 @@ public class Subtraction extends Activity {
 
         if(date.compareTo(date_temp.toString()) !=0 )
         {
+            multiBasic =0;
+            multiMedium = 0;
+            multiHigh = 0;
+
             subtractionBasic =0;
             subtractionMedium = 0;
-            subtractionHigh = 0;
+            subtractionHigh=0;
 
+            addBasic =0;
+            addMedium = 0;
+            addHigh = 0;
+
+            editor.putInt("addBasic",addBasic );
+            editor.putInt("addMedium",addMedium );
+            editor.putInt("addHigh",addHigh );
+
+            editor.putInt("multiBasic",multiBasic );
+            editor.putInt("multiMedium",multiMedium );
+            editor.putInt("multiHigh",multiHigh );
             editor.putInt("subtractionBasic",subtractionBasic );
             editor.putInt("subtractionMedium",subtractionMedium );
             editor.putInt("subtractionHigh",subtractionHigh );
+
             editor.commit();
-            Log.d("Addition onCreate", "CLEAR!! date:"+sharedata1.getString("date", "0"));
+            Log.d("Subtraction onCreate", "CLEAR!! date:"+sharedata1.getString("date", "0"));
         }
 
         if(subtractionBasic == 2)
@@ -180,15 +196,31 @@ public class Subtraction extends Activity {
 
         if(date.compareTo(date_temp.toString()) !=0 )
         {
+            multiBasic =0;
+            multiMedium = 0;
+            multiHigh = 0;
+
             subtractionBasic =0;
             subtractionMedium = 0;
             subtractionHigh=0;
 
+            addBasic =0;
+            addMedium = 0;
+            addHigh = 0;
+
+            editor.putInt("addBasic",addBasic );
+            editor.putInt("addMedium",addMedium );
+            editor.putInt("addHigh",addHigh );
+
+            editor.putInt("multiBasic",multiBasic );
+            editor.putInt("multiMedium",multiMedium );
+            editor.putInt("multiHigh",multiHigh );
             editor.putInt("subtractionBasic",subtractionBasic );
             editor.putInt("subtractionMedium",subtractionMedium );
             editor.putInt("subtractionHigh",subtractionHigh );
+
             editor.commit();
-            Log.d("Addition onResume", "CLEAR!! date:"+sharedata1.getString("date", "0"));
+            Log.d("Subtraction onResume", "CLEAR!! date:"+sharedata1.getString("date", "0"));
         }
 
         if(subtractionBasic == 2)

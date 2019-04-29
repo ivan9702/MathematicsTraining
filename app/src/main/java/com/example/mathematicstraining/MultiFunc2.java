@@ -744,7 +744,8 @@ public class MultiFunc2 extends AppCompatActivity {
         }
         IMGS2[0].setImageResource(R.drawable.multiplication);
         IMGS2[5].setImageResource(R.drawable.multiplication);
-
+        IMGS4[0].setImageResource(R.drawable.addition);
+        IMGS4[5].setImageResource(R.drawable.addition);
 
         etAnswer1.setText(null);
         etAnswer2.setText(null);

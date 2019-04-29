@@ -24,7 +24,7 @@ public class Addition extends Activity {
     private int Choose = 1;
     SharedPreferences sharedata1;
     SharedPreferences.Editor editor;
-    int stars,errorCount,  addBasic, addMedium, addHigh;
+    int stars,errorCount,  multiBasic, multiMedium, multiHigh, subtractionBasic, subtractionMedium, subtractionHigh, addBasic, addMedium, addHigh;
     Boolean starHalf;
     Calendar mCal;
   //  TextView tvOpDate;
@@ -72,8 +72,17 @@ public class Addition extends Activity {
 
         String date = sharedata1.getString("date", "0");
 
+
         if(date.compareTo(date_temp.toString()) !=0 )
         {
+            multiBasic =0;
+            multiMedium = 0;
+            multiHigh = 0;
+
+            subtractionBasic =0;
+            subtractionMedium = 0;
+            subtractionHigh=0;
+
             addBasic =0;
             addMedium = 0;
             addHigh = 0;
@@ -81,6 +90,14 @@ public class Addition extends Activity {
             editor.putInt("addBasic",addBasic );
             editor.putInt("addMedium",addMedium );
             editor.putInt("addHigh",addHigh );
+
+            editor.putInt("multiBasic",multiBasic );
+            editor.putInt("multiMedium",multiMedium );
+            editor.putInt("multiHigh",multiHigh );
+            editor.putInt("subtractionBasic",subtractionBasic );
+            editor.putInt("subtractionMedium",subtractionMedium );
+            editor.putInt("subtractionHigh",subtractionHigh );
+
             editor.commit();
             Log.d("Addition onCreate", "CLEAR!! date:"+sharedata1.getString("date", "0"));
         }
@@ -185,6 +202,14 @@ public class Addition extends Activity {
 
         if(date.compareTo(date_temp.toString()) !=0 )
         {
+            multiBasic =0;
+            multiMedium = 0;
+            multiHigh = 0;
+
+            subtractionBasic =0;
+            subtractionMedium = 0;
+            subtractionHigh=0;
+
             addBasic =0;
             addMedium = 0;
             addHigh = 0;
@@ -192,6 +217,14 @@ public class Addition extends Activity {
             editor.putInt("addBasic",addBasic );
             editor.putInt("addMedium",addMedium );
             editor.putInt("addHigh",addHigh );
+
+            editor.putInt("multiBasic",multiBasic );
+            editor.putInt("multiMedium",multiMedium );
+            editor.putInt("multiHigh",multiHigh );
+            editor.putInt("subtractionBasic",subtractionBasic );
+            editor.putInt("subtractionMedium",subtractionMedium );
+            editor.putInt("subtractionHigh",subtractionHigh );
+
             editor.commit();
             Log.d("Addition onResume", "CLEAR!! date:"+sharedata1.getString("date", "0"));
         }

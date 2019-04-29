@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -16,6 +17,7 @@ import android.widget.EditText;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Calendar;
 
 public class SettingActivity extends AppCompatActivity {
 
@@ -49,6 +51,11 @@ public class SettingActivity extends AppCompatActivity {
     Boolean Entry_halfstar = true;
     Boolean Entry_error = true;
  //   private MediaPlayer mediaPlayer;
+
+    int btnAddBasicCount=0, btnAddMediumCount=0, btnAddHighCount=0, btnSubtrBasicCount=0, btnSubtrMediumCount=0, btnSubtrHighCount=0, btnMultiBasicCount=0, btnMultiMediumCount=0, btnMultiHighCount=0;
+    Calendar mCal;
+    //  TextView tvOpDate;
+    CharSequence date_temp, s;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -393,7 +400,20 @@ public class SettingActivity extends AppCompatActivity {
 
             case R.id.btnAddBasic:
                 Log.d("BTN", "AddBasic");
-                AddBasic = 0;
+                if(btnAddBasicCount == 0)
+                {
+                    AddBasic = 0;
+                    btnAddBasicCount++;
+                }
+                else if(btnAddBasicCount==1)
+                {
+                    AddBasic = 1;
+                    btnAddBasicCount++;
+                }
+                else{
+                    AddBasic=2;
+                    btnAddBasicCount=0;
+                }
                 len=btnAddBasic.getText().toString().length();
                 Str = btnAddBasic.getText().toString().substring(0, len-1);
                 Log.d("BTN", "AddBasic: "+Str);
@@ -404,7 +424,21 @@ public class SettingActivity extends AppCompatActivity {
 
             case R.id.btnAddMedium:
                 Log.d("BTN", "AddMedium");
-                AddMedium = 0;
+
+                if(btnAddMediumCount == 0)
+                {
+                    AddMedium = 0;
+                    btnAddMediumCount++;
+                }
+                else if(btnAddBasicCount==1)
+                {
+                    AddMedium = 1;
+                    btnAddMediumCount++;
+                }
+                else{
+                    AddMedium=2;
+                    btnAddMediumCount=0;
+                }
                 len=btnAddMedium.getText().toString().length();
                 Str = btnAddMedium.getText().toString().substring(0, len-1);
                 Str = Str+Integer.toString(AddMedium);
@@ -414,7 +448,21 @@ public class SettingActivity extends AppCompatActivity {
 
             case R.id.btnAddHigh:
                 Log.d("BTN", "AddHigh");
-                AddHigh = 0;
+
+                if(btnAddHighCount == 0)
+                {
+                    AddHigh = 0;
+                    btnAddHighCount++;
+                }
+                else if(btnAddHighCount==1)
+                {
+                    AddHigh = 1;
+                    btnAddHighCount++;
+                }
+                else{
+                    AddHigh=2;
+                    btnAddHighCount=0;
+                }
                 len=btnAddHigh.getText().toString().length();
                 Str = btnAddHigh.getText().toString().substring(0, len-1);
                 Str = Str+Integer.toString(AddHigh);
@@ -424,7 +472,22 @@ public class SettingActivity extends AppCompatActivity {
 
             case R.id.btnSubtrBasic:
                 Log.d("BTN", "SubtrBasic");
-                SubtrBasic = 0;
+
+                if(btnSubtrBasicCount ==0)
+                {
+                    SubtrBasic = 0;
+                    btnSubtrBasicCount++;
+                }
+                else if(btnSubtrBasicCount ==1)
+                {
+                    SubtrBasic = 1;
+                    btnSubtrBasicCount++;
+                }
+                else
+                {
+                    SubtrBasic = 2;
+                    btnSubtrBasicCount=0;
+                }
                 len=btnSubtrBasic.getText().toString().length();
                 Str = btnSubtrBasic.getText().toString().substring(0, len-1);
                 Str = Str+Integer.toString(SubtrBasic);
@@ -434,7 +497,21 @@ public class SettingActivity extends AppCompatActivity {
 
             case R.id.btnSubtrMedium:
                 Log.d("BTN", "SubtrMedium");
-                SubtrMedium = 0;
+
+                if(btnSubtrMediumCount ==0)
+                {
+                    SubtrMedium=0;
+                    btnSubtrMediumCount++;
+                }
+                else if(btnSubtrMediumCount==1)
+                {
+                    SubtrMedium=1;
+                    btnSubtrMediumCount++;
+                }
+                else{
+                    SubtrMedium=2;
+                    btnSubtrMediumCount=0;
+                }
                 len=btnSubtrMedium.getText().toString().length();
                 Str = btnSubtrMedium.getText().toString().substring(0, len-1);
                 Str = Str+Integer.toString(SubtrMedium);
@@ -443,7 +520,21 @@ public class SettingActivity extends AppCompatActivity {
                 break;
             case R.id.btnSubtrHigh:
                 Log.d("BTN", "SubtrHigh");
-                SubtrHigh = 0;
+
+                if(btnSubtrHighCount ==0)
+                {
+                    SubtrHigh=0;
+                    btnSubtrHighCount++;
+                }
+                else if(btnSubtrHighCount==1)
+                {
+                    SubtrHigh=1;
+                    btnSubtrHighCount++;
+                }
+                else{
+                    SubtrHigh=2;
+                    btnSubtrHighCount=0;
+                }
                 len=btnSubtrHigh.getText().toString().length();
                 Str = btnSubtrHigh.getText().toString().substring(0, len-1);
                 Str = Str+Integer.toString(SubtrHigh);
@@ -453,7 +544,21 @@ public class SettingActivity extends AppCompatActivity {
 
             case R.id.btnMultiBasic:
                 Log.d("BTN", "btnMultiBasic");
-                MultiBasic = 0;
+
+                if(btnMultiBasicCount ==0)
+                {
+                    MultiBasic=0;
+                    btnMultiBasicCount++;
+                }
+                else if(btnMultiBasicCount==1)
+                {
+                    MultiBasic=1;
+                    btnMultiBasicCount++;
+                }
+                else{
+                    MultiBasic=2;
+                    btnMultiBasicCount=0;
+                }
                 len=btnMultiBasic.getText().toString().length();
                 Str = btnMultiBasic.getText().toString().substring(0, len-1);
                 Str = Str+Integer.toString(MultiBasic);
@@ -463,7 +568,21 @@ public class SettingActivity extends AppCompatActivity {
 
             case R.id.btnMultiMedium:
                 Log.d("BTN", "btnMultiMedium");
-                MultiMedium = 0;
+
+                if(btnMultiMediumCount ==0)
+                {
+                    MultiMedium=0;
+                    btnMultiMediumCount++;
+                }
+                else if(btnMultiMediumCount==1)
+                {
+                    MultiMedium=1;
+                    btnMultiMediumCount++;
+                }
+                else{
+                    MultiMedium=2;
+                    btnMultiMediumCount=0;
+                }
                 len=btnMultiMedium.getText().toString().length();
                 Str = btnMultiMedium.getText().toString().substring(0, len-1);
                 Str = Str+Integer.toString(MultiMedium);
@@ -473,7 +592,21 @@ public class SettingActivity extends AppCompatActivity {
 
             case R.id.btnMultiHigh:
                 Log.d("BTN", "btnMultiHigh");
-                MultiHigh = 0;
+
+                if(btnMultiHighCount ==0)
+                {
+                    MultiHigh=0;
+                    btnMultiHighCount++;
+                }
+                else if(btnMultiHighCount==1)
+                {
+                    MultiHigh=1;
+                    btnMultiHighCount++;
+                }
+                else{
+                    MultiHigh=2;
+                    btnMultiHighCount=0;
+                }
                 len=btnMultiHigh.getText().toString().length();
                 Str = btnMultiHigh.getText().toString().substring(0, len-1);
                 Str = Str+Integer.toString(MultiHigh);
@@ -537,4 +670,23 @@ public class SettingActivity extends AppCompatActivity {
         super.onBackPressed();
     }
 
+    public void Forward(View view) {
+        mCal = Calendar.getInstance();
+        s = DateFormat.format("yyyy/MM/dd ", mCal.getTime());    // kk:24小時制, hh:12小時制
+        date_temp =  DateFormat.format("yyyyMMdd ", mCal.getTime());
+
+        //String date = sharedata.getString("date", "0");
+
+        String date_FF=date_temp.toString().substring(0, 7);
+        Log.d("Setting", "data_FF:"+ date_FF);
+        int d_ff = Integer.valueOf(date_temp.toString().substring(7,8));
+        Log.d("Setting", "int:" + d_ff+" str:"+date_temp.toString().substring(7,8));
+
+        d_ff--;
+        String date = date_FF.toString()+Integer.toString(d_ff);
+        Log.d("Setting", "int:" + d_ff+" str:"+date.toString());
+        editor.putString("date",date.toString());
+        editor.commit();
+
+    }
 }

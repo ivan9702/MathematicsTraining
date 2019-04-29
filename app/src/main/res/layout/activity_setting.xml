@@ -123,6 +123,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
 
             android:layout_width="wrap_content"
@@ -373,6 +374,13 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Forward"
+        android:onClick="Forward"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -385,16 +393,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="ButtonClick"
             android:text="Commit"
-            android:textColor="@color/colorAccent"
-            android:onClick="ButtonClick"/>
+            android:textColor="@color/colorAccent" />
 
         <Button
             android:id="@+id/btnCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Cancel"
-            android:onClick="ButtonClick"/>
+            android:onClick="ButtonClick"
+            android:text="Cancel" />
     </LinearLayout>
 </LinearLayout>

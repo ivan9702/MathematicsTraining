@@ -22,8 +22,8 @@ public class Multiplication extends Activity {
     private int Choose = 1;
     SharedPreferences sharedata1;
     SharedPreferences.Editor editor;
-    int stars,errorCount,  multiBasic, multiMedium, multiHigh;
-    Boolean starHalf;
+    int stars,errorCount,  multiBasic, multiMedium, multiHigh, subtractionBasic, subtractionMedium, subtractionHigh, addBasic, addMedium, addHigh;
+    boolean starHalf;
     Calendar mCal;
     //  TextView tvOpDate;
     CharSequence date_temp, s;
@@ -76,11 +76,27 @@ public class Multiplication extends Activity {
             multiMedium = 0;
             multiHigh = 0;
 
+            subtractionBasic =0;
+            subtractionMedium = 0;
+            subtractionHigh=0;
+
+            addBasic =0;
+            addMedium = 0;
+            addHigh = 0;
+
+            editor.putInt("addBasic",addBasic );
+            editor.putInt("addMedium",addMedium );
+            editor.putInt("addHigh",addHigh );
+
             editor.putInt("multiBasic",multiBasic );
             editor.putInt("multiMedium",multiMedium );
             editor.putInt("multiHigh",multiHigh );
+            editor.putInt("subtractionBasic",subtractionBasic );
+            editor.putInt("subtractionMedium",subtractionMedium );
+            editor.putInt("subtractionHigh",subtractionHigh );
+
             editor.commit();
-            Log.d("Addition onCreate", "CLEAR!! date:"+sharedata1.getString("date", "0"));
+            Log.d("Multiplication onResume", "CLEAR!! date:"+sharedata1.getString("date", "0"));
         }
 
         if(multiBasic == 2)
@@ -189,9 +205,25 @@ public class Multiplication extends Activity {
             multiMedium = 0;
             multiHigh = 0;
 
+            subtractionBasic =0;
+            subtractionMedium = 0;
+            subtractionHigh=0;
+
+            addBasic =0;
+            addMedium = 0;
+            addHigh = 0;
+
+            editor.putInt("addBasic",addBasic );
+            editor.putInt("addMedium",addMedium );
+            editor.putInt("addHigh",addHigh );
+
             editor.putInt("multiBasic",multiBasic );
             editor.putInt("multiMedium",multiMedium );
             editor.putInt("multiHigh",multiHigh );
+            editor.putInt("subtractionBasic",subtractionBasic );
+            editor.putInt("subtractionMedium",subtractionMedium );
+            editor.putInt("subtractionHigh",subtractionHigh );
+
             editor.commit();
             Log.d("Multiplication onResume", "CLEAR!! date:"+sharedata1.getString("date", "0"));
         }

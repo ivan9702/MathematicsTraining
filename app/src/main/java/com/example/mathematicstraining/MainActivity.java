@@ -20,6 +20,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,6 +37,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
@@ -58,13 +60,19 @@ public class MainActivity extends AppCompatActivity {
     Bitmap mbitmap;
     private MediaPlayer mediaPlayer;
     private static MediaPlayer mediaPlayer1;
+    SharedPreferences sharedata0;
+    SharedPreferences.Editor editor;
+
+    Calendar mCal;
+    //  TextView tvOpDate;
+    CharSequence date_temp, s;
 
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        SharedPreferences sharedata0 = getSharedPreferences("award", MODE_PRIVATE);
+        sharedata0 = getSharedPreferences("award", MODE_PRIVATE);
         //SharedPreferences.Editor sharedata = getSharedPreferences("award", 0).edit();
 
         ivScreenimage = findViewById(R.id.ivScreenImage);
@@ -122,49 +130,63 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                // Toast.makeText(MainActivity.this, "ADDITION !!!!", Toast.LENGTH_SHORT).show();
 
-                Intent it = new Intent(MainActivity.this,Addition.class);
-                startActivity(it);
+                if(!HomeRunCheck(sharedata0))
+                {
+
+                    Intent it = new Intent(MainActivity.this,Addition.class);
+                    startActivity(it);
+                }
             }
         });
         tvAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  Toast.makeText(MainActivity.this, "ADDITION !!!!", Toast.LENGTH_SHORT).show();
-                Intent it = new Intent(MainActivity.this,Addition.class);
-                startActivity(it);
+                if(!HomeRunCheck(sharedata0)) {
+                    //  Toast.makeText(MainActivity.this, "ADDITION !!!!", Toast.LENGTH_SHORT).show();
+                    Intent it = new Intent(MainActivity.this, Addition.class);
+                    startActivity(it);
+                }
             }
         });
         ivSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(MainActivity.this, "SUBTRACTION !!!!", Toast.LENGTH_SHORT).show();
-                Intent it = new Intent(MainActivity.this,Subtraction.class);
-                startActivity(it);
+                if(!HomeRunCheck(sharedata0)) {
+                    //Toast.makeText(MainActivity.this, "SUBTRACTION !!!!", Toast.LENGTH_SHORT).show();
+                    Intent it = new Intent(MainActivity.this, Subtraction.class);
+                    startActivity(it);
+                }
             }
         });
         tvSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // Toast.makeText(MainActivity.this, "SUBTRACTION !!!!", Toast.LENGTH_SHORT).show();
-                Intent it = new Intent(MainActivity.this,Subtraction.class);
-                startActivity(it);
+                if(!HomeRunCheck(sharedata0)) {
+                    // Toast.makeText(MainActivity.this, "SUBTRACTION !!!!", Toast.LENGTH_SHORT).show();
+                    Intent it = new Intent(MainActivity.this, Subtraction.class);
+                    startActivity(it);
+                }
             }
         });
 
         ivMul.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(MainActivity.this, "MULTIPLICATION !!!!", Toast.LENGTH_SHORT).show();
-                Intent it = new Intent(MainActivity.this,Multiplication.class);
-                startActivity(it);
+                if(!HomeRunCheck(sharedata0)) {
+                    //Toast.makeText(MainActivity.this, "MULTIPLICATION !!!!", Toast.LENGTH_SHORT).show();
+                    Intent it = new Intent(MainActivity.this, Multiplication.class);
+                    startActivity(it);
+                }
             }
         });
         tvMul.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(MainActivity.this, "MULTIPLICATION !!!!", Toast.LENGTH_SHORT).show();
-                Intent it = new Intent(MainActivity.this,Multiplication.class);
-                startActivity(it);
+                if(!HomeRunCheck(sharedata0)) {
+                    //Toast.makeText(MainActivity.this, "MULTIPLICATION !!!!", Toast.LENGTH_SHORT).show();
+                    Intent it = new Intent(MainActivity.this, Multiplication.class);
+                    startActivity(it);
+                }
             }
         });
         ivDiv.setOnClickListener(new View.OnClickListener() {
@@ -192,7 +214,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        SharedPreferences sharedata0 = getSharedPreferences("award", MODE_PRIVATE);
+        sharedata0 = getSharedPreferences("award", MODE_PRIVATE);
+        editor = sharedata0.edit();//获取Editor
 
         Log.d("Main onResume", "stars:"+sharedata0.getInt("stars",0));
         Log.d("Main onResume", "starHalf:"+sharedata0.getBoolean("starHalf",false));
@@ -213,6 +236,45 @@ public class MainActivity extends AppCompatActivity {
         Log.d("Main onResume", "date:"+sharedata0.getString("date", "0"));
 
         Log.d("Main onResume", "errImgNum:"+sharedata0.getInt("errImgNum",0));
+
+
+        mCal = Calendar.getInstance();
+        s = DateFormat.format("yyyy/MM/dd ", mCal.getTime());    // kk:24小時制, hh:12小時制
+        date_temp =  DateFormat.format("yyyyMMdd ", mCal.getTime());
+
+        String date = sharedata0.getString("date", "0");
+
+
+        if(date.compareTo(date_temp.toString()) !=0 )
+        {
+            int multiBasic =0;
+            int multiMedium = 0;
+            int multiHigh = 0;
+
+            int subtractionBasic =0;
+            int subtractionMedium = 0;
+            int subtractionHigh=0;
+
+            int addBasic =0;
+            int addMedium = 0;
+            int addHigh = 0;
+
+            editor.putInt("addBasic",addBasic );
+            editor.putInt("addMedium",addMedium );
+            editor.putInt("addHigh",addHigh );
+
+            editor.putInt("multiBasic",multiBasic );
+            editor.putInt("multiMedium",multiMedium );
+            editor.putInt("multiHigh",multiHigh );
+            editor.putInt("subtractionBasic",subtractionBasic );
+            editor.putInt("subtractionMedium",subtractionMedium );
+            editor.putInt("subtractionHigh",subtractionHigh );
+
+            editor.commit();
+            Log.d("Main onCreate", "CLEAR!! date:"+sharedata0.getString("date", "0"));
+        }
+
+
 
         if(sharedata0.getBoolean("starHalf",false) == false)
             tvHalfStar.setText(" x 0");
