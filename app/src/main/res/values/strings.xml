@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Mathematics Training</string>
+    <string name="default_notification_channel_id">Channel ID</string>
 </resources>

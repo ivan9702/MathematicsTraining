@@ -31,7 +31,7 @@ public class SettingActivity extends AppCompatActivity {
     Button btnSubtrBasic, btnSubtrMedium, btnSubtrHigh;
     Button btnMultiBasic, btnMultiMedium, btnMultiHigh;
     Button btnDivBasic, btnDivMedium,btnDivHigh;
-    Button btnCommit, btnCancel;
+    Button btnCommit, btnCancel,btnForward;
 
     int AddBasic, AddMedium, AddHigh;
     int SubtrBasic, SubtrMedium, SubtrHigh;
@@ -94,6 +94,7 @@ public class SettingActivity extends AppCompatActivity {
         btnDivMedium = findViewById(R.id.btnDivMedium);
         btnDivHigh = findViewById(R.id.btnDivHigh);
 
+        btnForward = findViewById(R.id.btnForward);
         btnCommit = findViewById(R.id.btnCommit);
         btnCancel = findViewById(R.id.btnCancel);
 
@@ -687,6 +688,7 @@ public class SettingActivity extends AppCompatActivity {
         Log.d("Setting", "int:" + d_ff+" str:"+date.toString());
         editor.putString("date",date.toString());
         editor.commit();
+        btnForward.setTextColor(getResources().getColor(R.color.colorAccent));
 
     }
 }

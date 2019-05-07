@@ -16,6 +16,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -30,6 +31,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -90,11 +96,12 @@ public class MainActivity extends AppCompatActivity {
 
         tvOpDate = findViewById(R.id.tvOpDate);
 
+
         Log.d("Main onCreate", "stars:"+sharedata0.getInt("stars",0));
         askPermissionAndWriteFile();
         //askPermissionAndReadFile();
 
-//===========================================sound 1 =============================
+        //===========================================sound 1 =============================
         mediaPlayer=new MediaPlayer();
 
         File file = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_RINGTONES);
@@ -209,6 +216,23 @@ public class MainActivity extends AppCompatActivity {
 
         tvOpDate.setText("上一次測試日期為：　"+sharedata0.getString("date", "0"));
 
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (!task.isSuccessful()) {
+                            return;
+                        }
+
+                        if( task.getResult() == null)
+                            return;
+                        // Get new Instance ID token
+                        String token = task.getResult().getToken();
+
+                        // Log and toast
+                        Log.i("MainActivity","token "+token);
+                    }
+                });
     }
 
     @Override
@@ -302,6 +326,8 @@ public class MainActivity extends AppCompatActivity {
         if (canWrite) {
            // Toast.makeText(getApplicationContext(), "PERMISSION_GRANTED0000", Toast.LENGTH_SHORT).show();
            // FileUtil.getInstance().storeBitmap(bitmap, path);
+
+
         }
     }
 

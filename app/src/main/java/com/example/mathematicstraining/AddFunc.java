@@ -1260,7 +1260,7 @@ public class AddFunc extends Activity {
                     editor.putInt("addMedium",addMedium );
                     editor.commit();
                     Log.d("TEST", "choose...2 addMedium:"+addMedium);
-                    if(addBasic == 2) {
+                    if(addMedium == 2) {
                         if(MainActivity.HomeRunCheck(sharedata))
                         {
                             alertdialog.dismiss();
