@@ -431,7 +431,7 @@ public class SettingActivity extends AppCompatActivity {
                     AddMedium = 0;
                     btnAddMediumCount++;
                 }
-                else if(btnAddBasicCount==1)
+                else if(btnAddMediumCount==1)
                 {
                     AddMedium = 1;
                     btnAddMediumCount++;
@@ -674,19 +674,20 @@ public class SettingActivity extends AppCompatActivity {
     public void Forward(View view) {
         mCal = Calendar.getInstance();
         s = DateFormat.format("yyyy/MM/dd ", mCal.getTime());    // kk:24小時制, hh:12小時制
-        date_temp =  DateFormat.format("yyyyMMdd ", mCal.getTime());
+
 
         //String date = sharedata.getString("date", "0");
-
-        String date_FF=date_temp.toString().substring(0, 7);
-        Log.d("Setting", "data_FF:"+ date_FF);
-        int d_ff = Integer.valueOf(date_temp.toString().substring(7,8));
-        Log.d("Setting", "int:" + d_ff+" str:"+date_temp.toString().substring(7,8));
-
-        d_ff--;
-        String date = date_FF.toString()+Integer.toString(d_ff);
-        Log.d("Setting", "int:" + d_ff+" str:"+date.toString());
-        editor.putString("date",date.toString());
+        //mCal.add(Calendar.DATE, -1);
+        date_temp =  DateFormat.format("yyyyMMdd ", mCal.getTime());
+//        String date_FF=date_temp.toString().substring(0, 7);
+//        Log.d("Setting", "data_FF:"+ date_FF);
+//        int d_ff = Integer.valueOf(date_temp.toString().substring(7,8));
+//        Log.d("Setting", "int:" + d_ff+" str:"+date_temp.toString().substring(7,8));
+//
+//        d_ff--;
+//        String date = date_FF.toString()+Integer.toString(d_ff);
+        Log.d("Setting", "date:" +date_temp.toString());
+        editor.putString("date",date_temp.toString());
         editor.commit();
         btnForward.setTextColor(getResources().getColor(R.color.colorAccent));
 

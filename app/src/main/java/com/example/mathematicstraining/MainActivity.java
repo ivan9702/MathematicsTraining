@@ -14,6 +14,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.nfc.cardemulation.CardEmulation;
 import android.os.Build;
 import android.os.Environment;
 import android.support.annotation.NonNull;
@@ -312,6 +313,9 @@ public class MainActivity extends AppCompatActivity {
         tvOpDate.setText("上一次測試日期為：　"+sharedata0.getString("date", "0"));
 
 
+        /////////////////////
+
+
     }
 
     public void gotoStore(View view) {
@@ -464,6 +468,10 @@ public class MainActivity extends AppCompatActivity {
 
     public static Boolean HomeRunCheck(SharedPreferences sharedata)
     {
+        SharedPreferences.Editor editor;
+        editor = sharedata.edit();//获取Editor
+
+        Log.d("Main onResume", "stars:"+sharedata.getInt("stars", 0));
         Log.d("Main onResume", "addBasic:"+sharedata.getInt("addBasic",0));
         Log.d("Main onResume", "addMedium:"+sharedata.getInt("addMedium",0));
         Log.d("Main onResume", "addHigh:"+sharedata.getInt("addHigh",0));
@@ -476,14 +484,84 @@ public class MainActivity extends AppCompatActivity {
         Log.d("Main onResume", "multiMedium:"+sharedata.getInt("multiMedium",0));
         Log.d("Main onResume", "multiHigh:"+sharedata.getInt("multiHigh",0));
 
+        Log.d("Main onResume", "last homeRunDate:"+sharedata.getString("homeRunDate","0"));
+        Log.d("Main onResume", "homeRunFib1:"+sharedata.getInt("homeRunFib1",1));
+        Log.d("Main onResume", "homeRunFib2:"+sharedata.getInt("homeRunFib2",2));
+        Log.d("Main onResume", "homeRunContinue:"+  sharedata.getInt("homeRunContinue", 0));
         if((sharedata.getInt("addBasic",0)==2) &&  (sharedata.getInt("addMedium",0)==2) &&  (sharedata.getInt("addHigh",0)==2) &&  (sharedata.getInt("subtractionBasic",0)==2) &&  (sharedata.getInt("subtractionMedium",0)==2) &&  (sharedata.getInt("subtractionHigh",0)==2) &&  (sharedata.getInt("multiBasic",0)==2) &&  (sharedata.getInt("multiMedium",0)==2) &&  (sharedata.getInt("multiHigh",0)==2))
         {
             mediaPlayer1.start();
+
+            HomeRunCount(sharedata);
+
+            CharSequence date;
+            editor = sharedata.edit();//获取Editor
+            Calendar mCal;
+            mCal = Calendar.getInstance();
+            //test
+           // mCal.add(Calendar.DATE, -4);
+            date =  DateFormat.format("yyyyMMdd ", mCal.getTime());
+            Log.d("Main onResume", "current HomeRun date:"+date.toString());
+            editor.putString("homeRunDate",date.toString() );
+            editor.commit();
             return true;
         }
         return  false;
     }
 
+    static int HomeRunCount(SharedPreferences sharedata)
+    {
+
+        int  awardStars=0;
+        SharedPreferences.Editor editor;
+        editor = sharedata.edit();//获取Editor
+        Calendar mCal;
+        //  TextView tvOpDate;
+        CharSequence date_current;
+        editor = sharedata.edit();//获取Editor
+
+        mCal = Calendar.getInstance();
+        mCal.add(Calendar.DATE, -1);
+
+        date_current =  DateFormat.format("yyyyMMdd ", mCal.getTime());
+
+        String date = sharedata.getString("homeRunDate", "0");
+
+        // test
+        Log.d("Main onResume", "HomeRun date:"+date_current.toString());
+        Log.d("Main onResume", "Last HomeRun date:"+ date);
+        Log.d("Main onResume", "stars:"+ sharedata.getInt("stars", 0));
+        if(date.compareTo(date_current.toString()) ==0 ){
+           int Fib1 =  sharedata.getInt("homeRunFib1", 1);
+           int Fib2 = sharedata.getInt("homeRunFib2", 2);
+           int homeRunContinue =  sharedata.getInt("homeRunContinue", 0);
+
+            homeRunContinue++;
+           awardStars = Fib1 + Fib2;
+           Log.d("Main onResume", "awardStars:"+ awardStars+"  Fib1:"+sharedata.getInt("homeRunFib1", 1)+"   Fib2:"+sharedata.getInt("homeRunFib2", 2) + " homeRunContinue: "+homeRunContinue);
+
+
+          editor.putInt("stars", +sharedata.getInt("stars", 0)+awardStars);
+
+            editor.putInt("homeRunFib1", Fib2);
+            editor.putInt("homeRunFib2", awardStars);
+            editor.putInt("homeRunContinue", homeRunContinue);
+
+        }
+        else
+        {
+            editor.putInt("homeRunFib1", 1);
+            editor.putInt("homeRunFib2", 2);
+            editor.putInt("homeRunContinue", 0);
+
+        }
+        editor.commit();
+        Log.d("Main onResume", "homeRunFib1:"+  sharedata.getInt("homeRunFib1", 1));
+        Log.d("Main onResume", "homeRunFib2:"+sharedata.getInt("homeRunFib2", 2));
+        Log.d("Main onResume", "stars:"+ sharedata.getInt("stars", 0));
+
+        return  awardStars;
+    }
     @Override
     protected void onDestroy() {
         // TODO Auto-generated method stub

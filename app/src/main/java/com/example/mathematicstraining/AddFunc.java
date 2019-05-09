@@ -1219,20 +1219,29 @@ public class AddFunc extends Activity {
                     editor.putInt("stars", stars);
                     editor.putInt("addBasic",addBasic );
                     editor.commit();
-                    Log.d("TEST", "do check GOTO again...1 addBasic:"+addBasic);
+                    Log.d("TEST", "stars HomeRun Check Before:"+ sharedata.getInt("stars", 0));
+                    Log.d("TEST", "addBasic:"+addBasic);
                     if(addBasic == 2) {
                         if(MainActivity.HomeRunCheck(sharedata))
                         {
                             alertdialog.dismiss();
+                            stars = sharedata.getInt("stars", 0);
+                            int homeRunContinue= sharedata.getInt("homeRunContinue", 0);
                             stars+=HOMERUN_AWARE;
+                            String Msg=" 已完成今日題目，得到額外獎勵 "+HOMERUN_AWARE+" 顆星星";
+                            if(homeRunContinue !=0)
+                            {
+                               Msg+="\n 而且連續HomeRun"+homeRunContinue+" 天, 可以再得到額外獎勵"+sharedata.getInt("homeRunFib2", 0)+" 顆星星";
+                            }
                             Log.d("TEST", "HomeRun Check OK");
                             AlertDialog dialog = new AlertDialog.Builder(this)
                                     .setIcon(R.drawable.star1)
                                     .setTitle("EXCELLENT !!")
-                                    .setMessage(" 已完成今日題目，得到額外獎勵 "+HOMERUN_AWARE+" 顆星星")
+                                    .setMessage(Msg)
                                     .setPositiveButton("確定", null)
                                     .create();
                             dialog.show();
+                            Log.d("TEST", "stars: Home Run Check After"+ sharedata.getInt("stars", 0));
                             editor.putInt("stars", stars);
                             editor.commit();
                         }
@@ -1264,12 +1273,19 @@ public class AddFunc extends Activity {
                         if(MainActivity.HomeRunCheck(sharedata))
                         {
                             alertdialog.dismiss();
+                            stars = sharedata.getInt("stars", 0);
+                            int homeRunContinue= sharedata.getInt("homeRunContinue", 0);
                             stars+=HOMERUN_AWARE;
+                            String Msg=" 已完成今日題目，得到額外獎勵 "+HOMERUN_AWARE+" 顆星星";
+                            if(homeRunContinue !=0)
+                            {
+                               Msg+="\n 而且連續HomeRun"+homeRunContinue+" 天, 可以再得到額外獎勵"+sharedata.getInt("homeRunFib2", 0)+" 顆星星";
+                            }
                             Log.d("TEST", "HomeRun Check OK");
                             AlertDialog dialog = new AlertDialog.Builder(this)
                                     .setIcon(R.drawable.star1)
                                     .setTitle("EXCELLENT !!")
-                                    .setMessage(" 已完成今日題目，得到額外獎勵 "+HOMERUN_AWARE+" 顆星星")
+                                    .setMessage(Msg)
                                     .setPositiveButton("確定", null)
                                     .create();
                             dialog.show();
@@ -1304,12 +1320,19 @@ public class AddFunc extends Activity {
                         if(MainActivity.HomeRunCheck(sharedata))
                         {
                             alertdialog.dismiss();
+                            stars = sharedata.getInt("stars", 0);
+                            int homeRunContinue= sharedata.getInt("homeRunContinue", 0);
                             stars+=HOMERUN_AWARE;
+                            String Msg=" 已完成今日題目，得到額外獎勵 "+HOMERUN_AWARE+" 顆星星";
+                            if(homeRunContinue !=0)
+                            {
+                                Msg+="\n 而且連續HomeRun"+homeRunContinue+" 天, 可以再得到額外獎勵"+sharedata.getInt("homeRunFib2", 0)+" 顆星星";
+                            }
                             Log.d("TEST", "HomeRun Check OK");
                             AlertDialog dialog = new AlertDialog.Builder(this)
                                     .setIcon(R.drawable.star1)
                                     .setTitle("EXCELLENT !!")
-                                    .setMessage(" 已完成今日題目，得到額外獎勵 "+HOMERUN_AWARE+" 顆星星")
+                                    .setMessage(Msg)
                                     .setPositiveButton("確定", null)
                                     .create();
                             dialog.show();

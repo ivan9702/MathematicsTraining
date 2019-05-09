@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "934585496794",
+    "firebase_url": "https://mathematical-award.firebaseio.com",
+    "project_id": "mathematical-award",
+    "storage_bucket": "mathematical-award.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:934585496794:android:687bae5331ac463a",
+        "android_client_info": {
+          "package_name": "com.example.mathematicstraining"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "934585496794-f8o3u3rvj4dph5vhqjer6rvhvq94oaio.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mathematicstraining",
+            "certificate_hash": "4d47a773b85bd28759a17eaed2db42fdb0c9ac60"
+          }
+        },
+        {
+          "client_id": "934585496794-ubbvlbnptqfvlti4vvtcqg6jkulhu4f9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDonPC_417y4M_GmI1NTdkFAb4OChf8FQ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "934585496794-ubbvlbnptqfvlti4vvtcqg6jkulhu4f9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
