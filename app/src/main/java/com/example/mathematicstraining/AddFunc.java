@@ -1222,16 +1222,16 @@ public class AddFunc extends Activity {
                     Log.d("TEST", "stars HomeRun Check Before:"+ sharedata.getInt("stars", 0));
                     Log.d("TEST", "addBasic:"+addBasic);
                     if(addBasic == 2) {
-                        if(MainActivity.HomeRunCheck(sharedata))
+                        if(MainActivity.HomeRunCheck(sharedata, true))
                         {
                             alertdialog.dismiss();
                             stars = sharedata.getInt("stars", 0);
                             int homeRunContinue= sharedata.getInt("homeRunContinue", 0);
                             stars+=HOMERUN_AWARE;
                             String Msg=" 已完成今日題目，得到額外獎勵 "+HOMERUN_AWARE+" 顆星星";
-                            if(homeRunContinue !=0)
+                            if(homeRunContinue >1)
                             {
-                               Msg+="\n 而且連續HomeRun"+homeRunContinue+" 天, 可以再得到額外獎勵"+sharedata.getInt("homeRunFib2", 0)+" 顆星星";
+                               Msg+="\n 而且連續HomeRun"+homeRunContinue+" 天, 可以再得到額外獎勵"+MainActivity.fibonacci(sharedata.getInt("homeRunContinue", 0) + 1)+" 顆星星";
                             }
                             Log.d("TEST", "HomeRun Check OK");
                             AlertDialog dialog = new AlertDialog.Builder(this)
@@ -1270,16 +1270,16 @@ public class AddFunc extends Activity {
                     editor.commit();
                     Log.d("TEST", "choose...2 addMedium:"+addMedium);
                     if(addMedium == 2) {
-                        if(MainActivity.HomeRunCheck(sharedata))
+                        if(MainActivity.HomeRunCheck(sharedata, true))
                         {
                             alertdialog.dismiss();
                             stars = sharedata.getInt("stars", 0);
                             int homeRunContinue= sharedata.getInt("homeRunContinue", 0);
                             stars+=HOMERUN_AWARE;
                             String Msg=" 已完成今日題目，得到額外獎勵 "+HOMERUN_AWARE+" 顆星星";
-                            if(homeRunContinue !=0)
+                            if(homeRunContinue >1)
                             {
-                               Msg+="\n 而且連續HomeRun"+homeRunContinue+" 天, 可以再得到額外獎勵"+sharedata.getInt("homeRunFib2", 0)+" 顆星星";
+                               Msg+="\n 而且連續HomeRun"+homeRunContinue+" 天, 可以再得到額外獎勵"+MainActivity.fibonacci(sharedata.getInt("homeRunContinue", 0) + 1)+" 顆星星";
                             }
                             Log.d("TEST", "HomeRun Check OK");
                             AlertDialog dialog = new AlertDialog.Builder(this)
@@ -1317,16 +1317,16 @@ public class AddFunc extends Activity {
                     Log.d("TEST", "choose...2 addHigh:"+addHigh);
                     if(addHigh == 2)
                     {
-                        if(MainActivity.HomeRunCheck(sharedata))
+                        if(MainActivity.HomeRunCheck(sharedata, true))
                         {
                             alertdialog.dismiss();
                             stars = sharedata.getInt("stars", 0);
                             int homeRunContinue= sharedata.getInt("homeRunContinue", 0);
                             stars+=HOMERUN_AWARE;
                             String Msg=" 已完成今日題目，得到額外獎勵 "+HOMERUN_AWARE+" 顆星星";
-                            if(homeRunContinue !=0)
+                            if(homeRunContinue >1)
                             {
-                                Msg+="\n 而且連續HomeRun"+homeRunContinue+" 天, 可以再得到額外獎勵"+sharedata.getInt("homeRunFib2", 0)+" 顆星星";
+                                Msg+="\n 而且連續HomeRun"+homeRunContinue+" 天, 可以再得到額外獎勵"+MainActivity.fibonacci(sharedata.getInt("homeRunContinue", 0) + 1)+" 顆星星";
                             }
                             Log.d("TEST", "HomeRun Check OK");
                             AlertDialog dialog = new AlertDialog.Builder(this)

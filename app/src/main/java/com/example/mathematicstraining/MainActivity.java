@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         mediaPlayer1=new MediaPlayer();
 
         File file1 = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_RINGTONES);
-        String path1 = file.getPath()+"/homerun.wav";
+        String path1 = file.getPath()+"/recording.wav";
         Log.d("Main onCreate", "wav1 Path:"+path1);
         try {
             mediaPlayer1.setDataSource(path1);
@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                // Toast.makeText(MainActivity.this, "ADDITION !!!!", Toast.LENGTH_SHORT).show();
 
-                if(!HomeRunCheck(sharedata0))
+                if(!HomeRunCheck(sharedata0, false))
                 {
 
                     Intent it = new Intent(MainActivity.this,Addition.class);
@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
         tvAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!HomeRunCheck(sharedata0)) {
+                if(!HomeRunCheck(sharedata0, false)) {
                     //  Toast.makeText(MainActivity.this, "ADDITION !!!!", Toast.LENGTH_SHORT).show();
                     Intent it = new Intent(MainActivity.this, Addition.class);
                     startActivity(it);
@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
         ivSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!HomeRunCheck(sharedata0)) {
+                if(!HomeRunCheck(sharedata0,false)) {
                     //Toast.makeText(MainActivity.this, "SUBTRACTION !!!!", Toast.LENGTH_SHORT).show();
                     Intent it = new Intent(MainActivity.this, Subtraction.class);
                     startActivity(it);
@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
         tvSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!HomeRunCheck(sharedata0)) {
+                if(!HomeRunCheck(sharedata0,false)) {
                     // Toast.makeText(MainActivity.this, "SUBTRACTION !!!!", Toast.LENGTH_SHORT).show();
                     Intent it = new Intent(MainActivity.this, Subtraction.class);
                     startActivity(it);
@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
         ivMul.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!HomeRunCheck(sharedata0)) {
+                if(!HomeRunCheck(sharedata0,false)) {
                     //Toast.makeText(MainActivity.this, "MULTIPLICATION !!!!", Toast.LENGTH_SHORT).show();
                     Intent it = new Intent(MainActivity.this, Multiplication.class);
                     startActivity(it);
@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
         tvMul.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!HomeRunCheck(sharedata0)) {
+                if(!HomeRunCheck(sharedata0,false)) {
                     //Toast.makeText(MainActivity.this, "MULTIPLICATION !!!!", Toast.LENGTH_SHORT).show();
                     Intent it = new Intent(MainActivity.this, Multiplication.class);
                     startActivity(it);
@@ -261,6 +261,9 @@ public class MainActivity extends AppCompatActivity {
         Log.d("Main onResume", "date:"+sharedata0.getString("date", "0"));
 
         Log.d("Main onResume", "errImgNum:"+sharedata0.getInt("errImgNum",0));
+        Log.d("Main onResume", "homeRunFib2:"+sharedata0.getInt("homeRunFib2",1));
+        Log.d("Main onResume", "homeRunContinue:"+  sharedata0.getInt("homeRunContinue", 0));
+        Log.d("Main onResume", "Last homeRun Date:"+ sharedata0.getString("homeRunDate", "0"));
 
 
         mCal = Calendar.getInstance();
@@ -281,6 +284,7 @@ public class MainActivity extends AppCompatActivity {
             int subtractionHigh=0;
 
             int addBasic =0;
+
             int addMedium = 0;
             int addHigh = 0;
 
@@ -310,13 +314,76 @@ public class MainActivity extends AppCompatActivity {
 
         tvErrors.setText(" x "+sharedata0.getInt("errorCount",0)+"/3");
 
-        tvOpDate.setText("上一次測試日期為：　"+sharedata0.getString("date", "0"));
+        String str = "上一次測試日期為：　"+sharedata0.getString("date", "0");
 
+        String lastHomeRundate = sharedata0.getString("homeRunDate", "0");
+
+        CharSequence date_current;
+
+        mCal = Calendar.getInstance();
+
+        mCal.add(Calendar.DATE, -1);
+
+
+        date_current =  DateFormat.format("yyyyMMdd ", mCal.getTime());
+        String temp = date_current.subSequence(0, 8).toString();
+        Log.d("Main onResume", "Last homeRun Date:"+ lastHomeRundate);
+        Log.d("Main onResume", "during current Date:"+ date_current);
+        Log.d("Main onResume", "date_current.toString().compareTo(lastHomeRundate):"+ date_current.toString().compareTo(lastHomeRundate));
+        Log.d("Main onResume", "lastHomeRundate.compareTo(temp):"+ lastHomeRundate.compareTo(temp));
+        Log.d("Main onResume", "temp.compareTo(20190509):"+ temp.compareTo("20190509"));
+
+        Log.d("Main onResume", "lastHomeRundate len"+ lastHomeRundate.length());
+        Log.d("Main onResume", "date_current len"+ date_current.toString().length());
+       if(temp.compareTo(lastHomeRundate) > 0)
+        {
+
+            Log.d("Main onResume", ">>>>>>>> 0  over time for HR Continue");
+            editor.putInt("homeRunContinue", 0);
+            editor.commit();
+        }
+        else
+        {
+            Log.d("Main onResume", "<<<<<<<< ======= 0");
+            Log.d("Main onResume", "Keep Counting for HR Continue");
+        }
+//
+//        Log.d("Main onResume", "Last homeRun Date:"+ Integer.valueOf(lastHomeRundate.toString()));
+//        Log.d("Main onResume", "current Date:"+ Integer.valueOf(date_current.toString()));
+//        if(Integer.valueOf(date_current.toString()) - Integer.valueOf(lastHomeRundate.toString())>2)
+//        {
+//            Log.d("Main onResume", "Reset HR Continue...");
+//            editor.putInt("homeRunContinue", 0);
+//            editor.commit();
+//
+//        }
+
+
+        if(sharedata0.getInt("homeRunContinue",0) <=1) {
+            str += "\n目前練續HomeRun天數為" + sharedata0.getInt("homeRunContinue",0);
+           if( sharedata0.getInt("homeRunContinue",0)==0)
+                str += "     下次連續獎勵為 " + 0+ ",顆星";
+           else if(sharedata0.getInt("homeRunContinue",0)==1)
+               str += "     下次連續獎勵為 " + 2+ ",顆星";
+
+
+        }else{
+            str += "\n目前練續HomeRun天數為" + sharedata0.getInt("homeRunContinue", 0);
+            str += "     下一次連續獎勵為" + fibonacci(sharedata0.getInt("homeRunContinue", 0) + 2) + "顆星";
+        }
+       // tvOpDate.setText("上一次測試日期為：　"+sharedata0.getString("date", "0"));
+        tvOpDate.setText(str);
 
         /////////////////////
 
 
     }
+
+    public static int fibonacci(int n) {
+        if (n <= 1) return n;
+        else return fibonacci(n-1) + fibonacci(n-2);
+    }
+
 
     public void gotoStore(View view) {
         Intent it = new Intent(MainActivity.this,AwardStoreActivity.class);
@@ -466,7 +533,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public static Boolean HomeRunCheck(SharedPreferences sharedata)
+    public static Boolean HomeRunCheck(SharedPreferences sharedata, Boolean HRContinue)
     {
         SharedPreferences.Editor editor;
         editor = sharedata.edit();//获取Editor
@@ -485,21 +552,22 @@ public class MainActivity extends AppCompatActivity {
         Log.d("Main onResume", "multiHigh:"+sharedata.getInt("multiHigh",0));
 
         Log.d("Main onResume", "last homeRunDate:"+sharedata.getString("homeRunDate","0"));
-        Log.d("Main onResume", "homeRunFib1:"+sharedata.getInt("homeRunFib1",1));
-        Log.d("Main onResume", "homeRunFib2:"+sharedata.getInt("homeRunFib2",2));
+       // Log.d("Main onResume", "homeRunFib1:"+sharedata.getInt("homeRunFib1",1));
+        Log.d("Main onResume", "homeRunFib2:"+sharedata.getInt("homeRunFib2",1));
         Log.d("Main onResume", "homeRunContinue:"+  sharedata.getInt("homeRunContinue", 0));
         if((sharedata.getInt("addBasic",0)==2) &&  (sharedata.getInt("addMedium",0)==2) &&  (sharedata.getInt("addHigh",0)==2) &&  (sharedata.getInt("subtractionBasic",0)==2) &&  (sharedata.getInt("subtractionMedium",0)==2) &&  (sharedata.getInt("subtractionHigh",0)==2) &&  (sharedata.getInt("multiBasic",0)==2) &&  (sharedata.getInt("multiMedium",0)==2) &&  (sharedata.getInt("multiHigh",0)==2))
         {
             mediaPlayer1.start();
 
-            HomeRunCount(sharedata);
-
+            if(HRContinue) {
+                HomeRunCount(sharedata);
+            }
             CharSequence date;
             editor = sharedata.edit();//获取Editor
             Calendar mCal;
             mCal = Calendar.getInstance();
-            //test
-           // mCal.add(Calendar.DATE, -4);
+            //for test
+           // mCal.add(Calendar.DATE, -1);
             date =  DateFormat.format("yyyyMMdd ", mCal.getTime());
             Log.d("Main onResume", "current HomeRun date:"+date.toString());
             editor.putString("homeRunDate",date.toString() );
@@ -509,21 +577,23 @@ public class MainActivity extends AppCompatActivity {
         return  false;
     }
 
-    static int HomeRunCount(SharedPreferences sharedata)
+    public  static int HomeRunCount(SharedPreferences sharedata)
     {
-
+        int homeRunContinue;
         int  awardStars=0;
         SharedPreferences.Editor editor;
-        editor = sharedata.edit();//获取Editor
+       editor = sharedata.edit();//获取Editor
         Calendar mCal;
         //  TextView tvOpDate;
         CharSequence date_current;
         editor = sharedata.edit();//获取Editor
 
         mCal = Calendar.getInstance();
+
         mCal.add(Calendar.DATE, -1);
 
         date_current =  DateFormat.format("yyyyMMdd ", mCal.getTime());
+        String temp = date_current.subSequence(0, 8).toString();
 
         String date = sharedata.getString("homeRunDate", "0");
 
@@ -531,35 +601,43 @@ public class MainActivity extends AppCompatActivity {
         Log.d("Main onResume", "HomeRun date:"+date_current.toString());
         Log.d("Main onResume", "Last HomeRun date:"+ date);
         Log.d("Main onResume", "stars:"+ sharedata.getInt("stars", 0));
-        if(date.compareTo(date_current.toString()) ==0 ){
-           int Fib1 =  sharedata.getInt("homeRunFib1", 1);
-           int Fib2 = sharedata.getInt("homeRunFib2", 2);
-           int homeRunContinue =  sharedata.getInt("homeRunContinue", 0);
 
-            homeRunContinue++;
-           awardStars = Fib1 + Fib2;
-           Log.d("Main onResume", "awardStars:"+ awardStars+"  Fib1:"+sharedata.getInt("homeRunFib1", 1)+"   Fib2:"+sharedata.getInt("homeRunFib2", 2) + " homeRunContinue: "+homeRunContinue);
+        if(temp.compareTo(date) <= 0) {
+       // if(date.compareTo(date_current.toString()) ==0 ){
+         //  int Fib1 =  sharedata.getInt("homeRunFib1", 1);
+           //int Fib2 = sharedata.getInt("homeRunFib2", 1);
+            int Fib2;
+            Log.d("Main onResume", "------homeRunContinue:"+ sharedata.getInt("homeRunContinue", 0));
+           homeRunContinue =  sharedata.getInt("homeRunContinue", 0);
+           homeRunContinue++;
+            Log.d("Main onResume", "++++++homeRunContinue:"+ homeRunContinue);
+           //Fib1 = fibonacci(homeRunContinue);
+           Fib2 = fibonacci(homeRunContinue+1);
+           //awardStars = Fib1 + Fib2;
+            awardStars=Fib2;
+           // Log.d("Main onResume", "awardStars:"+ awardStars+"  Fib1:"+sharedata.getInt("homeRunFib1", 1)+"   Fib2:"+sharedata.getInt("homeRunFib2", 2) + " homeRunContinue: "+homeRunContinue);
+            Log.d("Main onResume", "awardStars:"+ awardStars+"   Fib2:"+sharedata.getInt("homeRunFib2", 2) + " homeRunContinue: "+homeRunContinue);
 
+            editor.putInt("stars", +sharedata.getInt("stars", 0)+awardStars);
 
-          editor.putInt("stars", +sharedata.getInt("stars", 0)+awardStars);
-
-            editor.putInt("homeRunFib1", Fib2);
-            editor.putInt("homeRunFib2", awardStars);
+            //editor.putInt("homeRunFib1", Fib1);
+            editor.putInt("homeRunFib2", Fib2);
             editor.putInt("homeRunContinue", homeRunContinue);
 
         }
         else
         {
-            editor.putInt("homeRunFib1", 1);
-            editor.putInt("homeRunFib2", 2);
-            editor.putInt("homeRunContinue", 0);
+         //   editor.putInt("homeRunFib1", 1);
+            editor.putInt("homeRunFib2", 1);
+            editor.putInt("homeRunContinue", 1);
 
         }
         editor.commit();
-        Log.d("Main onResume", "homeRunFib1:"+  sharedata.getInt("homeRunFib1", 1));
+        //Log.d("Main onResume", "homeRunFib1:"+  sharedata.getInt("homeRunFib1", 1));
         Log.d("Main onResume", "homeRunFib2:"+sharedata.getInt("homeRunFib2", 2));
+        Log.d("Main onResume", "awardStars:"+ awardStars);
         Log.d("Main onResume", "stars:"+ sharedata.getInt("stars", 0));
-
+        Log.d("Main onResume", "homeRunContinue:"+ sharedata.getInt("homeRunContinue", 0));
         return  awardStars;
     }
     @Override

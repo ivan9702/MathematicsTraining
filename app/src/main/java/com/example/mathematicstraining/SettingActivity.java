@@ -1,5 +1,6 @@
 package com.example.mathematicstraining;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.io.File;
 import java.io.IOException;
@@ -50,12 +52,22 @@ public class SettingActivity extends AppCompatActivity {
     Boolean Entry_stars = true;
     Boolean Entry_halfstar = true;
     Boolean Entry_error = true;
+
+    Boolean Entry_HRContinue=true;
  //   private MediaPlayer mediaPlayer;
 
     int btnAddBasicCount=0, btnAddMediumCount=0, btnAddHighCount=0, btnSubtrBasicCount=0, btnSubtrMediumCount=0, btnSubtrHighCount=0, btnMultiBasicCount=0, btnMultiMediumCount=0, btnMultiHighCount=0;
     Calendar mCal;
     //  TextView tvOpDate;
     CharSequence date_temp, s;
+
+
+    TextView tvHRContinue, tvHRDate;
+    Button btnFibCountAdd, btnFibCountSubtr;
+    EditText etHRDate;
+
+    int homeRunFib1, homeRunFib2,homeRunContinue;
+    String homeRunDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +109,12 @@ public class SettingActivity extends AppCompatActivity {
         btnForward = findViewById(R.id.btnForward);
         btnCommit = findViewById(R.id.btnCommit);
         btnCancel = findViewById(R.id.btnCancel);
+
+        tvHRContinue = findViewById(R.id.tvHRContinue);
+        tvHRDate = findViewById(R.id.tvHRDate);
+        btnFibCountAdd = findViewById(R.id.btnFibCountAdd);
+        btnFibCountSubtr = findViewById(R.id.btnFibCountSubtr);
+        etHRDate =findViewById(R.id.etHRDate);
 
 
         etCars.addTextChangedListener(new TextWatcher() {
@@ -266,6 +284,26 @@ public class SettingActivity extends AppCompatActivity {
                 Entry_error = false;
             }
         });
+
+        etHRDate.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(!Entry_HRContinue) {
+                    etHRDate.setTextColor(getResources().getColor(R.color.colorAccent));
+                }
+                Entry_HRContinue = false;
+            }
+        });
     }
 
     @Override
@@ -302,6 +340,13 @@ public class SettingActivity extends AppCompatActivity {
 
         Log.d("Setting onResume", "ParkNum:"+sharedata.getInt("ParkNum",0));
 
+        Log.d("Main onResume", "homeRunFib1:"+sharedata.getInt("homeRunFib1",1));
+        Log.d("Main onResume", "homeRunFib2:"+sharedata.getInt("homeRunFib2",1));
+        Log.d("Main onResume", "homeRunContinue:"+  sharedata.getInt("homeRunContinue", 0));
+        Log.d("Main onResume", "homeRunDate:"+  sharedata.getString("homeRunDate", "0"));
+
+
+
 //==========================================================================================================
 //              Get Data from SharePreference
 //==========================================================================================================
@@ -329,7 +374,11 @@ public class SettingActivity extends AppCompatActivity {
         halfstars = (sharedata.getBoolean("starHalf",false)? 1:0);
         error = sharedata.getInt("errorCount",0);
 
-         //=====================================================================================================
+        homeRunFib1 = sharedata.getInt("homeRunFib1",1);
+        homeRunFib2 = sharedata.getInt("homeRunFib2",1);
+        homeRunContinue = sharedata.getInt("homeRunContinue", 0);
+        homeRunDate =  sharedata.getString("homeRunDate", "0");
+        //=====================================================================================================
         //                      Show SharedPreferences Data
         //=====================================================================================================
 
@@ -380,6 +429,9 @@ public class SettingActivity extends AppCompatActivity {
         etTV.setText(Integer.toString(TV));
         etToy.setText(Integer.toString(Toy));
         etPark.setText(Integer.toString(Park));
+
+        tvHRContinue.setText(Integer.toString(homeRunContinue));
+        etHRDate.setText(homeRunDate);
     }
 
     public void ButtonClick(View view) {
@@ -614,6 +666,18 @@ public class SettingActivity extends AppCompatActivity {
                 btnMultiHigh.setText(Str);
                 btnMultiHigh.setTextColor(getResources().getColor(R.color.colorAccent));
                 break;
+
+            case R.id.btnFibCountAdd:
+                homeRunContinue++;
+                tvHRContinue.setText(Integer.toString(homeRunContinue));
+                tvHRContinue.setTextColor(getResources().getColor(R.color.colorAccent));
+                break;
+
+            case R.id.btnFibCountSubtr:
+                homeRunContinue--;
+                tvHRContinue.setText(Integer.toString(homeRunContinue));
+                tvHRContinue.setTextColor(getResources().getColor(R.color.colorAccent));
+                break;
         }
 
 
@@ -661,6 +725,13 @@ public class SettingActivity extends AppCompatActivity {
             editor.putBoolean("starHalf", true);
 
         editor.putInt("errorCount", error);
+
+
+        homeRunDate = etHRDate.getText().toString();
+        //editor.putInt("homeRunFib1",homeRunFib1);
+        editor.putInt("homeRunFib2",homeRunFib2);
+        editor.putInt("homeRunContinue", homeRunContinue);
+        editor.putString("homeRunDate", homeRunDate);
 
         editor.commit();
         cancelFunc();
