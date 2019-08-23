@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:934585496794:android:687bae5331ac463a",
         "android_client_info": {
-          "package_name": "com.example.mathematicstraining"
+          "package_name": "com.ivancom.mathematicstraining"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "934585496794-f8o3u3rvj4dph5vhqjer6rvhvq94oaio.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.mathematicstraining",
+            "package_name": "com.ivancom.mathematicstraining",
             "certificate_hash": "4d47a773b85bd28759a17eaed2db42fdb0c9ac60"
           }
         },

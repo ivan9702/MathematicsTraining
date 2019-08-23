@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mathematicstraining">
+    package="com.ivancom.mathematicstraining">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -57,7 +57,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name="com.example.mathematicstraining.MyFirebaseMessagingService">
+        <service android:name="com.ivancom.mathematicstraining.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
